@@ -1,0 +1,6 @@
+*.log
+*.gz
+*.toc
+*.out
+*.aux
+Instruction.pdf
