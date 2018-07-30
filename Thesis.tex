@@ -1,20 +1,27 @@
+% Template for Doctoral Theses at Uppsala
+% University. The template is based on
+% the layout and typography used for
+% dissertations in the Acta Universitatis
+% Upsaliensis series
+% Ver 5.2 - 2012-08-08
+% Latest version available at:
+%   http://ub.uu.se/thesistemplate
 %
-% Template for Doctoral Theses at Uppsala 
-% University. The template is based on    
-% the layout and typography used for      
-% dissertations in the Acta Universitatis 
-% Upsaliensis series                      
-% Ver 5.2 - 2012-08-08                  
-% Latest version available at:            
-%   http://ub.uu.se/thesistemplate            
-%                                         
-% Support: Wolmar Nyberg Akerstrom        
-% Thesis Production           
-% Uppsala University Library              
-% avhandling@ub.uu.se                          
-%                                         
+% Support: Wolmar Nyberg Akerstrom
+% Thesis Production
+% Uppsala University Library
+% avhandling@ub.uu.se
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Radial Basis Function generated Finite Difference Methods for Pricing Financial Derivatives
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%
+% Berling as main font and Pazo as math font with Gill Sans for sammanfattning and саджај
+%%%
 
 \documentclass{UUThesisTemplate}
 
@@ -24,27 +31,59 @@
 \ifxetex
 	% XeTeX specific packages and settings
 	% Language, diacritics and hyphenation
-	\usepackage[babelshorthands]{polyglossia}
-	\setmainlanguage{english}
-	\setotherlanguages{swedish}
+	\usepackage{polyglossia}
+	\usepackage{fontspec,xltxtra,xunicode}
+	\defaultfontfeatures{Mapping=tex-text}
 
+	% Palatino with Pazo
+	\setmainfont{Berling}
+	\renewcommand{\baselinestretch}{1.2} % Line width to support inline math!
+	\usepackage{mathpazo} % I like this one the most for math!
+%	\usepackage{mathpple}
+
+
+%	% Computer Modern
+%	\setmainfont[
+%  		Ligatures=TeX,
+%  		Extension=.otf,
+%  		BoldFont=cmunbx,
+%  		ItalicFont=cmunti,
+%  		BoldItalicFont=cmunbi,
+%	]{cmunrm}
+
+
+	\setmainlanguage{english}
+	\setotherlanguages{serbian, swedish}
+	\setkeys{serbian}{script=Cyrillic}
+	
+	% Summary fonts
+	\newfontfamily\cyrillicfont[Script=Cyrillic]{Gill Sans}
+	\newfontfamily\swedishfont{Gill Sans}
+	
+%	\newfontfamily\cyrillicfont[Script=Cyrillic]{Palatino}
+%	\newfontfamily\swedishfont{Palatino}
+	
+%	\newfontfamily\myfont{Palatino}
+	
 	% Font settings
-	\setmainfont{Times New Roman}
-	\setromanfont{Times New Roman}
-	\setsansfont{Arial}
-	\setmonofont{Courier New}
+%	\setmainfont{Times New Roman}
+%	\setromanfont{Times New Roman}
+%	\setsansfont{Arial}
+%	\setmonofont{Courier New}
+
+
 \else
 	% Plain LaTeX specific packages and settings
 	% Language, diacritics and hyphenation
-    % Use English and Swedish languages. 
-	\usepackage[swedish,english]{babel} 
+    % Use English and Swedish languages.
+	\usepackage[swedish,english]{babel}
 
 	% Font settings
 	\usepackage{type1cm}
 	\usepackage[latin1]{inputenc}
 	\usepackage[T1]{fontenc}
 	\usepackage{mathptmx}
-	
+
 	% Enable scaling of images on import
 	\usepackage{graphicx}
 \fi
@@ -55,7 +94,7 @@
 \usepackage{tabularx}
 
 % Document links and bookmarks
-\usepackage{hyperref} 
+\usepackage{hyperref}
 
 % Numbering of headings down to the subsection level
 \numberingdepth{subsection}
@@ -76,58 +115,106 @@
 \frontmatter
     % Creates the front matter (title page(s), abstract, list of papers)
     % for either a Comprehensive Summary or a Monograph.
-    % Authors of Comprehensive Summaries use this front matter 
-    \frontmatterCS 
-    % Monograph authors use this front matter 
-    %\frontmatterMonograph 
- 
+    % Authors of Comprehensive Summaries use this front matter
+    \frontmatterCS
+    % Monograph authors use this front matter
+    %\frontmatterMonograph
+
    % Optional dedication
-   \dedication{"These violent delights have violent ends"\\(Romeo and Juliet: Act 2, Scene 6, Line 9)}
- 
+   \dedication{``These violent delights have violent ends''\\(Romeo and Juliet: Act 2, Scene 6, Line 9)}
+
     % Environment used to create a list of papers
     \begin{listofpapers}
-    	\item A Paper Discussed in this Thesis \label{apaperlabel}
-	\item Paper 2
-	\item Paper 3
-	\item Paper 4
-	\item Paper 5
-	\item Paper 6
+    	\item Radial Basis Function generated Finite Differences for Option Pricing Problems \label{paper1}
+	\item BENCHOP --- The BENCHmarking Project in Option Pricing  \label{paper2}
+	\item BENCHOP-SLV: The BENCHmarking project in Option Pricing --- Stochastic and Local Volatility problems \label{paper4}
+	\item Pricing Derivatives under Multiple Stochastic Factors by Localized Radial Basis Function Methods \label{paper3}
+	\item Pricing Financial Derivatives using Radial Basis Function generated Finite Differences with Polyharmonic Splines on Smoothly Varying Node Layouts \label{paper5}
+	\item SMOOTHING PAPER TITLE \label{paper6}
     \end{listofpapers}
-    
-    
+
+
     \begingroup
         % To adjust the indentation in your table of contents, uncomment and enter the widest numbers for each level
         %  E.g.  \settocnumwidth{widest chapter number}{widest section number}{widest subsection number}...{...}
        %  \settocnumwidth{5}{4}{5}{3}{3}{3}
         \tableofcontents
     \endgroup
-    
+
     % Optional tables
     %\listoftables
     %\listoffigures
 
 \mainmatter
-    % This includes the "Instruction", "Problem and Solutions" and "Example" files. After reading it, remove it from Thesis.tex. 
+    % This includes the "Instruction", "Problem and Solutions" and "Example" files. After reading it, remove it from Thesis.tex.
 %    \input{Example/Instruction.tex}
 %    \input{Example/ProblemsAndSolutions}
 %    \input{Example/Example.tex}
-    
+
     % Include your chapters here.
 %    \input{Introduction.tex}
-
-\chapter{Finance}%
-Hello!
-
-\chapter{RBF}
-\chapter{RBF-FD}
-\chapter{Paper Summary}
+%
+%
+%%%
+\chapter{Introduction}
+\par
+Introduce the idea of the thesis and state the structure. Radial Basis Function generated Finite Difference Methods. Radial Basis Function generated Finite Difference Methods. Radial Basis Function generated Finite Difference Methods. Radial Basis Function generated Finite Difference Methods.
+%\par
+%\noindent abcde­fghijklmnopqrstu­vwxyz­abcde­fghijklmnopqrstu­vwxyz­abcdabcde­fghijklmnopqrstu­vwxya\\
+%bcde­fghijklmnopqrstu­vwxyz­abcde­fghijklmnopqrstu­vwxyz­abcdabcde­fghijklmnopqrstu­vwxyab\\%max=90
+%cde­fghijklmnopqrstu­vwxyz­abcde­fghijklmnopq\\%min=45
+%rstu­vwxyz­abcdabcde­fghijklmnopqrstu­vwxfdasdadadasdadaadadadaa%64 current
+%%%
+\chapter{Financial Derivatives}
+1 $1$ 2 $2$ 3 $3$
+Introduce financial derivatives. $S=S_0+\alpha \int_j=1^Nx \mathrm{d}x$. Start with simple reasoning of necessity for the agreed prices in the future and then generalize towards options. Hedging risks. Say a bit on importance of knowing the fair price. Talk about options, futures, and other derivatives. Explain the Greeks. Definitions.
+\begin{equation}
+W_{0} = \frac{\partial u}{\partial t} \int_{i=1}^{M} x \mathrm{d}x.
+\end{equation}
+\section{Futures}
+\section{Options}
+%%%
+\chapter{Option Pricing}
+Talk about stochastic and deterministic formulation.
+%%
+\section{Market Models}
+State, motivate and explain the models used in BENCHOP.
+%%
+\section{Pricing Methods}
+Talk about all the method groups from BENCHOP.
+%
+%
+%%%
+\chapter{Radial Basis Function generated Finite Difference Methods}
+Similar to explanation in our papers, a bit of history and the method evolution throughout the papers.
+\section{Choosing Shape Parameters}
+\section{Constructing Node Layouts}
+\section{Smoothing Payoff Functions}
+%
+%
+%%%
+\chapter{Outlook and Further Development}
+Sumarize.
 
 \backmatter
     % References
     % No restriction is set to the reference styles
     % Save your references in References.bib
-    \nocite{*} % Remove this for your own citations
-    \bibliographystyle{plain}
-    \bibliography{References}
+%    \nocite{*} % Remove this for your own citations
+%    \bibliographystyle{plain}
+%    \bibliography{References}
+
+\chapter{Acknowledgements}
+Wohoo!
+
+\begin{swedish}
+\chapter*{Sammanfattning}
+Jag skriver på svenska här.
+\end{swedish}
+
+\begin{serbian}
+\chapter*{Сажетак}
+\noindent Ова теза злата вреди!
+\end{serbian}
 
 \end{document}
