@@ -20,7 +20,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%
-% Berling as main font and Pazo as math font with Gill Sans for sammanfattning and саджај
+% Chosen: Berling as the main font and Pazo as the math font with Gill Sans for Sammanfattning and Преглед.
+% Alternative: Palatino as the main font and Pazo as the math font or Computer Modern for all.
 %%%
 
 \documentclass{UUThesisTemplate}
@@ -122,8 +123,18 @@
 
    % Optional dedication
    \dedication{``These violent delights have violent ends''\\(Romeo and Juliet: Act 2, Scene 6, Line 9)}
+   
+\begin{swedish}
+\chapter*{Sammanfattning}
+Jag skriver på svenska här.
+\end{swedish}
 
-    % Environment used to create a list of papers
+\begin{serbian}
+\chapter*{Преглед}
+\noindent Ова теза злата вреди!
+\end{serbian}
+
+% Environment used to create a list of papers   
     \begin{listofpapers}
     	\item Radial Basis Function generated Finite Differences for Option Pricing Problems \label{paper1}
 	\item BENCHOP --- The BENCHmarking Project in Option Pricing  \label{paper2}
@@ -156,16 +167,26 @@
 %
 %
 %%%
-\chapter{Introduction}
-\par
-Introduce the idea of the thesis and state the structure. Radial Basis Function generated Finite Difference Methods. Radial Basis Function generated Finite Difference Methods. Radial Basis Function generated Finite Difference Methods. Radial Basis Function generated Finite Difference Methods.
 %\par
 %\noindent abcde­fghijklmnopqrstu­vwxyz­abcde­fghijklmnopqrstu­vwxyz­abcdabcde­fghijklmnopqrstu­vwxya\\
 %bcde­fghijklmnopqrstu­vwxyz­abcde­fghijklmnopqrstu­vwxyz­abcdabcde­fghijklmnopqrstu­vwxyab\\%max=90
 %cde­fghijklmnopqrstu­vwxyz­abcde­fghijklmnopq\\%min=45
 %rstu­vwxyz­abcdabcde­fghijklmnopqrstu­vwxfdasdadadasdadaadadadaa%64 current
+\chapter{Introduction}
+\label{ch:intro}
+\par
+The purpose of this thesis is to report on development, properties, and state of the art for the Radial Basis Function generated Finite Difference (RBF-FD) method, when used for pricing of financial derivatives. 
+\par
+Across the markets of the world, financial derivatives are traded in 
+\par
+Many of the theoretical pricing models for financial derivatives can be represented using partial differential equations (PDEs). In great deal of cases, those equations are time-dependent, high-dimensional, and impossible to solve analytically --- therefore, requiring numerical approximation as a mean to estimate their solution.  
+\par
+On the other hand, RBF-FD is a method that is developed exactly for that. RBF-FD, as its name suggests, is a finite difference type of a method from the radial basis function family. Such methods are mainly developed for numerical approximation of differential operators which is a crucial building block for many solvers partial differential equations (PDEs). 
+\par
+This manuscript is organized in the following way. 
 %%%
 \chapter{Financial Derivatives}
+\label{ch:finder}
 1 $1$ 2 $2$ 3 $3$
 Introduce financial derivatives. $S=S_0+\alpha \int_j=1^Nx \mathrm{d}x$. Start with simple reasoning of necessity for the agreed prices in the future and then generalize towards options. Hedging risks. Say a bit on importance of knowing the fair price. Talk about options, futures, and other derivatives. Explain the Greeks. Definitions.
 \begin{equation}
@@ -206,15 +227,5 @@ Sumarize.
 
 \chapter{Acknowledgements}
 Wohoo!
-
-\begin{swedish}
-\chapter*{Sammanfattning}
-Jag skriver på svenska här.
-\end{swedish}
-
-\begin{serbian}
-\chapter*{Сажетак}
-\noindent Ова теза злата вреди!
-\end{serbian}
 
 \end{document}
