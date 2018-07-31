@@ -37,7 +37,13 @@
 	\defaultfontfeatures{Mapping=tex-text}
 
 	% Palatino with Pazo
-	\setmainfont{Berling}
+	\setmainfont[
+		Ligatures=TeX,
+  		Extension=.ttf,
+  		BoldFont=BerlingBold,
+  		ItalicFont=BerlingItalic,
+  		BoldItalicFont=BerlingBold_Italic,
+	]{Berling}
 	\renewcommand{\baselinestretch}{1.2} % Line width to support inline math!
 	\usepackage{mathpazo} % I like this one the most for math!
 %	\usepackage{mathpple}
@@ -173,40 +179,44 @@ Jag skriver på svenska här.
 %cde­fghijklmnopqrstu­vwxyz­abcde­fghijklmnopq\\%min=45
 %rstu­vwxyz­abcdabcde­fghijklmnopqrstu­vwxfdasdadadasdadaadadadaa%64 current
 \chapter{Introduction}
-\label{ch:intro}
+\label{ch:introduction}
 \par
-The purpose of this thesis is to report on development, properties, and state of the art for the Radial Basis Function generated Finite Difference (RBF-FD) method, when used for pricing of financial derivatives. 
+The purpose of this thesis is to report on state of the art in Radial Basis Function generated Finite Difference (RBF-FD) methods for pricing of financial derivatives. Based on the six appended papers, this work provides a detailed overview of RBF-FD properties and challenges that arise when the RBF-FD method is used in financial applications. Furthermore, the manuscript aims to motivate further development of RBF-FD for finance.
 \par
-Across the markets of the world, financial derivatives are traded in 
+Across the financial markets of the world, financial derivatives are traded in substantial volumes. Therefore, knowing the prices of those financial instruments is of utmost importance at any given time. In order to make that possible in practice, it is very often required to employ a set of skills incorporating knowledge in financial theory, engineering methods, mathematical tools, and the programming practice --- which altogether constitute the field known as \emph{financial engineering}. 
 \par
-Many of the theoretical pricing models for financial derivatives can be represented using partial differential equations (PDEs). In great deal of cases, those equations are time-dependent, high-dimensional, and impossible to solve analytically --- therefore, requiring numerical approximation as a mean to estimate their solution.  
+Many of theoretical pricing models for financial derivatives can be represented using partial differential equations (PDEs). In great deal of cases, those equations are time-dependent, of high spatial dimensions, and with challenging boundary conditions --- which most often makes them analytically unsolvable. In those cases, numerical approximation as a mean of estimating their solution needs to be utilized. The field of \emph{numerical analysis} is concerned with obtaining approximate solutions while maintaining reasonable bounds on errors. Unfortunately, there is no universal numerical method which could be used to efficiently solve all problems of this type. In fact, there are tremendously many numerical methods for solving different types of PDEs, and all those methods are featured with individual limitations in performance, stability, and accuracy --- mostly depending on the problem details. Therefore, carefully selecting and developing numerical methods for particular applications has been the only way to build the most efficient PDE solvers in the ongoing practice. 
 \par
-On the other hand, RBF-FD is a method that is developed exactly for that. RBF-FD, as its name suggests, is a finite difference type of a method from the radial basis function family. Such methods are mainly developed for numerical approximation of differential operators which is a crucial building block for many solvers partial differential equations (PDEs). 
+RBF-FD is a numerical method that is developed to efficiently solve partial differential equations. RBF-FD, as its name suggests, is a finite difference type of a method from the radial basis function family. Such methods are mainly developed for numerical approximation of differential operators which is a crucial building block for many solvers partial differential equations (PDEs).
 \par
 This manuscript is organized in the following way. 
 %%%
 \chapter{Financial Derivatives}
 \label{ch:finder}
-1 $1$ 2 $2$ 3 $3$
-Introduce financial derivatives. $S=S_0+\alpha \int_j=1^Nx \mathrm{d}x$. Start with simple reasoning of necessity for the agreed prices in the future and then generalize towards options. Hedging risks. Say a bit on importance of knowing the fair price. Talk about options, futures, and other derivatives. Explain the Greeks. Definitions.
-\begin{equation}
-W_{0} = \frac{\partial u}{\partial t} \int_{i=1}^{M} x \mathrm{d}x.
-\end{equation}
+\par
+Across the financial markets of the world, financial derivatives are traded in substantial volumes. According to the reports of BIS, the estimated total notional value of these financial instruments has been above half a quadrillion of USD during the current decade. That value is about the order of magnitude larger than the total world gross domestic product (GDP). The main reason for this astronomical market size is that there are numerous financial derivatives in existence, available for almost every type of investment asset.
+
 \section{Futures}
+\label{sec:futures}
 \section{Options}
+\label{sec:options}
 %%%
 \chapter{Option Pricing}
+\label{ch:optionpricing}
 Talk about stochastic and deterministic formulation.
 %%
 \section{Market Models}
+\label{sec:models}
 State, motivate and explain the models used in BENCHOP.
 %%
 \section{Pricing Methods}
+\label{sec:methods}
 Talk about all the method groups from BENCHOP.
 %
 %
 %%%
 \chapter{Radial Basis Function generated Finite Difference Methods}
+\label{ch:rbffd}
 Similar to explanation in our papers, a bit of history and the method evolution throughout the papers.
 \section{Choosing Shape Parameters}
 \section{Constructing Node Layouts}
@@ -221,11 +231,11 @@ Sumarize.
     % References
     % No restriction is set to the reference styles
     % Save your references in References.bib
-%    \nocite{*} % Remove this for your own citations
-%    \bibliographystyle{plain}
-%    \bibliography{References}
+    \nocite{*} % Remove this for your own citations
+    \bibliographystyle{plain}
+    \bibliography{References}
 
-\chapter{Acknowledgements}
+\chapter{Acknowledgment}
 Wohoo!
 
 \end{document}
