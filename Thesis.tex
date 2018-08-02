@@ -30,69 +30,79 @@
 \usepackage{ifxetex}
 
 \ifxetex
-	% XeTeX specific packages and settings
-	% Language, diacritics and hyphenation
-	\usepackage{polyglossia}
-	\usepackage{fontspec,xltxtra,xunicode}
-	\defaultfontfeatures{Mapping=tex-text}
+    % XeTeX specific packages and settings
+    % Language, diacritics and hyphenation
+    \usepackage{polyglossia}
+    \usepackage{fontspec,xltxtra,xunicode}
+    \defaultfontfeatures{Mapping=tex-text}
 
-	% Palatino with Pazo
-	\setmainfont[
-		Ligatures=TeX,
-  		Extension=.ttf,
-  		BoldFont=BerlingBold,
-  		ItalicFont=BerlingItalic,
-  		BoldItalicFont=BerlingBold_Italic,
-	]{Berling}
-	\renewcommand{\baselinestretch}{1.2} % Line width to support inline math!
-	\usepackage{mathpazo} % I like this one the most for math!
-%	\usepackage{mathpple}
+    % Berling with Pazo
+    \setmainfont[
+        Ligatures=TeX,
+          Extension=.ttf,
+          BoldFont=BerlingBold,
+          ItalicFont=BerlingItalic,
+          BoldItalicFont=BerlingBold_Italic,
+    ]{Berling}
+    \renewcommand{\baselinestretch}{1.2} % Line width to support inline math!
+    \usepackage{mathpazo} % I like this one the most for math!
+%%    \usepackage{mathpple}
+
+%    % Palatino with Pazo
+%    \setmainfont{Palatino}
+%    \renewcommand{\baselinestretch}{1.2} % Line width to support inline math!
+%    \usepackage{mathpazo} % I like this one the most for math!
+%%    \usepackage{mathpple}
+
+    
+%    % Computer Modern
+%    \setmainfont[
+%          Ligatures=TeX,
+%          Extension=.otf,
+%          BoldFont=cmunbx,
+%          ItalicFont=cmunti,
+%          BoldItalicFont=cmunbi,
+%    ]{cmunrm}
 
 
-%	% Computer Modern
-%	\setmainfont[
-%  		Ligatures=TeX,
-%  		Extension=.otf,
-%  		BoldFont=cmunbx,
-%  		ItalicFont=cmunti,
-%  		BoldItalicFont=cmunbi,
-%	]{cmunrm}
-
-
-	\setmainlanguage{english}
-	\setotherlanguages{serbian, swedish}
-	\setkeys{serbian}{script=Cyrillic}
-	
-	% Summary fonts
-	\newfontfamily\cyrillicfont[Script=Cyrillic]{Gill Sans}
-	\newfontfamily\swedishfont{Gill Sans}
-	
-%	\newfontfamily\cyrillicfont[Script=Cyrillic]{Palatino}
-%	\newfontfamily\swedishfont{Palatino}
-	
-%	\newfontfamily\myfont{Palatino}
-	
-	% Font settings
-%	\setmainfont{Times New Roman}
-%	\setromanfont{Times New Roman}
-%	\setsansfont{Arial}
-%	\setmonofont{Courier New}
+    \setmainlanguage{english}
+    \setotherlanguages{serbian, swedish}
+    \setkeys{serbian}{script=Cyrillic}
+    
+    % Summary fonts
+%    \newfontfamily\cyrillicfont[Script=Cyrillic]{Gill Sans Light}
+%    \newfontfamily\swedishfont{Gill Sans Light}
+    
+    \newfontfamily\cyrillicfont[Script=Cyrillic]{Gill Sans}
+    \newfontfamily\swedishfont{Gill Sans}
+    
+    \newfontfamily\myfont{Gill Sans}
+    
+%    \newfontfamily\cyrillicfont[Script=Cyrillic]{Palatino}
+%    \newfontfamily\swedishfont{Palatino}
+    
+    
+    % Font settings
+%    \setmainfont{Times New Roman}
+%    \setromanfont{Times New Roman}
+%    \setsansfont{Arial}
+%    \setmonofont{Courier New}
 
 
 \else
-	% Plain LaTeX specific packages and settings
-	% Language, diacritics and hyphenation
+    % Plain LaTeX specific packages and settings
+    % Language, diacritics and hyphenation
     % Use English and Swedish languages.
-	\usepackage[swedish,english]{babel}
+    \usepackage[swedish,english]{babel}
 
-	% Font settings
-	\usepackage{type1cm}
-	\usepackage[latin1]{inputenc}
-	\usepackage[T1]{fontenc}
-	\usepackage{mathptmx}
+    % Font settings
+    \usepackage{type1cm}
+    \usepackage[latin1]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage{mathptmx}
 
-	% Enable scaling of images on import
-	\usepackage{graphicx}
+    % Enable scaling of images on import
+    \usepackage{graphicx}
 \fi
 
 
@@ -112,9 +122,9 @@
 
 % Uncomment to use a custom abstract dummy text
 %\abstractdummy{
-%	\begin{abstract}
-%		Please use no more than 300 words and avoid mathematics or complex script.
-%	\end{abstract}
+%    \begin{abstract}
+%        Please use no more than 300 words and avoid mathematics or complex script.
+%    \end{abstract}
 %}
 
 
@@ -129,25 +139,32 @@
 
    % Optional dedication
    \dedication{``These violent delights have violent ends''\\(Romeo and Juliet: Act 2, Scene 6, Line 9)}
-   
-\begin{swedish}
-\chapter*{Sammanfattning}
-Jag skriver på svenska här.
-\end{swedish}
 
 \begin{serbian}
-\chapter*{Преглед}
-\noindent Ова теза злата вреди!
+\chapter*{\emph{Преглед}}
+\par \noindent Већим делом свога тока река Дрина протиче кроз тесне гудуре између стрмих планина или кроз дубоке кањоне окомито одсечених обала. Само на неколико места речног тока њене се обале проширују у отворене долине и стварају, било на једној било на обе стране реке, жупне, делимично равне, делимично таласасте пределе, подесне за обрађивање и насеља. Такво једно проширење настаје и овде, код Вишеграда, на месту где Дрина избија у наглом завоју из дубоког и уског теснаца који стварају Буткове Стијене и Узавничке планине. Заокрет који ту прави Дрина необично је оштар а планине са обе стране тако су стрме и толико ублизу да изгледају као затворен масив из којег река извире право, као из мрког зида. Али ту се планине одједном размичу у неправилан амфитеатар чији промер на најширем месту није већи од петнаестак километара ваздушне линије.
+\par На том месту где Дрина избија целом тежином своје водене масе, зелене и запењене, из привидно затвореног склопа црних и стрмих планина, стоји велики и складно срезани мост од камена, са једанаест лукова широког распона. Од тог моста, као од основице, шири се лепезасто цела валовита долина, са вишеградском касабом и њеном околином, са засеоцима полеглим у превоје брежуљака, прекривена њивама, испашама и шљивицима, изукрштана међама и плотовима и пошкропљена шумарцима и ретким скуповима црногорице. Тако, посматрано са дна видика, изгледа као да из широких лукова белог моста тече и разлива се не само зелена Дрина него и цео тај жупни и питоми простор, са свим што је на њему и јужним небом над њим.
+\par На десној обали реке, почињући од самог моста, налази се главнина касабе, са чаршијом, делом у равници, а делом на обронцима брегова. На другој страни моста, дуж леве обале, протеже се Малухино поље, раштркано предграђе око друма који води пут Сарајева. Тако мост, састављајући два краја сарајевског друма, веже касабу са њеним предграђем.
 \end{serbian}
+   
+\begin{swedish}
+\chapter*{\emph{Sammanfattning}}
+\par De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen.
+\par De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen.
+\end{swedish}
 
+{\myfont
+\chapter*{\emph{Acknowledgments}}
+Woohoo!
+}
 % Environment used to create a list of papers   
     \begin{listofpapers}
-    	\item Radial Basis Function generated Finite Differences for Option Pricing Problems \label{paper1}
-	\item BENCHOP --- The BENCHmarking Project in Option Pricing  \label{paper2}
-	\item BENCHOP-SLV: The BENCHmarking project in Option Pricing --- Stochastic and Local Volatility problems \label{paper4}
-	\item Pricing Derivatives under Multiple Stochastic Factors by Localized Radial Basis Function Methods \label{paper3}
-	\item Pricing Financial Derivatives using Radial Basis Function generated Finite Differences with Polyharmonic Splines on Smoothly Varying Node Layouts \label{paper5}
-	\item SMOOTHING PAPER TITLE \label{paper6}
+        \item Radial Basis Function generated Finite Differences for Option Pricing Problems \label{paper1}
+    \item BENCHOP --- The BENCHmarking Project in Option Pricing  \label{paper2}
+    \item BENCHOP-SLV: The BENCHmarking project in Option Pricing --- Stochastic and Local Volatility problems \label{paper4}
+    \item Pricing Derivatives under Multiple Stochastic Factors by Localized Radial Basis Function Methods \label{paper3}
+    \item Pricing Financial Derivatives using Radial Basis Function generated Finite Differences with Polyharmonic Splines on Smoothly Varying Node Layouts \label{paper5}
+    \item SMOOTHING PAPER TITLE \label{paper6}
     \end{listofpapers}
 
 
@@ -161,7 +178,6 @@ Jag skriver på svenska här.
     % Optional tables
     %\listoftables
     %\listoffigures
-
 \mainmatter
     % This includes the "Instruction", "Problem and Solutions" and "Example" files. After reading it, remove it from Thesis.tex.
 %    \input{Example/Instruction.tex}
@@ -180,23 +196,24 @@ Jag skriver på svenska här.
 %rstu­vwxyz­abcdabcde­fghijklmnopqrstu­vwxfdasdadadasdadaadadadaa%64 current
 \chapter{Introduction}
 \label{ch:introduction}
-\par
-The purpose of this thesis is to report on state of the art in Radial Basis Function generated Finite Difference (RBF-FD) methods for pricing of financial derivatives. Based on the six appended papers, this work provides a detailed overview of RBF-FD properties and challenges that arise when the RBF-FD method is used in financial applications. Furthermore, the manuscript aims to motivate further development of RBF-FD for finance.
-\par
-Across the financial markets of the world, financial derivatives are traded in substantial volumes. Therefore, knowing the prices of those financial instruments is of utmost importance at any given time. In order to make that possible in practice, it is very often required to employ a set of skills incorporating knowledge in financial theory, engineering methods, mathematical tools, and the programming practice --- which altogether constitute the field known as \emph{financial engineering}. 
-\par
-Many of theoretical pricing models for financial derivatives can be represented using partial differential equations (PDEs). In great deal of cases, those equations are time-dependent, of high spatial dimensions, and with challenging boundary conditions --- which most often makes them analytically unsolvable. In those cases, numerical approximation as a mean of estimating their solution needs to be utilized. The field of \emph{numerical analysis} is concerned with obtaining approximate solutions while maintaining reasonable bounds on errors. Unfortunately, there is no universal numerical method which could be used to efficiently solve all problems of this type. In fact, there are tremendously many numerical methods for solving different types of PDEs, and all those methods are featured with individual limitations in performance, stability, and accuracy --- mostly depending on the problem details. Therefore, carefully selecting and developing numerical methods for particular applications has been the only way to build the most efficient PDE solvers in the ongoing practice. 
-\par
-RBF-FD is a numerical method that is developed to efficiently solve partial differential equations. RBF-FD, as its name suggests, is a finite difference type of a method from the radial basis function family. Such methods are mainly developed for numerical approximation of differential operators which is a crucial building block for many solvers partial differential equations (PDEs).
-\par
-This manuscript is organized in the following way. 
+\par The purpose of this thesis is to report on state of the art in Radial Basis Function generated Finite Difference (RBF-FD) methods for pricing of financial derivatives. Based on the six appended papers, this work provides a detailed overview of RBF-FD properties and challenges that arise when the RBF-FD method is used in financial applications. Furthermore, the manuscript aims to motivate further development of RBF-FD for finance.
+\par Across the financial markets of the world, financial derivatives such as futures, options, and others are traded in substantial volumes. Therefore, knowing the prices of those financial instruments is of utmost importance at any given time. In order to make that possible in practice, it is very often required to employ a set of skills incorporating knowledge in financial theory, engineering methods, mathematical tools, and programming practice --- which altogether constitute the field known as \emph{financial engineering}. 
+\par Many of theoretical pricing models for financial derivatives can be represented using partial differential equations (PDEs). In many cases, those equations are time-dependent, of high spatial dimensions, and with challenging boundary conditions --- which most often makes them analytically unsolvable. In those cases, numerical approximation as a mean of estimating their solution needs to be utilized. The field of \emph{numerical analysis} is concerned with obtaining approximate solutions while maintaining reasonable bounds on errors. Unfortunately, there is no universal numerical method which could be used to solve all problems of this type efficiently. In fact, there are tremendously many numerical methods for solving different types of PDEs, and all those methods are featured with their own limitations in performance, stability, and accuracy --- mostly depending on the problem details. Therefore, carefully selecting and developing numerical methods for particular applications has been the only way to build efficient PDE solvers in ongoing practice. 
+\par RBF-FD is a recent numerical method with potential to efficiently approximate solutions of PDEs in finance. Over the past years, besides the purely academic development and research of numerical properties, the method has been mainly applied for simulations of atmospheric phenomena. As its name suggests, the RBF-FD method is of a finite difference type, from the radial basis function family. As a finite difference method, RBF-FD approximates differential equations by linear systems of algebraic equations, known as difference equations. Radial basis functions are used as interpolants that enable local approximations of differential operators that are necessary for constructing the difference equations. Constructed like that, the method is featured with a sparse matrix of the linear system of difference equations, and it is relatively simple to implement like the standard finite difference methods. Moreover, the method is mesh-free, meaning that it does not require a structured discretization of the computational domain which makes it equally easy to use in spaces of different dimensions, and it is of a customizable order of accuracy --- which are the features it inherits from the global radial basis function approximations. It is those properties that make the case for recognizing RBF-FD as a method with high potential for efficiently solving some analytically unfeasible pricing problems in finance.
+\par Nevertheless, being a young method, RBF-FD is still under intense development and many challenges are faced when moving from simple theoretical cases toward more complex real-world applications. The core of this thesis deals with finding solutions for overcoming obstacles when financial derivatives are priced using RBF-FD to solve PDEs with several spatial dimensions. Thus, it represents a contribution to making the RBF-FD methods more reliable and efficient for use in financial applications. 
+\par The rest of this manuscript is organized as follows. Financial derivatives are introduced and defined in Chapter \ref{ch:finder}. An overview of some popular financial models and techniques for pricing of options are presented in Chapter \ref{ch:optionpricing}. The properties of RBF-FD methods for solving PDEs in finance are presented in Chapter \ref{ch:rbffd}. Finally, some unsolved challenges with the suggestions for further development of the RBF-FD method for financial applications are shown in Chapter \ref{ch:outlook}.
 %%%
 \chapter{Financial Derivatives}
 \label{ch:finder}
-\par
-Across the financial markets of the world, financial derivatives are traded in substantial volumes. According to the reports of BIS, the estimated total notional value of these financial instruments has been above half a quadrillion of USD during the current decade. That value is about the order of magnitude larger than the total world gross domestic product (GDP). The main reason for this astronomical market size is that there are numerous financial derivatives in existence, available for almost every type of investment asset.
+\par Across the financial markets of the world, financial derivatives are traded in substantial volumes. According to the reports of BIS, the estimated total notional value of these financial instruments has been above half a quadrillion of USD during the current decade. That value is about the order of magnitude larger than the total world gross domestic product (GDP). The main reason for this astronomical market size is that there are numerous financial derivatives in existence, available for almost every type of investment asset.
 
-\section{Futures}
+\par exchange-traded and over-the-counter markets
+
+\par types of traders: speculators, hedgers, arbitrageurs
+
+\par forwards \& futures, options, and other derivatives
+
+\section{Forwards and Futures}
 \label{sec:futures}
 \section{Options}
 \label{sec:options}
@@ -225,6 +242,7 @@ Similar to explanation in our papers, a bit of history and the method evolution 
 %
 %%%
 \chapter{Outlook and Further Development}
+\label{ch:outlook}
 Sumarize.
 
 \backmatter
@@ -234,8 +252,5 @@ Sumarize.
     \nocite{*} % Remove this for your own citations
     \bibliographystyle{plain}
     \bibliography{References}
-
-\chapter{Acknowledgment}
-Wohoo!
 
 \end{document}
