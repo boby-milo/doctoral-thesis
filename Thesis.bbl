@@ -1,33 +1,66 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+\providecommand{\bibnamefont}[1]{#1}
 
-\bibitem{Flynn:05}
-Peter Flynn.
-\newblock {\em Formatting information. A beginner's introduction to typesetting
-  with \LaTeX{}}.
-\newblock 3rd edition, 2005.
-\newblock \\http://www.ctan.org/tex-archive/info/beginlatex/beginlatex-3.6.pdf.
+\bibitem{paper1}
+\bibnamefont{S.~Milovanovi{\'c} and L.~von Sydow}.
+\newblock \emph{Radial basis function generated finite differences for option
+  pricing problems}.
+\newblock Computers \& Mathematics with Applications, 75(4):pages 1462--1481,
+  2018.
 
-\bibitem{Kopka:99}
-Patrik W.~Daly Helmut~Kopka.
-\newblock {\em A Guide to \LaTeXe{}}.
-\newblock Addison-Wesley Professional, 4th edition, 2003.
+\bibitem{paper2}
+\bibnamefont{L.~von Sydow, L.~Josef~H{\"o}{\"o}k, E.~Larsson, E.~Lindstr{\"o}m,
+  S.~Milovanovi{\'c}, J.~Persson, V.~Shcherbakov, Y.~Shpolyanskiy,
+  S.~Sir{\'e}n, J.~Toivanen, et~al.}
+\newblock \emph{{BENCHOP} --- the {BENCH}marking project in option pricing}.
+\newblock International Journal of Computer Mathematics, 92(12):pages
+  2361--2379, 2015.
 
-\bibitem{Goossens:93}
-Frank Mittelbach, Michel~Goossens with Johannes~Braams, David Carlisle, and
-  Chris Rowley.
-\newblock {\em The \LaTeXe{} Companion}.
-\newblock Addison-Wesley Professional, 2nd edition, 2004.
+\bibitem{paper3}
+\bibnamefont{S.~Milovanovi{\'c} and V.~Shcherbakov}.
+\newblock \emph{Pricing derivatives under multiple stochastic factors by
+  localized radial basis function methods}.
+\newblock arXiv preprint arXiv:1711.09852, 2017.
 
-\bibitem{Oetiker:04}
-Tobias Oetiker, Hubert Partl, Irene Hyna, and Elisabeth Schlegl.
-\newblock {\em The Not So Short Introduction to \LaTeXe{}}.
-\newblock 4.14th edition, 2004.
-\newblock http://www.ctan.org/tex-archive/info/lshort/english/lshort.pdf.
+\bibitem{paper4}
+\bibnamefont{L.~von Sydow, S.~Milovanovi{\'c}, E.~Larsson, K.~in~'t Hout,
+  M.~Wiktorsson, C.~W. Oosterlee, V.~Shcherbakov, M.~Wyns, A.~Leitao, S.~Jain,
+  T.~Haentjens, and J.~Wald{\'e}n}.
+\newblock \emph{{BENCHOP}--{SLV}: The {BENCH}marking project in option pricing
+  --- stochastic and local volatility problems}, July 2018.
+\newblock Submited to \emph{International Journal of Computer Mathematics}.
 
-\bibitem{Abrahams:92}
-Paul W.~Abrahams with Karl~Berry and Kathryn~A. Hargreaves.
-\newblock {\em \TeX{} for the Impatient}.
-\newblock Addison-Wesley Professional, 2003.
-\newblock http://www.tug.org/ftp/tex/impatient/book.pdf.
+\bibitem{paper5}
+\bibnamefont{S.~Milovanovi{\'c} and L.~von Sydow}.
+\newblock \emph{Paper 5}, July 2018.
+\newblock Submited to \emph{ArXiv}.
+
+\bibitem{paper6}
+\bibnamefont{S.~Milovanovi{\'c} and L.~von Sydow}.
+\newblock \emph{Paper 6}, July 2018.
+\newblock Submited to \emph{ArXiv}.
+
+\bibitem{hull2017options}
+\bibnamefont{J.~C. Hull}.
+\newblock \emph{Options, Futures and Other Derivatives}.
+\newblock Pearson Education, 2017.
+\newblock ISBN 9780134631493.
+
+\bibitem{bank2018annual}
+\bibnamefont{{Bank for International Settlements}}.
+\newblock \emph{Derivatives Statistics}.
+\newblock \underline{https://www.bis.org/statistics}, 2018.
+
+\bibitem{worldgdp2018annual}
+\bibnamefont{{World Bank}}.
+\newblock \emph{World Development Indicators Database}.
+\newblock \underline{http://databank.worldbank.org/data/download/GDP.pdf},
+  2018.
+
+\bibitem{duffie1989futures}
+\bibnamefont{D.~Duffie}.
+\newblock \emph{Futures Markets}.
+\newblock Prentice-Hall, 1989.
+\newblock ISBN 9780133456202.
 
 \end{thebibliography}

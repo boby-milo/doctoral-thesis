@@ -78,6 +78,10 @@
     
     \newfontfamily\myfont{Gill Sans}
     
+    \newfontfamily\noteunic{Gill Sans Light}
+    \DeclareTextFontCommand{\bibnamefont}{\noteunic}
+    
+    
 %    \newfontfamily\cyrillicfont[Script=Cyrillic]{Palatino}
 %    \newfontfamily\swedishfont{Palatino}
     
@@ -142,24 +146,30 @@
 
 \begin{serbian}
 \chapter*{\emph{Преглед}}
+{\noteunic
 \par \noindent Већим делом свога тока река Дрина протиче кроз тесне гудуре између стрмих планина или кроз дубоке кањоне окомито одсечених обала. Само на неколико места речног тока њене се обале проширују у отворене долине и стварају, било на једној било на обе стране реке, жупне, делимично равне, делимично таласасте пределе, подесне за обрађивање и насеља. Такво једно проширење настаје и овде, код Вишеграда, на месту где Дрина избија у наглом завоју из дубоког и уског теснаца који стварају Буткове Стијене и Узавничке планине. Заокрет који ту прави Дрина необично је оштар а планине са обе стране тако су стрме и толико ублизу да изгледају као затворен масив из којег река извире право, као из мрког зида. Али ту се планине одједном размичу у неправилан амфитеатар чији промер на најширем месту није већи од петнаестак километара ваздушне линије.
 \par На том месту где Дрина избија целом тежином своје водене масе, зелене и запењене, из привидно затвореног склопа црних и стрмих планина, стоји велики и складно срезани мост од камена, са једанаест лукова широког распона. Од тог моста, као од основице, шири се лепезасто цела валовита долина, са вишеградском касабом и њеном околином, са засеоцима полеглим у превоје брежуљака, прекривена њивама, испашама и шљивицима, изукрштана међама и плотовима и пошкропљена шумарцима и ретким скуповима црногорице. Тако, посматрано са дна видика, изгледа као да из широких лукова белог моста тече и разлива се не само зелена Дрина него и цео тај жупни и питоми простор, са свим што је на њему и јужним небом над њим.
 \par На десној обали реке, почињући од самог моста, налази се главнина касабе, са чаршијом, делом у равници, а делом на обронцима брегова. На другој страни моста, дуж леве обале, протеже се Малухино поље, раштркано предграђе око друма који води пут Сарајева. Тако мост, састављајући два краја сарајевског друма, веже касабу са њеним предграђем.
+}
 \end{serbian}
    
 \begin{swedish}
 \chapter*{\emph{Sammanfattning}}
+{\noteunic
 \par De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen.
 \par De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen.
+}
 \end{swedish}
 
 {\myfont
 \chapter*{\emph{Acknowledgments}}
+{\noteunic
 Woohoo!
+}
 }
 % Environment used to create a list of papers   
     \begin{listofpapers}
-        \item Radial Basis Function generated Finite Differences for Option Pricing Problems \label{paper1}
+    \item Radial Basis Function generated Finite Differences for Option Pricing Problems \cite{paper1}. \label{paper1}
     \item BENCHOP --- The BENCHmarking Project in Option Pricing  \label{paper2}
     \item BENCHOP-SLV: The BENCHmarking project in Option Pricing --- Stochastic and Local Volatility problems \label{paper4}
     \item Pricing Derivatives under Multiple Stochastic Factors by Localized Radial Basis Function Methods \label{paper3}
@@ -196,27 +206,34 @@ Woohoo!
 %rstu­vwxyz­abcdabcde­fghijklmnopqrstu­vwxfdasdadadasdadaadadadaa%64 current
 \chapter{Introduction}
 \label{ch:introduction}
-\par The purpose of this thesis is to report on state of the art in Radial Basis Function generated Finite Difference (RBF-FD) methods for pricing of financial derivatives. Based on the six appended papers, this work provides a detailed overview of RBF-FD properties and challenges that arise when the RBF-FD method is used in financial applications. Furthermore, the manuscript aims to motivate further development of RBF-FD for finance.
-\par Across the financial markets of the world, financial derivatives such as futures, options, and others are traded in substantial volumes. Therefore, knowing the prices of those financial instruments is of utmost importance at any given time. In order to make that possible in practice, it is very often required to employ a set of skills incorporating knowledge in financial theory, engineering methods, mathematical tools, and programming practice --- which altogether constitute the field known as \emph{financial engineering}. 
+\par The purpose of this thesis is to report on state of the art in Radial Basis Function generated Finite Difference (RBF-FD) methods for pricing of financial derivatives. Based on the six appended papers \cite{paper1,paper2,paper3,paper4,paper5,paper6}, this work provides a detailed overview of RBF-FD properties and challenges that arise when the RBF-FD methods are used in financial applications. Moreover, the manuscript aims to motivate further development of RBF-FD for finance.
+\par Across the financial markets of the world, financial derivatives such as futures, options, and others, are traded in substantial volumes. The value of all assets that underly outstanding derivatives transactions is several times larger than the gross world product (GWP). Financial derivatives are the most commonly used instruments when it comes to hedging risks, speculation based investing, and performing arbitrage. Therefore, knowing the prices of those financial instruments is of utmost importance at any given time. In order to make that possible in practice, it is often required to employ a set of skills incorporating knowledge in financial theory, engineering methods, mathematical tools, and programming practice --- which altogether constitute the field known as \emph{financial engineering}. 
 \par Many of theoretical pricing models for financial derivatives can be represented using partial differential equations (PDEs). In many cases, those equations are time-dependent, of high spatial dimensions, and with challenging boundary conditions --- which most often makes them analytically unsolvable. In those cases, numerical approximation as a mean of estimating their solution needs to be utilized. The field of \emph{numerical analysis} is concerned with obtaining approximate solutions while maintaining reasonable bounds on errors. Unfortunately, there is no universal numerical method which could be used to solve all problems of this type efficiently. In fact, there are tremendously many numerical methods for solving different types of PDEs, and all those methods are featured with their own limitations in performance, stability, and accuracy --- mostly depending on the problem details. Therefore, carefully selecting and developing numerical methods for particular applications has been the only way to build efficient PDE solvers in ongoing practice. 
 \par RBF-FD is a recent numerical method with potential to efficiently approximate solutions of PDEs in finance. Over the past years, besides the purely academic development and research of numerical properties, the method has been mainly applied for simulations of atmospheric phenomena. As its name suggests, the RBF-FD method is of a finite difference type, from the radial basis function family. As a finite difference method, RBF-FD approximates differential equations by linear systems of algebraic equations, known as difference equations. Radial basis functions are used as interpolants that enable local approximations of differential operators that are necessary for constructing the difference equations. Constructed like that, the method is featured with a sparse matrix of the linear system of difference equations, and it is relatively simple to implement like the standard finite difference methods. Moreover, the method is mesh-free, meaning that it does not require a structured discretization of the computational domain which makes it equally easy to use in spaces of different dimensions, and it is of a customizable order of accuracy --- which are the features it inherits from the global radial basis function approximations. It is those properties that make the case for recognizing RBF-FD as a method with high potential for efficiently solving some analytically unfeasible pricing problems in finance.
 \par Nevertheless, being a young method, RBF-FD is still under intense development and many challenges are faced when moving from simple theoretical cases toward more complex real-world applications. The core of this thesis deals with finding solutions for overcoming obstacles when financial derivatives are priced using RBF-FD to solve PDEs with several spatial dimensions. Thus, it represents a contribution to making the RBF-FD methods more reliable and efficient for use in financial applications. 
-\par The rest of this manuscript is organized as follows. Financial derivatives are introduced and defined in Chapter \ref{ch:finder}. An overview of some popular financial models and techniques for pricing of options are presented in Chapter \ref{ch:optionpricing}. The properties of RBF-FD methods for solving PDEs in finance are presented in Chapter \ref{ch:rbffd}. Finally, some unsolved challenges with the suggestions for further development of the RBF-FD method for financial applications are shown in Chapter \ref{ch:outlook}.
+\par The rest of this manuscript is organized as follows. Financial derivatives are introduced and defined in Chapter \ref{ch:finder}. An overview of some popular financial models and techniques for pricing of options are presented in Chapter \ref{ch:optionpricing}. The properties of RBF-FD methods for solving PDEs in finance are presented in Chapter \ref{ch:rbffd}. Finally, some unsolved challenges with suggestions for further development of the RBF-FD method for financial applications are shown in Chapter \ref{ch:outlook}.
+%
+%
 %%%
 \chapter{Financial Derivatives}
 \label{ch:finder}
-\par Across the financial markets of the world, financial derivatives are traded in substantial volumes. According to the reports of BIS, the estimated total notional value of these financial instruments has been above half a quadrillion of USD during the current decade. That value is about the order of magnitude larger than the total world gross domestic product (GDP). The main reason for this astronomical market size is that there are numerous financial derivatives in existence, available for almost every type of investment asset.
-
-\par exchange-traded and over-the-counter markets
-
-\par types of traders: speculators, hedgers, arbitrageurs
-
-\par forwards \& futures, options, and other derivatives
-
+\par A \emph{financial derivative} is a market instrument whose value depends on the values of some other underlying variables. Most often, those underlying variables are the prices of another traded asset (e.g., a stock underlying stock options), but they may as well be almost any variables of stochastic nature (e.g., air temperatures underlying weather derivatives). There are numerous financial derivatives in existence, available for almost every type of investment asset, ranging from agricultural grains to cryptocurrencies. Futures and options are best known as \emph{exchange-traded} derivatives, standardized to be bought and sold on derivatives exchanges (e.g., Chicago Mercantile Exchange for futures and Chicago Board Options Exchange for options). On the other hand, much greater volumes of financial derivatives are traded bilaterally \emph{over-the-counter} in a highly customizable fashion. This gave birth to many contracts with tailored properties such as forward contracts, swaps, exotic options, and other custom financial instruments.
+\par When it comes to traders, three categories can be readily identified: \emph{hedgers}, \emph{speculators}, and \emph{arbitrageurs} \cite{hull2017options}. Hedgers use derivatives to reduce risks from potential future movements in a market variable, speculators use them to bet on the future outcome of a market variable, and arbitrageurs aim at making riskless profit by exploiting discrepancies in values of the same underlying variable traded under different derivatives or across different markets.
+\par Financial derivatives are traded in extremely large volumes across the planet. %According to statistics maintained by Bank for International Settlements (BIS),% 
+The estimated total notional value of these financial instruments has been above half a quadrillion of USD during the current decade \cite{bank2018annual}. That is about an order of magnitude larger than GWP \cite{worldgdp2018annual}. Moreover, derivatives markets have received great criticism due to their role in the most recent global financial crisis.  As a result of the crisis, strict regulations in trading of derivatives have been introduced in order to increase transparency on the markets, improve market efficiency, and reduce systemic risk. Now, in the post-crisis period, methods for pricing of financial derivatives are still under the spotlight of financial institutions, as they look for the most efficient ways to solve the mathematical problems stemming from the regulations.
+\par In order to bring financial derivatives closer to the mathematical framework, it is useful to define several of their features. The contract representing a particular financial derivative is signed at time $t=0$ and expires at $t=T$, where $T$ is also known as the time of maturity of the contract. The contract is issued on the underlying stochastic variable $\mathbf{X}(t)=\left[X_1(t),\ldots,X_D(t)\right]$, where $D$ represents the number of stochastic components, and therefore spatial dimensionality of the problem. At the expiration of the contract, the holder receives a payoff $f(\mathbf{X}(T))$, which is equivalent to the value of the financial derivative at the time of maturation $T$, i.e., $u(\mathbf{X}(T),T) = f(\mathbf{X}(T))$. The value of the contract is represented by a function $u(t,\mathbf{X}(t))$.
+\par When it comes to hierarchy of financial derivatives, most of them can be seen either as a type of a forward/futures contract, or as a type of an option. Therefore, it is common to study forwards and futures as binding contracts (i.e., $-\infty < f(\mathbf{X}(T)) < \infty\ $), and options as non-obligatory contracts towards their holders (i.e., $0\leq f(\mathbf{X}(T))<\infty$\ ). The following sections consider them in more detail.
+%
+%%
 \section{Forwards and Futures}
 \label{sec:futures}
+\par A \emph{forward} contract is an agreement between two parties signed at $t=t_0$ to buy or sell an underlying $\mathbf{X}(t)$ at a certain future time $T$ for a certain price $K(t_0)=K_0$. The price $K(t)$ is called the \emph{forward price} of the contract, and it is determined at time $t_0$ in such a way that the value of the forward contract at the time of signing is equal to zero, i.e., $u(t_0,\mathbf{X}(t_0))=u_0=0$. One of the parties in the contract takes a \emph{long} position and agrees to a payoff $f=f_l(\mathbf{X}(T))=\mathbf{X}(T)-K_0$. The other party assumes a \emph{short} position and agrees to sell $\mathbf{X}(t)$ at the same time $T$ for the stipulated forward price $K_0$, effectively obliging to a payoff $f=f_s(\mathbf{X}(T))=K_0-\mathbf{X}(T)$. Forward contracts are traded in over-the-counter markets and may be further customized according to the preferences of the signing parties.
+\par A \emph{futures} contract is an exchange-traded, and thus standardized financial derivative, that is very similar to a forward contract. It is in agreement signed at no cost between two parties at $t=t_0$ to buy or sell an underlying $\mathbf{X}(t)$ at a certain time $T$. The principal difference from the forward contract lies in the way in which the payments are realized. Namely, at every point in time $t_0 \leq t \leq T$, there exists a price $K(t)$, now called the \emph{futures price} of the contract, that is quoted on the exchange. At time $T$, the long position holder of the contract is entitled to the payoff $f=f_l(\mathbf{X}(T))=\mathbf{X}(T)-K(T)$, while the short position holder gets $f=f_s(\mathbf{X}(T))=K(T)-\mathbf{X}(T)$. Moreover, during an arbitrary time interval $(t_i,t_j]$, where $t_0 \leq t_i < t_j < T$, the long holder of the contract receives the amount $K(t_j)-K(t_i)$, and the short holder receives $K(t_i)-K(t_j)$. The futures price $K(t)$ evolves in such way that obtaining the futures contract at any time $t_0 \leq t \leq T$ should incur a zero cost, i.e., $u(t,\mathbf{X}(t))=0$. 
+\par For more details on forwards and futures, it is wise to turn to \cite{hull2017options,duffie1989futures}.
 \section{Options}
 \label{sec:options}
+%
+%
 %%%
 \chapter{Option Pricing}
 \label{ch:optionpricing}
@@ -249,8 +266,7 @@ Sumarize.
     % References
     % No restriction is set to the reference styles
     % Save your references in References.bib
-    \nocite{*} % Remove this for your own citations
-    \bibliographystyle{plain}
+%    \nocite{*} % Remove this for your own citations
+    \bibliographystyle{teza}
     \bibliography{References}
-
 \end{document}
