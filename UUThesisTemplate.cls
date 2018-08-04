@@ -404,7 +404,7 @@
 \let\oldmainmatter\mainmatter
 	\renewcommand{\mainmatter}{% 
 	\cleardoublepage% 
-	\renewcommand{\thepage}{\arabic{page}}% 
+	\renewcommand{\thepage}{{\rmfamily{\arabic{page}}}}% 
 	\setcounter{secnumdepth}{\c@secnumdepthmainmatter} % 
 	\@mainmattertrue% 
 	\if@culumntitles%

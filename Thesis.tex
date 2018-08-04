@@ -37,12 +37,13 @@
     \defaultfontfeatures{Mapping=tex-text}
 
     % Berling with Pazo
+    \setsansfont[Ligatures=TeX]{Gill Sans}
     \setmainfont[
-        Ligatures=TeX,
-          Extension=.ttf,
-          BoldFont=BerlingBold,
-          ItalicFont=BerlingItalic,
-          BoldItalicFont=BerlingBold_Italic,
+    	Ligatures=TeX,
+        Extension=.ttf,
+        BoldFont=BerlingBold,
+        ItalicFont=BerlingItalic,
+        BoldItalicFont=BerlingBold_Italic,
     ]{Berling}
     \renewcommand{\baselinestretch}{1.2} % Line width to support inline math!
     \usepackage{mathpazo} % I like this one the most for math!
@@ -92,6 +93,10 @@
 %    \setsansfont{Arial}
 %    \setmonofont{Courier New}
 
+\usepackage{mathtools}
+\newtagform{brackets}{\rmfamily{(}}{\rmfamily{)}}
+\usetagform{brackets}
+\renewcommand{\theequation}{{\rmfamily\arabic{equation}}}
 
 \else
     % Plain LaTeX specific packages and settings
@@ -105,10 +110,12 @@
     \usepackage[T1]{fontenc}
     \usepackage{mathptmx}
 
+
     % Enable scaling of images on import
     \usepackage{graphicx}
 \fi
 
+\usepackage{amsmath}
 
 % Tables
 \usepackage{booktabs}
@@ -123,13 +130,12 @@
 % Including headings down to the subsection level in contents
 \contentsdepth{subsection}
 
-
 % Uncomment to use a custom abstract dummy text
-%\abstractdummy{
-%    \begin{abstract}
-%        Please use no more than 300 words and avoid mathematics or complex script.
-%    \end{abstract}
-%}
+\abstractdummy{
+    \begin{abstract}
+        Please use no more than 300 words and avoid mathematics or complex script.
+    \end{abstract}
+}
 
 
 \begin{document}
@@ -234,25 +240,26 @@ The estimated total notional value of these financial instruments has been above
 %%
 \section{Options}
 \label{sec:options}
-\par An \emph{option} is a contract that gives its holder the right, but not the obligation to buy or sell an underlying $S(t)$ by a certain time of maturity $T$ for a certain price $K$. The price $K$ in the contract is known as the strike price. If the contract gives the buying right to its owner, then it is called a \emph{call} option, and if it gives the selling right, it is called a \emph{put} option. Call options are characterized with $$g_c(S(T))=\max(S(T)-K,\ 0),$$ and put options with $$g_p(S(T))=\max(K-S(T),\ 0),$$ as their respective payoff functions. Options that can be exercised at any time $t_0 < t \leq T$ are called \emph{American} options, and options that can be exercised only at time $t=T$ are known as \emph{European} options. Since options are traded both on exchanges and in over-the-counter markets, there are many more types of them --- as the ways of customizing them are limitless. For instance, \emph{basket} options are defined in such a way that their payoffs may depend on more than one underlying asset. Moreover, for a given underlying $S_t$, there may be a large number of options with different dates of expiration $T$ and different strike prices $K$.
-\par It should be emphasized that an option gives the right to the holder to do something, and that the holder does not need to use that right. This is the main difference between options and other financial derivatives. Whereas it costs nothing to buy a forward or futures contract, there is always a non-negative price to acquiring an option. This very detail is the cornerstone of one of the most involving fundamental problems in financial markets, known as \emph{option pricing}. Depending on the option characteristics, the pricing problem can be as trivial as deriving an analytical pricing formula --- such is the case for the European call option with the certain market assumptions. On the other hand, in many cases, estimating option prices is colored with an eternal struggle of balancing between reasonable market assumptions for deriving delicate mathematical models and developing efficient numerical solvers that are able to estimate the solutions to the equations of those models. That is exactly the central stage of this thesis. 
-
-\color{red}\par {Put-Call parity}
+\par An \emph{option} is a contract that gives its holder the right, but not the obligation to buy or sell an underlying $S(t)$ by a certain time of maturity $T$ for a certain price $K$. The price $K$ in the contract is known as the strike price. If the contract gives the buying right to its owner, then it is called a \emph{call} option, and if it gives the selling right, it is called a \emph{put} option. Call options are characterized with $$g_c(S(T))=\max(S(T)-K,\ 0),$$ and put options with $$g_p(S(T))=\max(K-S(T),\ 0),$$ as their respective payoff functions. Options that can be exercised at any time $t_0 < t \leq T$ are called \emph{American} options, and options that can be exercised only at time $t=T$ are known as \emph{European} options. Since options are traded both on exchanges and in over-the-counter markets, there are many more types of them --- as the ways of customizing them are limitless. For instance, \emph{basket} options are defined in such a way that their payoffs may depend on more than one underlying asset. Moreover, for a given underlying $S_t$, there may be a large number of options with different dates of expiration $T$ and different strike prices $K$. Due to their versatility, options are among the most popular financial derivatives on the financial markets, and many cases of their applications can be found in \cite{hull2017options}.
 %
 %
 %%%
 \chapter{Option Pricing}
 \label{ch:optionpricing}
-\cite{bjork2009arbitrage}
-
-
-
-
-Talk about stochastic and deterministic formulation.
+\par It should be emphasized that an option gives the right to the holder to do something, and that the holder does not need to use that right. This is the main difference between options and other financial derivatives. Whereas it costs nothing to buy a forward or futures contract, there is always a non-negative price to acquiring an option. This very detail is the cornerstone of one of the most involving fundamental problems in financial markets, known as \emph{option pricing}. Depending on the option characteristics, the pricing problem can be as trivial as deriving an analytical pricing formula --- such is the case for the European call option with certain market assumptions. On the other hand, in many cases, estimating option prices is painted with an eternal struggle of balancing between reasonable market assumptions for deriving delicate mathematical models and developing efficient numerical solvers that are able to estimate the solutions to the equations of those models.
+\par As the option gives stipulated rights, but not the obligations to their holder, it is natural to assume that this contract must have some objective non-negative value at any time. The central task of option pricing is to determine the objectively fair value of an option at any given time $t \leq T$. The main mathematical framework for approaching this problem is the \emph{arbitrage theory}. In order to model option prices, the theory heavily relies on mathematical ingredients such as stochastic differential equations (SDEs), martingale measures, It\^o calculus, Feynmann-Kac representations, and PDEs, combined with carefully argued assumptions about the market. Those topics are referred to throughout the manuscript, but the detailed definitions of the arbitrage theory in continuous time are elegantly presented in \cite{bjork2009arbitrage}.
+%
 %%
 \section{Market Models}
 \label{sec:models}
+\par \noindent {\color{red}\rule{\textwidth}{2pt}}
+
 State, motivate and explain the models used in BENCHOP.
+
+\subsection{Black-Scholes-Merton Model}
+\subsection{Multi-Factor Models}
+
+%
 %%
 \section{Pricing Methods}
 \label{sec:methods}
@@ -262,10 +269,127 @@ Talk about all the method groups from BENCHOP.
 %%%
 \chapter{Radial Basis Function generated Finite Difference Methods}
 \label{ch:rbffd}
-Similar to explanation in our papers, a bit of history and the method evolution throughout the papers.
+The RBF-FD methods belong to the family of RBF methods. Using the RBF methods for approximating solutions of PDEs dates back to the beginning of the nineties in the previous century \cite{kansa1990multiquadrics2, kansa1990multiquadrics1}. Ever since, these methods have been used in different fields, including computational finance \cite{fasshauer2004using, hon1999radial, pettersson2008improved}. Although the classic RBF methods (also referred to as global RBF methods) possess some desirable properties such as high order convergence and mesh-free domain discretization, they are featured with dense system matrices which in many cases have very large condition numbers. To overcome these weaknesses, several localized RBF approaches with advanced features were introduced, among which RBF-FD \cite{tolstykh2000using, wright2006scattered} and RBF-PU \cite{wendland2002fast} are the most popular and still actively developed.
+\par
+In order to apply the method, we observe option pricing problems on the truncated computational domain $\Omega\subset \mathbb{R}^{d}$ in the following PDE form
+\begin{align}
+\frac{\partial}{\partial t}u(t,\underline{x}) + \mathcal{L}u(t,\underline{x}) &= 0, \quad \underline{x} \in \Omega, \label{eqPDE} \\
+\mathcal{B}u(t,\underline{x}) &= f(t,\underline{x}), \quad \underline{x} \in \partial \Omega, \label{eqBC}
+\end{align}
+where $u(t,\underline{x})$ is the option price; $\mathcal{L}$ is the differential operator of the model; $\mathcal{B}$ is the boundary differential operator and $f(t,\underline{x})$ is the forcing function, which together correspond to the boundary conditions for the pricing problem; $\underline{x}$ is the spatial variable representing underlying assets or stochastic factors and $t$ is the time variable.
+\par
+To construct an RBF-FD approximation, we scatter $N$ nodes across the computational domain $\Omega$. For each node $\underline{x}_j$, we define an array of nodes $\mathbf{x}_j$ consisting of $n_j-1$ neighboring nodes and $\underline{x}_j$ itself, and consider it as a stencil of size $n_j$ centered at $\underline{x}_j$. The differential operator $\mathcal{L}$ defined in (\ref{eqPDE})  is approximated in every node  $\underline{x}_j$ as
+\begin{equation}
+\mathcal{L}u(\underline{x}_j)\approx\sum_{i=1}^{n_j}{w}_{j}^{i}u_j^{i}\equiv \mathbf{w}_ju(\mathbf{x}_j),\quad j=1,\ldots,N,
+\label{eqRBFFD}
+\end{equation}
+where $u_j^{i}=u(\underline{x}_j^i)$ and $\underline{x}_j^i$ is a locally indexed node in $\mathbf{x}_j$, while $\mathbf{w}_j$ is the array of differentiation weights for the stencil centered at $\underline{x}_j$. In the standard RBF-FD methods, the weights ${w}_j^i$ are calculated by enforcing (\ref{eqRBFFD}) to be exact for RBFs centered at each of the nodes in $\mathbf{x}_j$ yielding
+\begin{equation}
+\label{eqRBFFDmat}
+{\footnotesize{
+\left[\begin{array}{cccc}
+\phi(\|\underline{x}_j^{1}-\underline{x}_j^{1}\|) & \ldots & \phi(\|\underline{x}_j^{1}-\underline{x}_{j}^{n_j}\|)\\
+\vdots & \ddots & \vdots\\
+\phi(\|\underline{x}_{j}^{n_j}-\underline{x}_j^{1}\|) & \ldots & \phi(\|\underline{x}_{j}^{n_j}-\underline{x}_{j}^{n_j}\|)
+\end{array}\right]
+\left[\begin{array}{c}
+{w}_j^{1}\\
+\vdots\\
+{w}_{j}^{n_j}
+\end{array}\right]=
+\left[\begin{array}{c}
+\mathcal{L}\phi(\|\underline{x}_{j}-\underline{x}_j^{1}\|)\\
+\vdots \\
+\mathcal{L}\phi(\|\underline{x}_{j}-\underline{x}_{{j}}^{n_j}\|)
+\end{array}\right].}}
+\end{equation}
+
+In theory on RBF interpolation, it is known that (\ref{eqRBFFDmat}) forms a nonsingular system of equations. Therefore, a unique set of weights can be computed for each node. We arrange those weights in a differentiation matrix $L$ in order to build a discrete spatial operator that approximates $\mathcal{L}$. Since $n_j \ll N$, the resulting differentiation matrix is sparse.
 \section{Choosing Shape Parameters}
+Paper I
+%
+%%
+\section{Role of Polynomials}
+Many RBFs (e.g., Gaussian, multiquadric, inverse quadratic) were considered for approximating differential operators in the literature. Although such approximations are featured with great properties, the linear systems of equations that need to be solved in order to obtain the weights $w_j^i$ are often ill-conditioned. Several past works \cite{davydov2011adaptive, fornberg2011stabilization, flyer2012guide, larsson2013stable, fornberg2013stable, flyer2016enhancing} addressed this problem by adding low-order polynomials together with RBFs into the presented interpolation. Moreover, the shape parameter, which is present in most of the RBFs, needs to be chosen carefully in order to have a stable approximation. The problem of choosing the shape parameter for Gaussian-based RBF-FD schemes is thoroughly examined for option pricing problems in \cite{milovanovic2018radial}, but still remains unsolved for general applications.
+\par
+Nevertheless, recent developments \cite{bayona2017role, flyer2016on}, show that the RBF-FD approximation can be greatly improved by using high order polynomials together with PHSs as RBFs in the interpolation. With that approach, it seems as if the polynomial degree takes the role of controlling the rate of convergence. This allows us to use piecewise smooth PHSs as RBFs without a shape parameter, since the approximation accuracy is no longer controlled by the smoothness of the RBFs. Still, the RBFs do contribute to reduction of approximation errors and they are necessary in order to have both stable and accurate approximation. We define the PHS function in \eqref{eqPHS} and show some examples in Figure \ref{figPHS}.%
+\begin{equation}
+\label{eqPHS}
+\phi(r) =  
+	\begin{cases}
+		r^q, & q\in\{2k-1\}, \\
+		r^q \ln(r), & q\in\{2k\},
+	\end{cases}
+\end{equation}
+where $k \in \mathbb{N}$. The results in \cite{flyer2016on} show that there is no significant difference between using odd and even degrees of PHSs in practical applications of RBF-FD. Consequently, we use odd degrees due to their slightly simpler form.%
+%\begin{figure}[H]
+%\centering
+%\input{figs/PHSplot.tikz}
+%\caption{Polyharmonic splines of different odd degrees.}
+%\label{figPHS}
+%\end{figure}
+\par
+Taking everything into account, the linear system that we need to solve to obtain the differentiation weights for each node in our problems is
+\begin{equation}
+{\footnotesize{
+\label{eq:D2}
+\left[\begin{array}{cc}
+A & P^T \\
+P & 0 \\
+\end{array}\right]
+\left[\begin{array}{c}
+{\mathbf{w}}_j\\
+{\mathbf{g}}_j\\
+\end{array}\right]=
+\left[\begin{array}{c}
+\mathcal{L}\phi(\|\underline{x}_{j}-\underline{x}_j^{1}\|)\\
+\vdots \\
+\mathcal{L}\phi(\|\underline{x}_{j}-\underline{x}_j^{n_j}\|)\\
+\mathcal{L}p_1(\underline{x}_j)\\
+\vdots\\
+\mathcal{L}p_{m_j}(\underline{x}_j)
+\end{array}\right],
+}}
+\end{equation}
+where $A$ is the RBF matrix and $\mathbf{w}_j$ is the array of differentiation weights, both shown on the left-hand side of \eqref{eqRBFFDmat}; $P$ is the matrix of size $m_j \times n_j$ that contains all monomials up to order $p$ (corresponding to $m_j$ monomial terms) that are evaluated in each node $\underline{x}_j^i$ of the stencil $\mathbf{x}_j$ and $\mathbf{0}$ is a zero square matrix of size $m_j \times m_j$; $\mathbf{g}_j$ is the array of dummy weights that should be discarded and $\{p_1, p_2, \ldots, p_{m_j}\}$ is the array of monomial functions indexed by their position relative to the total number of monomial terms $m_j$, such that it contains all the combinations of monomial terms up to degree $p$.
+\par
+Compared to standard FD discretizations, where differential operators are approximated only on one-dimensional Cartesian grids, meaning that high-dimensional operators need to be discretized separately in each direction, in the RBF-FD approximations dimensionality does not make the problem more difficult. When it comes to the boundary nodes and the nodes that are close to the boundary, the nearest neighbor based stencils automatically form according to the shape of the boundary and require no special treatment for computing the differentiation weights. The only data that is required for approximation of differential operators are Euclidian distances between the nodes. This means that (\ref{eqRBFFDmat}) represents a way to approximate a differential operator in any number of dimensions. Although the FD weights can be directly derived and the RBF-FD weights need to be obtained by solving a small linear system for each node, this task is perfectly parallelizable and that extra cost can be well justified by the desirable features of the method.
+\par
+After the weights are computed and stored in the differentiation matrix, an approximation of (\ref{eqPDE}) can be presented in the form of the following semi-discrete equation
+%\begin{equation}
+%\label{eqdRBFFD}
+%\left[\begin{array}{cc}
+%E_{II} & 0_{IB} \\
+%0_{BI} & 0_{BB} \\
+%\end{array}\right]
+%\frac{\mathrm{d}}{\mathrm{d} t}
+%\left[\begin{array}{c}
+%\underline{u}_I\\
+%\underline{u}_B\\
+%\end{array}\right] =
+%\left[\begin{array}{cc}
+%L_{II} & L_{IB} \\
+%B_{BI} & B_{BB} \\
+%\end{array}\right]
+%\left[\begin{array}{c}
+%\underline{u}_I\\
+%\underline{u}_B\\
+%\end{array}\right],
+%\end{equation}
+\begin{equation}
+\label{eqdRBFFD}
+\frac{\mathrm{d}}{\mathrm{d} t}\mathbf{u}=L\mathbf{u},
+\end{equation}
+where $\mathbf{u}\equiv u(\mathbf{x})$ is the discrete numerical solution of the pricing equation, while $\mathbf{x}$ is the array of all nodes in the computational domain. To compute the option price $\mathbf{u}$, we need to integrate \eqref{eqdRBFFD} in time.
+%
+%%
 \section{Constructing Node Layouts}
+Paper V
+Cartesian, non-uniform, smoothly varying in 1D,2D,3D
+%
+%%
 \section{Smoothing Payoff Functions}
+Paper VI
 %
 %
 %%%
