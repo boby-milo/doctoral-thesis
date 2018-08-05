@@ -250,10 +250,10 @@ FUNCTION {bbl.in}
 { "in" }
 
 FUNCTION {bbl.pages}
-{ "pages" }
+{ "" }
 
 FUNCTION {bbl.page}
-{ "page" }
+{ "" }
 
 FUNCTION {bbl.chapter}
 { "chapter" }

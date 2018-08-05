@@ -5,16 +5,15 @@
 \bibnamefont{S.~Milovanovi{\'c} and L.~von Sydow}.
 \newblock \emph{Radial basis function generated finite differences for option
   pricing problems}.
-\newblock Computers \& Mathematics with Applications, 75(4):pages 1462--1481,
-  2018.
+\newblock Computers \& Mathematics with Applications, 75(4): 1462--1481, 2018.
 
 \bibitem{paper2}
 \bibnamefont{L.~von Sydow, L.~Josef~H{\"o}{\"o}k, E.~Larsson, E.~Lindstr{\"o}m,
   S.~Milovanovi{\'c}, J.~Persson, V.~Shcherbakov, Y.~Shpolyanskiy,
   S.~Sir{\'e}n, J.~Toivanen, et~al.}
 \newblock \emph{{BENCHOP} --- the {BENCH}marking project in option pricing}.
-\newblock International Journal of Computer Mathematics, 92(12):pages
-  2361--2379, 2015.
+\newblock International Journal of Computer Mathematics, 92(12): 2361--2379,
+  2015.
 
 \bibitem{paper3}
 \bibnamefont{S.~Milovanovi{\'c} and V.~Shcherbakov}.
@@ -68,5 +67,32 @@
 \newblock \emph{Arbitrage Theory in Continuous Time}.
 \newblock Oxford University Press, 2009.
 \newblock ISBN 9780199574742.
+
+\bibitem{black73}
+\bibnamefont{F.~Black and M.~Scholes}.
+\newblock \emph{The pricing of options and corporate liabilities}.
+\newblock Journal of Political Economy, 81: 637--654, 1973.
+
+\bibitem{merton73}
+\bibnamefont{R.~C. Merton}.
+\newblock \emph{Theory of rational option pricing}.
+\newblock The Bell Journal of Economics and Management Science, 4: 141--183,
+  1973.
+
+\bibitem{dupire1994pricing}
+\bibnamefont{B.~Dupire et~al.}
+\newblock \emph{Pricing with a smile}.
+\newblock Risk, 7(1): 18--20, 1994.
+
+\bibitem{heston1993closed}
+\bibnamefont{S.~L. Heston}.
+\newblock \emph{A closed-form solution for options with stochastic volatility
+  with applications to bond and currency options}.
+\newblock The review of financial studies, 6(2): 327--343, 1993.
+
+\bibitem{hull1990pricing}
+\bibnamefont{J.~Hull and A.~White}.
+\newblock \emph{Pricing interest-rate derivative securities}.
+\newblock Rev. Financial Stud., 3: 573--592, 1990.
 
 \end{thebibliography}

@@ -93,6 +93,7 @@
 %    \setsansfont{Arial}
 %    \setmonofont{Courier New}
 
+\usepackage{commath}
 \usepackage{mathtools}
 \newtagform{brackets}{\rmfamily{(}}{\rmfamily{)}}
 \usetagform{brackets}
@@ -210,59 +211,177 @@ Woohoo!
 %bcde­fghijklmnopqrstu­vwxyz­abcde­fghijklmnopqrstu­vwxyz­abcdabcde­fghijklmnopqrstu­vwxyab\\%max=90
 %cde­fghijklmnopqrstu­vwxyz­abcde­fghijklmnopq\\%min=45
 %rstu­vwxyz­abcdabcde­fghijklmnopqrstu­vwxfdasdadadasdadaadadadaa%64 current
+%\addtolength{\jot}{0.3em}
 \chapter{Introduction}
 \label{ch:introduction}
-\par The purpose of this thesis is to report on state of the art in Radial Basis Function generated Finite Difference (RBF-FD) methods for pricing of financial derivatives. Based on the six appended papers \cite{paper1,paper2,paper3,paper4,paper5,paper6}, this work provides a detailed overview of RBF-FD properties and challenges that arise when the RBF-FD methods are used in financial applications. Moreover, the manuscript aims to motivate further development of RBF-FD for finance.
-\par Across the financial markets of the world, financial derivatives such as futures, options, and others, are traded in substantial volumes. The value of all assets that underly outstanding derivatives transactions is several times larger than the gross world product (GWP). Financial derivatives are the most commonly used instruments when it comes to hedging risks, speculation based investing, and performing arbitrage. Therefore, knowing the prices of those financial instruments is of utmost importance at any given time. In order to make that possible in practice, it is often required to employ a set of skills incorporating knowledge in financial theory, engineering methods, mathematical tools, and programming practice --- which altogether constitute the field known as \emph{financial engineering}. 
-\par Many of theoretical pricing models for financial derivatives can be represented using partial differential equations (PDEs). In many cases, those equations are time-dependent, of high spatial dimensions, and with challenging boundary conditions --- which most often makes them analytically unsolvable. In those cases, numerical approximation as a mean of estimating their solution needs to be utilized. The field of \emph{numerical analysis} is concerned with obtaining approximate solutions while maintaining reasonable bounds on errors. Unfortunately, there is no universal numerical method which could be used to solve all problems of this type efficiently. In fact, there are tremendously many numerical methods for solving different types of PDEs, and all those methods are featured with their own limitations in performance, stability, and accuracy --- mostly depending on the problem details. Therefore, carefully selecting and developing numerical methods for particular applications has been the only way to build efficient PDE solvers in ongoing practice. 
-\par RBF-FD is a recent numerical method with potential to efficiently approximate solutions of PDEs in finance. Over the past years, besides the purely academic development and research of numerical properties, the method has been mainly applied for simulations of atmospheric phenomena. As its name suggests, the RBF-FD method is of a finite difference type, from the radial basis function family. As a finite difference method, RBF-FD approximates differential equations by linear systems of algebraic equations, known as difference equations. Radial basis functions are used as interpolants that enable local approximations of differential operators that are necessary for constructing the difference equations. Constructed like that, the method is featured with a sparse matrix of the linear system of difference equations, and it is relatively simple to implement like the standard finite difference methods. Moreover, the method is mesh-free, meaning that it does not require a structured discretization of the computational domain which makes it equally easy to use in spaces of different dimensions, and it is of a customizable order of accuracy --- which are the features it inherits from the global radial basis function approximations. It is those properties that make the case for recognizing RBF-FD as a method with high potential for efficiently solving some analytically unfeasible pricing problems in finance.
-\par Nevertheless, being a young method, RBF-FD is still under intense development and many challenges are faced when moving from simple theoretical cases toward more complex real-world applications. The core of this thesis deals with finding solutions for overcoming obstacles when financial derivatives are priced using RBF-FD to solve PDEs with several spatial dimensions. Thus, it represents a contribution to making the RBF-FD methods more reliable and efficient for use in financial applications. 
-\par The rest of this manuscript is organized as follows. Financial derivatives are introduced and defined in Chapter \ref{ch:finder}. An overview of some popular financial models and techniques for pricing of options are presented in Chapter \ref{ch:optionpricing}. The properties of RBF-FD methods for solving PDEs in finance are presented in Chapter \ref{ch:rbffd}. Finally, some unsolved challenges with suggestions for further development of the RBF-FD method for financial applications are shown in Chapter \ref{ch:outlook}.
+\par The purpose of this thesis is to report on state of the art in Radial Basis Function generated Finite Difference (RBF-FD) methods for pricing of financial derivatives. Based on the six appended papers \cite{paper1,paper2,paper3,paper4,paper5,paper6}, this work provides a detailed overview of RBF-FD properties and challenges that arise when the RBF-FD methods are used in financial applications. Moreover, with this manuscript we aim to motivate further development of RBF-FD for finance.
+\par Across the financial markets of the world, financial derivatives such as futures, options, and others, are traded in substantial volumes. The value of all assets that underly currently outstanding derivatives transactions is several times larger than the gross world product (GWP). Financial derivatives are the most commonly used instruments when it comes to hedging risks, speculation based investing, and performing arbitrage. Therefore, knowing the prices of those financial instruments is of utmost importance at any given time. In order to make that possible in practice, it is often required to employ a set of skills incorporating knowledge in financial theory, engineering methods, mathematical tools, and programming practice --- which altogether constitute the field known as \emph{financial engineering}. 
+\par Many of theoretical pricing models for financial derivatives can be represented using partial differential equations (PDEs). In many cases, those equations are time-dependent, of high spatial dimensions, and with challenging boundary conditions --- which most often makes them analytically unsolvable. In those cases, we need to utilize numerical approximation as a mean of estimating their solution. The field of \emph{numerical analysis} is concerned with obtaining approximate solutions while maintaining reasonable bounds on errors. Unfortunately, there is no universal numerical method which could be used to solve all problems of this type efficiently. In fact, there are tremendously many numerical methods for solving different types of differential equations, and all those methods are featured with their own limitations in performance, stability, and accuracy --- mostly dependent on details of the problems they aim to solve. Therefore, carefully selecting and developing numerical methods for particular applications has been the only way to build efficient PDE solvers in ongoing practice. 
+\par RBF-FD is a recent numerical method with potential to efficiently approximate solutions of PDEs in finance. Over the past years, besides the purely academic development and research of its numerical properties, the method has been mainly applied for simulations of atmospheric phenomena. As its name suggests, the RBF-FD method is of a finite difference type, from the radial basis function family. As a finite difference method, RBF-FD approximates differential equations by linear systems of algebraic equations, known as difference equations. Radial basis functions are used as interpolants that enable local approximations of differential operators that are necessary for constructing the difference equations. Constructed like that, the method is featured with a sparse matrix of the linear system of difference equations, and it is relatively simple to implement like the standard finite difference methods. Moreover, the method is mesh-free, meaning that it does not require a structured discretization of the computational domain which makes it equally easy to use in spaces of different dimensions, and it is of a customizable order of accuracy --- which are the features it inherits from the global radial basis function approximations. It is those properties that led us to recognize RBF-FD as a method with high potential for efficiently solving some analytically unfeasible and computationally challenging pricing problems in finance.
+\par Nevertheless, being a young method, RBF-FD is still under intense development and we face many challenges when moving from simple theoretical cases toward more complex real-world applications. The core of this thesis deals with finding solutions for overcoming obstacles when financial derivatives are priced using RBF-FD to solve PDEs with several spatial dimensions. Thus, it represents a contribution to making the RBF-FD methods more reliable and efficient for use in financial applications. 
+\par The rest of this manuscript is organized as follows. We introduce and define financial derivatives in Chapter \ref{ch:finder}. An overview of some popular financial models and techniques for pricing of options are presented in Chapter \ref{ch:optionpricing}. We present features and properties of RBF-FD methods for solving PDEs in finance in Chapter \ref{ch:rbffd}. Finally, we conclude with some unsolved challenges and suggestions for further development of the RBF-FD method for financial applications in Chapter \ref{ch:outlook}.
 %
 %
 %%%
 \chapter{Financial Derivatives}
 \label{ch:finder}
 \par A \emph{financial derivative} is a market instrument whose value depends on the values of some other underlying variables. Most often, those underlying variables are the prices of another traded asset (e.g., a stock underlying stock options), but they may as well be almost any variables of stochastic nature (e.g., air temperatures underlying weather derivatives). There are numerous financial derivatives in existence, available for almost every type of investment asset, ranging from agricultural grains to cryptocurrencies. Futures and options are best known as \emph{exchange-traded} derivatives, standardized to be bought and sold on derivatives exchanges (e.g., Chicago Mercantile Exchange for futures and Chicago Board Options Exchange for options). On the other hand, much greater volumes of financial derivatives are traded bilaterally \emph{over-the-counter} in a highly customizable fashion. This gave birth to many contracts with tailored properties such as forward contracts, swaps, exotic options, and other custom financial instruments.
-\par When it comes to traders, three categories can be readily identified: \emph{hedgers}, \emph{speculators}, and \emph{arbitrageurs} \cite{hull2017options}. Hedgers use derivatives to reduce risks from potential future movements in a market variable, speculators use them to bet on the future outcome of a market variable, and arbitrageurs aim at making riskless profit by exploiting discrepancies in values of the same underlying variable traded under different derivatives or across different markets.
+\par When it comes to traders, three categories can be readily identified: \emph{hedgers}, \emph{speculators}, and \emph{arbitrageurs} \cite{hull2017options}. Hedgers use derivatives to reduce risks from potential future movements in a market variable, speculators use them to bet on the future outcome of a market variable, and arbitrageurs aim at making riskless profit by exploiting discrepancies in values of the same underlying variable traded under different derivatives or across different markets. Thanks to them, derivatives markets have been highly liquid over the past decades as many of the traders find trading derivatives more attractive compared to trading their underlying assets.
 \par Financial derivatives are traded in extremely large volumes across the planet. %According to statistics maintained by Bank for International Settlements (BIS),% 
-The estimated total notional value of these financial instruments has been above half a quadrillion of USD during the current decade \cite{bank2018annual}. That is about an order of magnitude larger than GWP \cite{worldgdp2018annual}. Moreover, derivatives markets have received great criticism due to their role in the most recent global financial crisis.  As a result of the crisis, strict regulations in trading of derivatives have been introduced in order to increase transparency on the markets, improve market efficiency, and reduce systemic risk. Now, in the post-crisis period, methods for pricing of financial derivatives are still under the spotlight of financial institutions, as they look for the most efficient ways to solve the mathematical problems stemming from the regulations.
-\par In order to bring financial derivatives closer to the mathematical framework, it is useful to define several of their features. The contract representing a particular financial derivative is signed at time $t=t_0\equiv0$ and expires at $t=T$, where $T$ is also known as the time of maturity of the contract. The contract is issued on the underlying stochastic variable $S(t)$. At the expiration of the contract, the holder receives payoff $g(S(T))$, which is equivalent to the value of the financial derivative at the time of maturity $T$, i.e., $u(S(T),T) = g(S(T))$. The value of the contract is represented by a function $u(t,S(t))$.
-\par When it comes to hierarchy of financial derivatives, most of them can be seen either as a type of a forward/futures contract, or as a type of an option. Therefore, it is common to study forwards and futures as binding contracts (i.e., $-\infty < g(S(T)) < \infty\ $), and options as non-obligatory contracts towards their holders (i.e., $0\leq g(S(T))<\infty$\ ). The following sections consider them in more detail.
+The estimated total notional value of these financial instruments has been above half a quadrillion of USD during the current decade \cite{bank2018annual}. That is about an order of magnitude larger than GWP \cite{worldgdp2018annual}. Moreover, derivatives markets have received great criticism due to their role in the most recent global financial crisis.  As a result of the crisis, strict regulations in trading of derivatives have been introduced in order to increase transparency on the markets, improve market efficiency, and reduce systemic risk. Now, in the post-crisis period, methods for valuation of financial derivatives are still under the spotlight of financial institutions, as they look for the most efficient ways to solve the mathematical problems stemming from the regulations.
+\par In order to bring financial derivatives closer to the mathematical framework, it is useful for us to define several of their features. We assume that the contract representing a particular financial derivative is signed at time $t=t_0\equiv0$ and expires at $t=T$, where $T$ is also known as the time of \emph{maturity} of the contract. The contract is issued on the underlying stochastic variable $S(t)$. At the expiration of the contract, the holder receives payoff $g(S(T))$, which is equivalent to the value of the financial derivative at the time of maturity $T$, i.e., $u(S(T),T) = g(S(T))$. The value of the contract is represented by a function $u(t,S(t))$.
+\par When it comes to hierarchy of financial derivatives, we can see most of them either as a type of a forward/futures contract, or as a type of an option. Therefore, it is common to study forwards and futures as binding contracts (i.e., $-\infty < g(S(T)) < \infty\ $), and options as non-obligatory contracts towards their holders (i.e., $0\leq g(S(T))<\infty$\ ). In the following sections, we consider them in more detail.
 %
 %%
 \section{Forwards and Futures}
 \label{sec:futures}
-\par A \emph{forward} contract is an agreement between two parties signed at $t=t_0$ to buy or sell an underlying $S(t)$ at a certain future time $T$ for a certain price $K(t_0)=K_0$. The price $K(t)$ is called the \emph{forward price} of the contract, and it is determined at time $t_0$ in such a way that the value of the forward contract at the time of signing is equal to zero, i.e., $u(t_0,S(t_0))=u_0=0$. One of the parties in the contract takes a \emph{long} position and agrees to payoff $$g_l(S(T))=S(T)-K_0.$$ The other party assumes a \emph{short} position and agrees to sell $S(t)$ at the same time $T$ for the stipulated forward price $K_0$, effectively obliging to payoff $$g_s(S(T))=K_0-S(T).$$ Forward contracts are traded in over-the-counter markets and may be further customized according to the preferences of the signing parties.
-\par A \emph{futures} contract is an exchange-traded, and thus standardized financial derivative, that is very similar to a forward contract. It is in agreement signed at no cost between two parties at $t=t_0$ to buy or sell an underlying $S(t)$ at a certain time $T$. The principal difference from the forward contract lies in the way in which the payments are realized. Namely, at every point in time $t_0 \leq t \leq T$, there exists a price $K(t)$, now called the \emph{futures price} of the contract, that is quoted on the exchange. At time $T$, the long position holder of the contract is entitled to the payoff $$g_l(S(T))=S(T)-K(T),$$ while the short position holder gets $$g_s(S(T))=K(T)-S(T).$$ Moreover, during an arbitrary time interval $(t_i,t_j]$, where $t_0 \leq t_i < t_j < T$, the long holder of the contract receives the amount $K(t_j)-K(t_i)$, and the short holder receives $K(t_i)-K(t_j)$. The futures price $K(t)$ evolves in such way that obtaining the futures contract at any time $t_0 \leq t \leq T$ should incur a zero cost, i.e., $u(t,S(t))=0$. 
-\par As far as the pricing of forwards and futures is concerned, it should be clear that these contracts are designed in such a way that their values are equal to zero at the signing. Thus, computational problems of interest here would be related to fairly determining the defined forward and futures prices. There are many stochastic techniques that successfully deal with these problems, and hence they are not the focus of this thesis. For more details on forwards and futures, it is wise to turn to \cite{hull2017options,duffie1989futures}.  
+\par A \emph{forward} contract is an agreement between two parties signed at $t=t_0$ to buy or sell an underlying $S(t)$ at a certain future time $T$ for a certain price $K(t_0)=K_0$. The price $K(t)$ is called the \emph{forward price} of the contract, and it is determined at time $t_0$ in such a way that the value of the forward contract at the time of signing is equal to zero, i.e., $u(t_0,S(t_0))=u_0=0$. One of the parties in the contract takes a \emph{long} position and agrees to payoff 
+$$g_l(S(T))=S(T)-K_0.$$
+The other party assumes a \emph{short} position and agrees to sell $S(t)$ at the same time $T$ for the stipulated forward price $K_0$, effectively obliging to payoff 
+$$g_s(S(T))=K_0-S(T).$$
+Forward contracts are traded in over-the-counter markets and may be further customized according to the preferences of the signing parties.
+\par A \emph{futures} contract is an exchange-traded, and thus standardized financial derivative, that is very similar to a forward contract. It is in agreement signed at no cost between two parties at $t=t_0$ to buy or sell an underlying $S(t)$ at a certain time $T$. The principal difference from the forward contract lies in the way in which the payments are realized. Namely, at every point in time $t_0 \leq t \leq T$, there exists a price $K(t)$, now called the \emph{futures price} of the contract, that is quoted on the exchange. At time $T$, the long position holder of the contract is entitled to the payoff 
+$$g_l(S(T))=S(T)-K(T),$$
+while the short position holder gets 
+$$g_s(S(T))=K(T)-S(T).$$
+Moreover, during an arbitrary time interval $(t_i,t_j]$, where $t_0 \leq t_i < t_j < T$, the long holder of the contract receives the amount $K(t_j)-K(t_i)$, and the short holder receives $K(t_i)-K(t_j)$. The futures price $K(t)$ evolves in such way that obtaining the futures contract at any time $t_0 \leq t \leq T$ should incur a zero cost, i.e., $u(t,S(t))=0$. 
+\par As far as the pricing of forwards and futures is concerned, we should stress that these contracts are designed in such a way that their values are equal to zero at the signing. Thus, computational problems of interest here would be aimed at fairly determining the defined forward and futures prices. There are many stochastic techniques that successfully deal with these problems, and hence we do not put our main focus on them in this thesis. For more details on forwards and futures, it is wise to turn to \cite{hull2017options,duffie1989futures}.  
 %
 %%
 \section{Options}
 \label{sec:options}
-\par An \emph{option} is a contract that gives its holder the right, but not the obligation to buy or sell an underlying $S(t)$ by a certain time of maturity $T$ for a certain price $K$. The price $K$ in the contract is known as the strike price. If the contract gives the buying right to its owner, then it is called a \emph{call} option, and if it gives the selling right, it is called a \emph{put} option. Call options are characterized with $$g_c(S(T))=\max(S(T)-K,\ 0),$$ and put options with $$g_p(S(T))=\max(K-S(T),\ 0),$$ as their respective payoff functions. Options that can be exercised at any time $t_0 < t \leq T$ are called \emph{American} options, and options that can be exercised only at time $t=T$ are known as \emph{European} options. Since options are traded both on exchanges and in over-the-counter markets, there are many more types of them --- as the ways of customizing them are limitless. For instance, \emph{basket} options are defined in such a way that their payoffs may depend on more than one underlying asset. Moreover, for a given underlying $S_t$, there may be a large number of options with different dates of expiration $T$ and different strike prices $K$. Due to their versatility, options are among the most popular financial derivatives on the financial markets, and many cases of their applications can be found in \cite{hull2017options}.
+\par An \emph{option} is a contract that gives its holder the right, but not the obligation to buy or sell an underlying $S(t)$ by a certain time of maturity $T$ for a certain price $K$. The price $K$ in the contract is known as the strike price. If the contract gives the buying right to its owner, then it is called a \emph{call} option, and if it gives the selling right, it is called a \emph{put} option. Call options are characterized with 
+$$g_c(S(T))=\max(S(T)-K,\ 0),$$
+and put options with 
+$$g_p(S(T))=\max(K-S(T),\ 0),$$
+as their respective payoff functions. Options that can be exercised at any time $t_0 < t \leq T$ are called \emph{American} options, and options that can be exercised only at time $t=T$ are known as \emph{European} options. Since options are traded both on exchanges and in over-the-counter markets, there are many more types of them --- as the ways of customizing them are limitless. For instance, \emph{basket} options are defined in such a way that their payoffs may depend on more than one underlying asset, consequently requiring a multi-dimensional pricing model in order to estimate their value. An example of such a multi-asset derivative would be an arithmetic European call basket option issued on $D$ underlying assets $S_1,\ldots,S_D$, whose payoff function is 
+$$g_{bc}(S_1,\ldots,S_D) = \max\left(\frac{1}{D}\sum_{d=1}^D S_d - K,\ 0\right).$$
+Moreover, for a given underlying $S$, there may be a large number of options with different dates of expiration $T$ and different strike prices $K$. 
+\par Due to their versatility, options have been among the most popular financial derivatives on the financial markets, and many examples of their applications can be found in \cite{hull2017options}.
 %
 %
 %%%
 \chapter{Option Pricing}
 \label{ch:optionpricing}
-\par It should be emphasized that an option gives the right to the holder to do something, and that the holder does not need to use that right. This is the main difference between options and other financial derivatives. Whereas it costs nothing to buy a forward or futures contract, there is always a non-negative price to acquiring an option. This very detail is the cornerstone of one of the most involving fundamental problems in financial markets, known as \emph{option pricing}. Depending on the option characteristics, the pricing problem can be as trivial as deriving an analytical pricing formula --- such is the case for the European call option with certain market assumptions. On the other hand, in many cases, estimating option prices is painted with an eternal struggle of balancing between reasonable market assumptions for deriving delicate mathematical models and developing efficient numerical solvers that are able to estimate the solutions to the equations of those models.
-\par As the option gives stipulated rights, but not the obligations to their holder, it is natural to assume that this contract must have some objective non-negative value at any time. The central task of option pricing is to determine the objectively fair value of an option at any given time $t \leq T$. The main mathematical framework for approaching this problem is the \emph{arbitrage theory}. In order to model option prices, the theory heavily relies on mathematical ingredients such as stochastic differential equations (SDEs), martingale measures, It\^o calculus, Feynmann-Kac representations, and PDEs, combined with carefully argued assumptions about the market. Those topics are referred to throughout the manuscript, but the detailed definitions of the arbitrage theory in continuous time are elegantly presented in \cite{bjork2009arbitrage}.
+\par We should emphasize that an option gives the right to the holder to do something, and that the holder does not need to use that right. This is the main difference between options and other financial derivatives. Whereas it costs nothing to buy a forward or futures contract, there is always a non-negative price to acquiring an option. This very detail is the cornerstone of one of the most involving fundamental problems in financial markets, known as \emph{option pricing}. Depending on the option characteristics, the pricing problem can be as trivial as deriving an analytical pricing formula --- such is the case for the standard European call option with certain market assumptions. Nevertheless, in many other cases of option valuation, we are faced against an eternal struggle of balancing between reasonable market assumptions for deriving delicate mathematical models and developing efficient numerical solvers that are able to estimate the solutions of the equations posed by those models.
+\par As the option gives stipulated rights, but not the obligations to their holder, it is natural to assume that this contract must have some objective non-negative value at any time. The central task of option pricing is to objectively determine the fair value of an option at any given time $t \leq T$. The fundamental mathematical framework for approaching this problem is the \emph{arbitrage theory}. In order to model option prices, the theory heavily relies on carefully argued assumptions about the market and mathematical ingredients such as martingale measures, stochastic differential equations (SDEs), It\^o calculus, Feynmann--Kac representations, and PDEs. We refer to these topics throughout the manuscript in limited capacity, as the detailed definitions and proofs can be found elegantly presented in \cite{bjork2009arbitrage}.
 %
 %%
 \section{Market Models}
 \label{sec:models}
-\par \noindent {\color{red}\rule{\textwidth}{2pt}}
-
-State, motivate and explain the models used in BENCHOP.
-
-\subsection{Black-Scholes-Merton Model}
+\par In order to be able to price an option, we need a set of assumptions that we use to build a financial market model. The models range from the simple ones capturing a rough approximate picture of reality to extremely advanced ones aimed at capturing very fine details of the market. Once the model is defined, we should be able to setup an option pricing problem that needs to be solved in order to estimate the option value. Difficulty of such pricing problems strongly depends on complexity of the chosen market model as well as on complexity of the option that we want to price.  
+%
+\subsection{Black--Scholes--Merton Model}
+\label{sub:bs}
+\par We start by considering a plain European option on a stock that does not pay dividends, under the Black--Scholes--Merton model \cite{black73,merton73}. Creation of this model is considered as one of the most successful quantitative breakthroughs in social sciences, initiating a pricing framework that still keeps occupied thousands of researchers across financial institutions and universities of the world. The main feature of this model is that it allows the prices of European call and put options to be calculated analytically using variables that are either directly observable on the market or can be easily estimated. It is still widely used as a benchmark, although more advanced models have been developed over the years to take into account more realistic features of asset price dynamics, such as jumps and stochastic volatility.
+\par The model consists of two assets, a riskless bond $B(t)$ and a risky stock $S(t)$, with dynamics given by the following SDEs.
+\begin{align}
+\dif B(t) &= r B(t) \dif t, \label{eq:bond} \\
+\dif S(t) &= \mu S(t) + \sigma S(t) \dif W(t), \label{eq:stock}
+\end{align}
+where $r$ is the risk-neutral interest rate, $\mu$ is the drift coefficient, and $\sigma$ is the volatility of the stock --- all three being constant in the model. Moreover, $W(t)$ is the Wiener process.
+\par The Black--Scholes--Merton model stands on several important assumptions. The main assumption is that the considered financial market is arbitrage free, meaning that it should not be possible to make positive earnings on the market without being exposed to risk. The next assumption states that the market should be complete and efficient, which means that every contract on the market can be hedged and that the market prices fully reflect all available information. Those assumptions allow us to determine a unique price of the option whose payoff function is $g(S(T))$, using the following valuation under the risk-neutral measure $\mathbb{Q}$.
+\begin{equation}
+\label{eq:mc}
+u(S(t),t)=\exp\left(-r(T-t)\right)\mathbb{E}^{\mathbb{Q}}\left[g(S(T))\right],
+\end{equation}
+That effectively means that the expected value is calculated on an adapted dynamics, using $r$ instead of $\mu$ as the drift constant of the stochastic process $S(t)$ defined in \eqref{eq:stock}. 
+\par Moreover, using the It\^o's lemma and the Feynmann--Kac theorem, we can equivalently express the option price as the solution of the following PDE, known as the Black--Scholes--Merton equation.
+\begin{align}
+%{\displaystyle{\frac{\partial}{\partial t} u(s,t) + r s \frac{\partial} {\partial s} u(s,t) + \frac{1}{2} s^2 \sigma^2 \frac{\partial^2}{\partial s^2} u(s,t) - r u(s,t)}} &=& 0,\\
+\frac{\partial u}{\partial t} + r s \frac{\partial u} {\partial s} + \frac{1}{2} s^2 \sigma^2 \frac{\partial^2 u}{\partial s^2} - r u &= 0, \nonumber \\
+u(s,T) &= g(s), \label{eq:bs}
+\end{align}
+where $s$ is the deterministic representation of the stochastic asset price $S$. The equation \eqref{eq:bs} is a parabolic PDE that has an analytical solution $u=u(s,t)$ in case of European call and put options. %Otherwise, the option price $u(s,t)$ can be numerically approximated by integration backward in time. 
+\par We can use this basic framework to price financial derivatives with different payoffs or extend it in order to be able to valuate options with different underlying assets (e.g., stocks that pay discrete dividends). Also, we can further adapt the model to capture different market features more accurately (e.g., introduce local volatility instead of the constant one or model jumps by using the Merton model). A decent overview of such extensions of the Black--Scholes--Merton model can be seen in \cite{paper2}, while here we further consider how to apply this framework to pricing of basket options.
+\par To price multi-asset options issued on $D$ underlying assets $S_1,S_2,\ldots,S_D$, we consider a multi-dimensional analogue to \eqref{eq:bond} and \eqref{eq:stock}.
+\begin{align}
+\dif B(t)&=rB(t)\dif t, \nonumber \\
+\dif S_1(t)&=\mu_1 S_1(t)\dif t+\sigma_1 S_1(t)\dif W_1(t), \nonumber \\
+%\dif S_2(t)&=&\mu_2 S_2(t)\dif t+\sigma_2 S_2(t)\dif W_2(t),\\
+\vdots \nonumber \\ 
+\dif S_D(t)&=\mu_D S_D(t)\dif t+\sigma_D S_D(t)\dif W_D(t), \label{eq:multi}
+\end{align}
+where the Wiener processes are correlated such that $\dif W_i(t)\dif W_j(t)=\rho_{ij}\dif t$. In this high-dimensional setting, an option with payoff function $g(S_1(T),\ldots,S_D(T))$, can be priced from 
+\begin{equation}
+\label{eq:mcD}
+u(S_1(t),\ldots,S_D(t),t)=\exp\left(-r(T-t)\right)\mathbb{E}^{{{\mathbb{Q}}}}_{t}[g(S_1(T),\ldots,S_D(T))],
+\end{equation}
+and the corresponding high-dimensional Black--Scholes--Merton equation reads as
+%\begin{equation}\label{eq:bsD}
+%\begin{array}{rcl}
+%{\displaystyle{\frac{\partial u}{\partial t}+r\sum\limits_{i}^{D}s_i\frac{\partial u}{\partial{s_i}}+\frac{1}{2}\sum\limits_{i,j}^{D}\rho_{ij}\sigma_i\sigma_j s_is_j\frac{\partial^2u}{\partial s_i \partial s_j}-ru}}&=&0,\\
+%{\displaystyle{u(s_1,\ldots,s_D,T)}}&=&g(s_1,\ldots,s_D).
+%\end{array}
+%\end{equation}
+\begin{align}
+\frac{\partial u}{\partial t}+\mathcal{L}_b u&=0, \nonumber \\
+u(s_1,\ldots,s_D,T)&=g(s_1,\ldots,s_D), \label{eq:bsD}
+\end{align}
+where
+\begin{equation}
+\label{eqBSop}
+\mathcal{L}_b u \equiv r\sum\limits_{i}^{D}s_i\frac{\partial u}{\partial{s_i}}+\frac{1}{2}\sum\limits_{i,j}^{D}\rho_{i,j}\sigma_i\sigma_j s_is_j\frac{\partial^2u}{\partial s_i \partial s_j}-ru.
+\end{equation}
+We observe \eqref{eq:bsD} as a time dependent PDE with $D$ spatial dimensions.
+\par When it comes to American options, since these financial derivatives can be exercised at any $t \leq T$, as opposed to the European options that can only be exercised at $t=T$, instead of using PDE as a model, we formulate the pricing task as a linear complementarity problem (LCP)
+\begin{align}
+\frac{\partial u}{\partial t}+\mathcal{L}_b u&\geq 0,\nonumber \\
+u(s_1,\ldots, s_D,T)&\geq g(s_1,\ldots, s_D), \nonumber \\
+\left( \frac{\partial u}{\partial t}+\mathcal{L}_b u\right)& \left(u(s_1,\ldots, s_D,T)-g(s_1,\ldots, s_D)\right)=0. \label{eqlcp}
+\end{align}
+%
 \subsection{Multi-Factor Models}
-
+\label{sub:multifactor}
+\par Another direction in development of pricing models would be to include more stochastic factors. Models with multiple stochastic factors allow for better reproduction of market features compared to the standard Black--Scholes--Merton formulation, which is known to fall short in capturing fat tails of return distributions and volatility skews. Therefore, various models with local volatilities, local stochastic volatilities, stochastic interest rates, and their combinations have become increasingly popular. In this section, we present two models with multiple stochastic factors that are used for pricing options.
+\par The attention to local volatility models started with \cite{dupire1994pricing}. The first multi-factor model that we introduce is the Heston model \cite{heston1993closed}, featured with a stochastic volatility. The adapted dynamics for this model is as follows.
+\begin{align}
+\dif S(t) & =  rS(t)\dif t + \sqrt{V(t)} S(t) \dif W_s(t), \label{qlsvSDE1} \\
+\dif V(t) & =  \kappa(\eta-V(t))\dif t + \sigma \sqrt{V(t)}\dif W_v(t), \label{qlsvSDE2}
+\end{align}
+where $V(t)$ is the stochastic volatility, $\sigma$ is the constant volatility of volatility, $\kappa$ is the speed of mean reversion of the volatility process, $\eta$ is the mean reversion level, $r$ is the risk-free interest rate, $W_s(t)$ and $W_v(t)$ are correlated Wiener processes with constant correlation $\rho$, i.e., $\dif W_s(t) \dif W_v(t) = \rho \dif t$. By applying the It\^{o}'s lemma and the Feynman--Kac theorem, the PDE for the Heston model reads as
+\begin{align}
+\frac{\partial u}{\partial t}+\mathcal{L}_h u&=0, \nonumber \\
+u(s,v,T) &= \max(s-K,\ 0), \label{hstPDE}
+\end{align}
+where
+\begin{align}
+\mathcal{L}_{h} u &\equiv \frac{1}{2}vs^2\frac{\partial^2 u}{\partial s^2} + \rho\sigma v s \frac{\partial^2 u}{\partial s\partial v} + \frac{1}{2}\sigma^2v\frac{\partial^2 u}{\partial v^2} \nonumber \\ 
+			   &+ rs\frac{\partial u}{\partial s} + \kappa(\eta-v)\frac{\partial u}{\partial v} - ru, \label{eqHSTop}
+\end{align}
+$s$ and $v$ are deterministic representations of the stochastic asset price and volatility processes, respectively.
+\par The Heston--Hull--White model is an extension of the Heston stochastic volatility model. The improvement consists of adding a stochastic interest rate that follows the Hull--White process \cite{hull1990pricing}, as the interest rates on the market are not constant. Another notable property of the Hull--White model is that the interest rates can be negative, as nowadays happens in some economies. The adapted dynamics for this model is as follows.
+\begin{align}
+\dif S(t) & =  R(t)S(t)\dif t + \sqrt{V(t)}S(t)\dif W_s(t), \label{hhwSDE1} \\
+\dif V(t) & =  \kappa(\eta-V(t))\dif t + \sigma_v \sqrt{V(t)}\dif W_v(t), \label{hhwSDE2} \\
+\dif R(t) & = a(b-R(t))\dif t + \sigma_r\dif W_r(t), {\color{white} \sqrt{V(t)}} \label{hhwSDE3}
+\end{align}
+where $R_t$ is the stochastic interest rate, $a$ is the speed of mean reversion of the interest rate process, $b$ is its mean reversion level, $\sigma_r$ is its volatility,  $W_s(t)$, $W_v(t)$,  and $W_r(t)$ are correlated Wiener processes.
+\par We can apply the It\^{o}'s lemma and the Feynman--Kac theorem to derive the pricing PDE
+\begin{align}
+\frac{\partial u}{\partial t}+\mathcal{L}_w u&=0, \nonumber \\
+u(s,v,r,T) &= \max(s-K,\ 0), \label{hhwPDE}
+\end{align}
+where
+\begin{align}
+\mathcal{L}_{w} u &\equiv  \frac{1}{2}vs^2\frac{\partial^2 u}{\partial s^2} + \frac{1}{2}\sigma_v^2v\frac{\partial^2 u}{\partial v^2}  + \frac{1}{2}\sigma_r^2\frac{\partial^2 u}{\partial r^2} + \nonumber \\
+                             & \rho_{sv}\sigma_v vs\frac{\partial^2 u}{\partial s\partial v} + \rho_{sr}\sigma_r \sqrt{v} s\frac{\partial^2 u}{\partial s\partial r} + \rho_{vr}\sigma_v\sigma_r \sqrt{v}\frac{\partial^2 u}{\partial v\partial r} + \nonumber \\
+                             & rs\frac{\partial u}{\partial s} + \kappa(\eta-v)\frac{\partial u}{\partial v} + a(b-r)\frac{\partial u}{\partial r} - ru, \label{eqHHWop}
+\end{align}
+\par Here, it becomes clear how advanced models easily grow in complexity, which in turn makes it difficult both to calibrate and valuate them in practice. Several other multi-factor models are analyzed in more detail in \cite{paper3, paper5}. 
 %
 %%
 \section{Pricing Methods}
 \label{sec:methods}
+\par
+%%%%%%%%%%%%%%%%%%%%%%%
+\par \noindent \color{red}\rule{\textwidth}{2pt}
+%%%%%%%%%%%%%%%%%%%%%%%
+The standard methods that are used for pricing option contracts in the absence of analytical or semi-analytical solutions are of three kinds: (i) stochastic such as Monte Carlo methods [48, 49, 73] and binomial and trinomial trees [29, 56], which deal with formulations similar to (3.1)–(3.2); (ii) deterministic methods such as finite difference methods [61, 94, 102], more rarely finite elements [3, 34] and finite volumes [46], which deal with formulations similar to (3.4)–(3.5); and (iii) Fourier transform based methods such as Carr– Madan [18], COS [35], which deal with formulations similar to (3.3). The third category is the most efficient [93], but requires the existence of either the density function or the characteristic function of the underlying process distribution, which in some cases does not exist, for example, when the volatility is determined by a parametric function [93]. Then the methods from categories (i) and (ii) can be useful. RBF methods belong to the second category and are gaining in popularity and becoming more and more actively researched in applications to problems in finance because they are able to cope with problems with moderately high dimensions efficiently [7, 54, 83].
+Practically, the deterministic methods work for problems with up to four dimensions and often employ splitting schemes to split a higher-dimensional problem into a set of one-dimensional problems [55, 60]. However, this procedure is rather complex in presence of nonzero correlations between the stochastic processes. Therefore, for problems with dimensionality greater than three, Monte Carlo methods were typically the only choice. In this thesis we develop and demonstrate that RBF methods can be an alternative to Monte Carlo methods for moderately high-dimensional problems.
+
+
+
 Talk about all the method groups from BENCHOP.
 %
 %
@@ -395,8 +514,8 @@ Paper VI
 %%%
 \chapter{Outlook and Further Development}
 \label{ch:outlook}
-Sumarize.
-
+It works. It is not the best. It is still promisingly developing.
+Write about the node placement in high-D!
 \backmatter
     % References
     % No restriction is set to the reference styles
