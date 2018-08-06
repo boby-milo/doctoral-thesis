@@ -95,4 +95,150 @@
 \newblock \emph{Pricing interest-rate derivative securities}.
 \newblock Rev. Financial Stud., 3: 573--592, 1990.
 
+\bibitem{glasserman2013monte}
+\bibnamefont{P.~Glasserman}.
+\newblock \emph{Monte Carlo Methods in Financial Engineering}.
+\newblock Springer New York, 2013.
+\newblock ISBN 9780387216171.
+
+\bibitem{longstaff2001valuing}
+\bibnamefont{F.~A. Longstaff and E.~S. Schwartz}.
+\newblock \emph{Valuing {A}merican options by simulation: a simple
+  least-squares approach}.
+\newblock The review of financial studies, 14(1): 113--147, 2001.
+
+\bibitem{cox1979option}
+\bibnamefont{J.~C. Cox, S.~A. Ross, M.~Rubinstein, et~al.}
+\newblock \emph{Option pricing: A simplified approach}.
+\newblock Journal of financial Economics, 7(3): 229--263, 1979.
+
+\bibitem{rendleman1979two}
+\bibnamefont{R.~J. Rendleman~Jr. and B.~J. Bartter}.
+\newblock \emph{Two-state option pricing}.
+\newblock The Journal of Finance, 34(5): 1093--1110, 1979.
+
+\bibitem{tavella2000pricing}
+\bibnamefont{D.~Tavella and C.~Randall}.
+\newblock \emph{Pricing Financial Instruments: The Finite Difference Method}.
+\newblock John Wiley \& Sons, 2000.
+\newblock ISBN 9780471197607.
+
+\bibitem{carr1999option}
+\bibnamefont{P.~Carr and D.~Madan}.
+\newblock \emph{Option valuation using the fast {F}ourier transform}.
+\newblock Journal of computational finance, 2(4): 61--73, 1999.
+
+\bibitem{fang2008novel}
+\bibnamefont{F.~Fang and C.~W. Oosterlee}.
+\newblock \emph{A novel pricing method for {E}uropean options based on
+  {F}ourier-cosine series expansions}.
+\newblock SIAM Journal on Scientific Computing, 31(2): 826--848, 2008.
+
+\bibitem{hon1999radial}
+\bibnamefont{Y.-C. Hon and X.-Z. Mao}.
+\newblock \emph{A radial basis function method for solving options pricing
+  model}.
+\newblock Financial Engineering, 8(1): 31--49, 1999.
+
+\bibitem{foulon2010adi}
+\bibnamefont{K.~J. In~'T~Hout and S.~Foulon}.
+\newblock \emph{{ADI} finite difference schemes for option pricing in the
+  heston model with correlation}.
+\newblock International Journal of Numerical Analysis and Modeling, 7(2):
+  303--320, 2010.
+
+\bibitem{kansa1990multiquadrics2}
+\bibnamefont{E.~J. Kansa}.
+\newblock \emph{Multiquadrics --- {A} scattered data approximation scheme with
+  applications to computational fluid-dynamics --- {II} solutions to parabolic,
+  hyperbolic and elliptic partial differential equations}.
+\newblock Computers \& mathematics with applications, 19(8-9): 147--161, 1990.
+
+\bibitem{kansa1990multiquadrics1}
+\bibnamefont{E.~J. Kansa}.
+\newblock \emph{Multiquadrics --- {A} scattered data approximation scheme with
+  applications to computational fluid-dynamics --- {I} surface approximations
+  and partial derivative estimates}.
+\newblock Computers \& Mathematics with applications, 19(8-9): 127--145, 1990.
+
+\bibitem{fasshauer2004using}
+\bibnamefont{G.~E. Fasshauer, A.~Q.~M. Khaliq, and D.~A. Voss}.
+\newblock \emph{Using meshfree approximation for multi-asset american options}.
+\newblock Journal of the Chinese Institute of Engineers, 27(4): 563--571, 2004.
+
+\bibitem{pettersson2008improved}
+\bibnamefont{U.~Pettersson, E.~Larsson, G.~Marcusson, and J.~Persson}.
+\newblock \emph{Improved radial basis function methods for multi-dimensional
+  option pricing}.
+\newblock Journal of Computational and Applied Mathematics, 222(1): 82--93,
+  2008.
+
+\bibitem{tolstykh2000using}
+\bibnamefont{A.~I. Tolstykh}.
+\newblock \emph{On using {R}{B}{F}-based differencing formulas for unstructured
+  and mixed structured--unstructured grid calculations}.
+\newblock In \emph{Proceedings of the 16th IMACS World Congress on Scientific
+  Computation, Applied Mathematics and Simulation, Lausanne, Switzerland}, ~6.
+  2000.
+
+\bibitem{wright2006scattered}
+\bibnamefont{G.~B. Wright and B.~Fornberg}.
+\newblock \emph{Scattered node compact finite difference-type formulas
+  generated from radial basis functions}.
+\newblock Journal of Computational Physics, 212(1): 99--123, 2006.
+
+\bibitem{wendland2002fast}
+\bibnamefont{H.~Wendland}.
+\newblock \emph{Fast evaluation of radial basis functions: Methods based on
+  partition of unity}.
+\newblock In \emph{Approximation Theory X: Wavelets, Splines, and
+  Applications}. Citeseer, 2002.
+
+\bibitem{davydov2011adaptive}
+\bibnamefont{O.~Davydov and D.~T. Oanh}.
+\newblock \emph{Adaptive meshless centres and {R}{B}{F} stencils for {P}oisson
+  equation}.
+\newblock Journal of Computational Physics, 230(2): 287--304, 2011.
+
+\bibitem{fornberg2011stabilization}
+\bibnamefont{B.~Fornberg and E.~Lehto}.
+\newblock \emph{Stabilization of {RBF}-generated finite difference methods for
+  convective {P}{D}{E}s}.
+\newblock Journal of Computational Physics, 230(6): 2270--2285, 2011.
+
+\bibitem{flyer2012guide}
+\bibnamefont{N.~Flyer, E.~Lehto, S.~Blaise, G.~B. Wright, and A.~St-Cyr}.
+\newblock \emph{A guide to {R}{B}{F}-generated finite differences for nonlinear
+  transport: Shallow water simulations on a sphere}.
+\newblock Journal of Computational Physics, 231(11): 4078--4095, 2012.
+
+\bibitem{larsson2013stable}
+\bibnamefont{E.~Larsson, E.~Lehto, A.~Heryudono, and B.~Fornberg}.
+\newblock \emph{Stable computation of differentiation matrices and scattered
+  node stencils based on {G}aussian radial basis functions}.
+\newblock SIAM Journal on Scientific Computing, 35(4): A2096--A2119, 2013.
+
+\bibitem{fornberg2013stable}
+\bibnamefont{B.~Fornberg, E.~Lehto, and C.~Powell}.
+\newblock \emph{Stable calculation of {G}aussian-based {RBF}--{FD} stencils}.
+\newblock Comput. Math. Appl., 65(4): 627--637, 2013.
+
+\bibitem{flyer2016enhancing}
+\bibnamefont{N.~Flyer, G.~A. Barnett, and L.~J. Wicker}.
+\newblock \emph{Enhancing finite differences with radial basis functions:
+  experiments on the {N}avier--{S}tokes equations}.
+\newblock Journal of Computational Physics, 316: 39--62, 2016.
+
+\bibitem{bayona2017role}
+\bibnamefont{V.~Bayona, N.~Flyer, B.~Fornberg, and G.~A. Barnett}.
+\newblock \emph{On the role of polynomials in {RBF}--{FD} approximations: {II}.
+  {N}umerical solution of elliptic {P}{D}{E}s}.
+\newblock Journal of Computational Physics, 332: 257--273, 2017.
+
+\bibitem{flyer2016on}
+\bibnamefont{N.~Flyer, B.~Fornberg, V.~Bayona, and G.~A. Barnett}.
+\newblock \emph{On the role of polynomials in {RBF}--{FD} approximations: {I}.
+  {I}nterpolation and accuracy}.
+\newblock Journal of Computational Physics, 321: 21--38, 2016.
+
 \end{thebibliography}
