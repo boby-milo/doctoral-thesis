@@ -1,44 +1,6 @@
 \begin{thebibliography}{10}
 \providecommand{\bibnamefont}[1]{#1}
 
-\bibitem{paper1}
-\bibnamefont{S.~Milovanovi{\'c} and L.~von Sydow}.
-\newblock \emph{Radial basis function generated finite differences for option
-  pricing problems}.
-\newblock Computers \& Mathematics with Applications, 75(4): 1462--1481, 2018.
-
-\bibitem{paper2}
-\bibnamefont{L.~von Sydow, L.~Josef~H{\"o}{\"o}k, E.~Larsson, E.~Lindstr{\"o}m,
-  S.~Milovanovi{\'c}, J.~Persson, V.~Shcherbakov, Y.~Shpolyanskiy,
-  S.~Sir{\'e}n, J.~Toivanen, et~al.}
-\newblock \emph{{BENCHOP} --- the {BENCH}marking project in option pricing}.
-\newblock International Journal of Computer Mathematics, 92(12): 2361--2379,
-  2015.
-
-\bibitem{paper3}
-\bibnamefont{S.~Milovanovi{\'c} and V.~Shcherbakov}.
-\newblock \emph{Pricing derivatives under multiple stochastic factors by
-  localized radial basis function methods}.
-\newblock arXiv preprint arXiv:1711.09852, 2017.
-
-\bibitem{paper4}
-\bibnamefont{L.~von Sydow, S.~Milovanovi{\'c}, E.~Larsson, K.~in~'t Hout,
-  M.~Wiktorsson, C.~W. Oosterlee, V.~Shcherbakov, M.~Wyns, A.~Leitao, S.~Jain,
-  T.~Haentjens, and J.~Wald{\'e}n}.
-\newblock \emph{{BENCHOP}--{SLV}: The {BENCH}marking project in option pricing
-  --- stochastic and local volatility problems}, July 2018.
-\newblock Submited to \emph{International Journal of Computer Mathematics}.
-
-\bibitem{paper5}
-\bibnamefont{S.~Milovanovi{\'c} and L.~von Sydow}.
-\newblock \emph{Paper 5}, July 2018.
-\newblock Submited to \emph{ArXiv}.
-
-\bibitem{paper6}
-\bibnamefont{S.~Milovanovi{\'c} and L.~von Sydow}.
-\newblock \emph{Paper 6}, July 2018.
-\newblock Submited to \emph{ArXiv}.
-
 \bibitem{hull2017options}
 \bibnamefont{J.~C. Hull}.
 \newblock \emph{Options, Futures and Other Derivatives}.
@@ -79,6 +41,18 @@
 \newblock The Bell Journal of Economics and Management Science, 4: 141--183,
   1973.
 
+\bibitem{merton1976option}
+\bibnamefont{R.~C. Merton}.
+\newblock \emph{Option pricing when underlying stock returns are
+  discontinuous}.
+\newblock Journal of financial economics, 3(1-2): 125--144, 1976.
+
+\bibitem{bates1996jumps}
+\bibnamefont{D.~S. Bates}.
+\newblock \emph{Jumps and stochastic volatility: Exchange rate processes
+  implicit in {D}eutsche mark options}.
+\newblock The Review of Financial Studies, 9(1): 69--107, 1996.
+
 \bibitem{dupire1994pricing}
 \bibnamefont{B.~Dupire et~al.}
 \newblock \emph{Pricing with a smile}.
@@ -95,17 +69,49 @@
 \newblock \emph{Pricing interest-rate derivative securities}.
 \newblock Rev. Financial Stud., 3: 573--592, 1990.
 
-\bibitem{glasserman2013monte}
-\bibnamefont{P.~Glasserman}.
-\newblock \emph{Monte Carlo Methods in Financial Engineering}.
-\newblock Springer New York, 2013.
-\newblock ISBN 9780387216171.
+\bibitem{metropolis1949monte}
+\bibnamefont{N.~Metropolis and S.~Ulam}.
+\newblock \emph{The {M}onte {C}arlo method}.
+\newblock Journal of the American statistical association, 44(247): 335--341,
+  1949.
+
+\bibitem{boyle1977options}
+\bibnamefont{P.~P. Boyle}.
+\newblock \emph{Options: A {M}onte {C}arlo approach}.
+\newblock Journal of financial economics, 4(3): 323--338, 1977.
 
 \bibitem{longstaff2001valuing}
 \bibnamefont{F.~A. Longstaff and E.~S. Schwartz}.
 \newblock \emph{Valuing {A}merican options by simulation: a simple
   least-squares approach}.
 \newblock The review of financial studies, 14(1): 113--147, 2001.
+
+\bibitem{jain2015stochastic}
+\bibnamefont{S.~Jain and C.~W. Oosterlee}.
+\newblock \emph{The stochastic grid bundling method: Efficient pricing of
+  bermudan options and their greeks}.
+\newblock Applied Mathematics and Computation, 269: 412--431, 2015.
+
+\bibitem{paskov1995faster}
+\bibnamefont{S.~H. Paskov, J.~F. Traub, et~al.}
+\newblock \emph{Faster valuation of financial derivatives}.
+\newblock Journal of portfolio management, 22(1): 113, 1995.
+
+\bibitem{dick2013high}
+\bibnamefont{J.~Dick, F.~Y. Kuo, and I.~H. Sloan}.
+\newblock \emph{High-dimensional integration: the quasi-{M}onte {C}arlo way}.
+\newblock Acta Numerica, 22: 133--288, 2013.
+
+\bibitem{giles2008multilevel}
+\bibnamefont{M.~B. Giles}.
+\newblock \emph{Multilevel monte carlo path simulation}.
+\newblock Operations Research, 56(3): 607--617, 2008.
+
+\bibitem{rebentrost2018quantum}
+\bibnamefont{P.~Rebentrost, B.~Gupt, and T.~R. Bromley}.
+\newblock \emph{Quantum computational finance: {M}onte {C}arlo pricing of
+  financial derivatives}.
+\newblock arXiv preprint, arXiv:1805.00109[quant-ph], 2018.
 
 \bibitem{cox1979option}
 \bibnamefont{J.~C. Cox, S.~A. Ross, M.~Rubinstein, et~al.}
@@ -116,12 +122,6 @@
 \bibnamefont{R.~J. Rendleman~Jr. and B.~J. Bartter}.
 \newblock \emph{Two-state option pricing}.
 \newblock The Journal of Finance, 34(5): 1093--1110, 1979.
-
-\bibitem{tavella2000pricing}
-\bibnamefont{D.~Tavella and C.~Randall}.
-\newblock \emph{Pricing Financial Instruments: The Finite Difference Method}.
-\newblock John Wiley \& Sons, 2000.
-\newblock ISBN 9780471197607.
 
 \bibitem{carr1999option}
 \bibnamefont{P.~Carr and D.~Madan}.
@@ -134,18 +134,96 @@
   {F}ourier-cosine series expansions}.
 \newblock SIAM Journal on Scientific Computing, 31(2): 826--848, 2008.
 
+\bibitem{fang2009pricing}
+\bibnamefont{F.~Fang and C.~W. Oosterlee}.
+\newblock \emph{Pricing early-exercise and discrete barrier options by
+  {F}ourier-cosine series expansions}.
+\newblock Numerische Mathematik, 114(1):~27, 2009.
+
+\bibitem{ruijter2012two}
+\bibnamefont{M.~J. Ruijter and C.~W. Oosterlee}.
+\newblock \emph{Two-dimensional fourier cosine series expansion method for
+  pricing financial options}.
+\newblock SIAM Journal on Scientific Computing, 34(5): B642--B671, 2012.
+
+\bibitem{brennan1976pricing}
+\bibnamefont{M.~J. Brennan and E.~S. Schwartz}.
+\newblock \emph{The pricing of equity-linked life insurance policies with an
+  asset value guarantee}.
+\newblock Journal of Financial Economics, 3(3): 195--213, 1976.
+
+\bibitem{brennan1978finite}
+\bibnamefont{M.~J. Brennan and E.~S. Schwartz}.
+\newblock \emph{Finite difference methods and jump processes arising in the
+  pricing of contingent claims: A synthesis}.
+\newblock Journal of Financial and Quantitative Analysis, 13(3): 461--474,
+  1978.
+
+\bibitem{ikonen2004operator}
+\bibnamefont{S.~Ikonen and J.~Toivanen}.
+\newblock \emph{Operator splitting methods for {A}merican option pricing}.
+\newblock Applied mathematics letters, 17(7): 809--814, 2004.
+
+\bibitem{reisinger2007efficient}
+\bibnamefont{C.~Reisinger and G.~Wittum}.
+\newblock \emph{Efficient hierarchical approximation of high-dimensional option
+  pricing problems}.
+\newblock SIAM Journal on Scientific Computing, 29(1): 440--458, 2007.
+
+\bibitem{reisinger2015numerical}
+\bibnamefont{C.~Reisinger and R.~Wissmann}.
+\newblock \emph{Numerical valuation of derivatives in high-dimensional settings
+  via partial differential equation expansions}.
+\newblock Journal of Computational Finance, 18(4): 95--127, 2015.
+
+\bibitem{foulon2010adi}
+\bibnamefont{K.~J. in~'T~Hout and S.~Foulon}.
+\newblock \emph{{ADI} finite difference schemes for option pricing in the
+  heston model with correlation}.
+\newblock International Journal of Numerical Analysis and Modeling, 7(2):
+  303--320, 2010.
+
+\bibitem{haentjens2012adi}
+\bibnamefont{H.~T. and K.~in~'t Hout}.
+\newblock \emph{Alternating direction implicit finite difference schemes for
+  the {H}eston--{H}ull--{W}hite partial differential equation}.
+\newblock The Journal of Computational Finance, 16(1): 83--110, 2012.
+
+\bibitem{wang2005high}
+\bibnamefont{X.~Wang and I.~H. Sloan}.
+\newblock \emph{Why are high-dimensional finance problems often of low
+  effective dimension?}
+\newblock SIAM Journal on Scientific Computing, 27(1): 159--183, 2005.
+
+\bibitem{zvan1998general}
+\bibnamefont{R.~Zvan, P.~Forsyth, and K.~Vetzal}.
+\newblock \emph{A general finite element approach for pde option pricing
+  models}.
+\newblock methods, 19:~3, 1998.
+
+\bibitem{forsyth1999finite}
+\bibnamefont{P.~Forsyth, K.~Vetzal, and R.~Zvan}.
+\newblock \emph{A finite element approach to the pricing of discrete lookbacks
+  with stochastic volatility}.
+\newblock Applied Mathematical Finance, 6(2): 87--106, 1999.
+
+\bibitem{heinecke2012highly}
+\bibnamefont{A.~Heinecke, S.~Schraufstetter, and H.-J. Bungartz}.
+\newblock \emph{A highly parallel black--scholes solver based on adaptive
+  sparse grids}.
+\newblock International Journal of Computer Mathematics, 89(9): 1212--1238,
+  2012.
+
+\bibitem{zvan2001finite}
+\bibnamefont{R.~Zvan, P.~A. Forsyth, and K.~Vetzal}.
+\newblock \emph{A finite volume approach for contingent claims valuation}.
+\newblock IMA Journal of Numerical Analysis, 21(3): 703--731, 2001.
+
 \bibitem{hon1999radial}
 \bibnamefont{Y.-C. Hon and X.-Z. Mao}.
 \newblock \emph{A radial basis function method for solving options pricing
   model}.
 \newblock Financial Engineering, 8(1): 31--49, 1999.
-
-\bibitem{foulon2010adi}
-\bibnamefont{K.~J. In~'T~Hout and S.~Foulon}.
-\newblock \emph{{ADI} finite difference schemes for option pricing in the
-  heston model with correlation}.
-\newblock International Journal of Numerical Analysis and Modeling, 7(2):
-  303--320, 2010.
 
 \bibitem{kansa1990multiquadrics2}
 \bibnamefont{E.~J. Kansa}.
@@ -161,17 +239,17 @@
   and partial derivative estimates}.
 \newblock Computers \& Mathematics with applications, 19(8-9): 127--145, 1990.
 
-\bibitem{fasshauer2004using}
-\bibnamefont{G.~E. Fasshauer, A.~Q.~M. Khaliq, and D.~A. Voss}.
-\newblock \emph{Using meshfree approximation for multi-asset american options}.
-\newblock Journal of the Chinese Institute of Engineers, 27(4): 563--571, 2004.
-
 \bibitem{pettersson2008improved}
 \bibnamefont{U.~Pettersson, E.~Larsson, G.~Marcusson, and J.~Persson}.
 \newblock \emph{Improved radial basis function methods for multi-dimensional
   option pricing}.
 \newblock Journal of Computational and Applied Mathematics, 222(1): 82--93,
   2008.
+
+\bibitem{fasshauer2004using}
+\bibnamefont{G.~E. Fasshauer, A.~Q.~M. Khaliq, and D.~A. Voss}.
+\newblock \emph{Using meshfree approximation for multi-asset american options}.
+\newblock Journal of the Chinese Institute of Engineers, 27(4): 563--571, 2004.
 
 \bibitem{tolstykh2000using}
 \bibnamefont{A.~I. Tolstykh}.

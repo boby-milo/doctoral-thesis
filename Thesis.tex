@@ -77,7 +77,8 @@
     \newfontfamily\cyrillicfont[Script=Cyrillic]{Gill Sans}
     \newfontfamily\swedishfont{Gill Sans}
     
-    \newfontfamily\myfont{Gill Sans}
+    \newfontfamily\myfont{Gill Sans Italic}
+    \DeclareTextFontCommand{\gillsansitalicfont}{\myfont}
     
     \newfontfamily\noteunic{Gill Sans Light}
     \DeclareTextFontCommand{\bibnamefont}{\noteunic}
@@ -124,9 +125,11 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \makeatletter
-\def\hlinewd#1{%
-\noalign{\ifnum0=`}\fi\hrule \@height #1 %
-\futurelet\reserved@a\@xhline}
+\def\hlinewd#1{\noalign{\ifnum0=`}\fi\hrule \@height #1\futurelet\reserved@a\@xhline}
+\usepackage{arydshln}
+\setlength{\arrayrulewidth}{1pt}
+
+
 \makeatother
 
 \usepackage{float}
@@ -167,14 +170,38 @@
 
 % Environment used to create a list of papers   
     \begin{listofpapers}
-    \item Radial Basis Function generated Finite Differences for Option Pricing Problems \cite{paper1}. \label{paper1}
-    \item BENCHOP --- The BENCHmarking Project in Option Pricing  \label{paper2}
-    \item BENCHOP-SLV: The BENCHmarking project in Option Pricing --- Stochastic and Local Volatility problems \label{paper4}
-    \item Pricing Derivatives under Multiple Stochastic Factors by Localized Radial Basis Function Methods \label{paper3}
-    \item Pricing Financial Derivatives using Radial Basis Function generated Finite Differences with Polyharmonic Splines on Smoothly Varying Node Layouts \label{paper5}
-    \item SMOOTHING PAPER TITLE \label{paper6}
+%    \small{
+    \item
+    \bibnamefont{S. Milovanović and L. von Sydow}.\ %
+    \emph{Radial Basis Function generated Finite Differences for Option Pricing Problems.}\ %
+    Comp. Math. Appl., 75(4):1462--1481, 2017. \label{paper1} %
+    \item
+    \bibnamefont{Slobodan Milovanović.}\ %
+    \emph{Pricing Financial Derivatives using Radial Basis Function generated Finite Differences with Polyharmonic Splines on Smoothly Varying Node Layouts.}\ %
+    arXiv preprint, arXiv:1808.02365[q-fin.CP], 2018. \label{paper2} %
+    \item
+    \bibnamefont{S. Milovanović and L. von Sydow.}\ %
+    \emph{A High Order Method for Pricing of Financial Derivatives using Radial Basis Function fenerated Finite Differences.}\ %
+    arXiv preprint, arXiv:xxxx.yyyyy[q-fin.CP], 2018. \label{paper3} %
+    \item
+    \bibnamefont{S. Milovanović and V. Shcherbakov.}\ % 
+    \emph{Pricing Derivatives under Multiple Stochastic Factors by Localized Radial Basis Function Methods.}\ %  	  
+    Journ. Comp. Fin., (in review), 2018. \label{paper4} %arXiv:1711.09852[q-fin.CP] 
+    \item
+    \bibnamefont{L. von Sydow, L. J. Höök, E. Larsson, E. Lindström, S. Milovanović, J. Persson, V. Shcherbakov, Y. Shpolyanskiy, S. Sirén, J. Toivanen, J. Waldén, M. Wiktorsson, J. Levesley, J. Li, C. W. Oosterlee, M. J. Ruijter, A. Toropov, and Y. Zhao.}\ % 
+    \emph{BENCHOP --- The BENCHmarking Project in Option Pricing.}\ %  	  
+    Int. Journ. Comp. Math., 92(12): 2361--2379, 2015. \label{paper5}
+    \item
+    \bibnamefont{L. von Sydow, S. Milovanović, E. Larsson, K. in 't Hout, M. Wiktorsson, C. W. Oosterlee, V. Shcherbakov, M. Wyns, A. Leitao, S. Jain, T. Haentjens, and J. Waldén.}\ % 
+    \emph{BENCHOP: The BENCHmarking Project in Option Pricing --- Stochastic and local volatility problems.}\ %  	  
+    Int. Journ. Comp. Math., (in review), 2018. \label{paper6}
     \end{listofpapers}
-
+	
+    \chapter*{Related Work}
+    \noindent The following ongoing project, although not included, is related to the contents of the present thesis.\\\\
+    \bibnamefont{L. von Sydow, E. Larsson, S. Milovanović, V. Shcherbakov, et al.} 
+    \emph{BENCHOP: The BENCHmarking Project in Option Pricing --- Basket Options,}  	  
+    manuscript in preparation, 2018. \label{paper7}	
 
     \begingroup
         % To adjust the indentation in your table of contents, uncomment and enter the widest numbers for each level
@@ -205,9 +232,9 @@
 %\addtolength{\jot}{0.3em}
 \chapter{Introduction}
 \label{ch:introduction}
-\par The purpose of this thesis is to report on state of the art in Radial Basis Function generated Finite Difference (RBF-FD) methods for pricing of financial derivatives. Based on the six appended papers \cite{paper1,paper2,paper3,paper4,paper5,paper6}, this work provides a detailed overview of RBF-FD properties and challenges that arise when the RBF-FD methods are used in financial applications. Moreover, with this manuscript, we aim to motivate further development of RBF-FD for finance.
+\par The purpose of this thesis is to report on state of the art in Radial Basis Function generated Finite Difference (RBF-FD) methods for pricing of financial derivatives. Based on the six appended papers which are referred to by their Roman numerals, this work provides a detailed overview of RBF-FD properties and challenges that arise when the RBF-FD methods are used in financial applications. Moreover, with this manuscript, we aim to motivate further development of RBF-FD for finance.
 \par Across the financial markets of the world, financial derivatives such as futures, options, and others, are traded in substantial volumes. The value of all assets that underly outstanding derivatives transactions is several times larger than the gross world product (GWP). Financial derivatives are the most commonly used instruments when it comes to hedging risks, speculation based investing, and performing arbitrage. Therefore, knowing the prices of those financial instruments is of utmost importance at any given time. In order to make that possible in practice, it is often required to employ a set of skills incorporating knowledge in financial theory, engineering methods, mathematical tools, and programming practice --- which altogether constitute the field known as \emph{financial engineering}. 
-\par Many of theoretical pricing models for financial derivatives can be represented using partial differential equations (PDEs). In many cases, those equations are time-dependent, of high spatial dimensions, and with challenging boundary conditions --- which most often makes them analytically unsolvable. In those cases, we need to utilize numerical approximation as a mean of estimating their solution. The field of \emph{numerical analysis} is concerned with obtaining approximate solutions while maintaining reasonable bounds on errors. Unfortunately, there is no universal numerical method which could be used to solve all problems of this type efficiently. In fact, there are tremendously many numerical methods for solving different types of differential equations, and all those methods are featured with their own limitations in performance, stability, and accuracy --- mostly dependent on details of the problems they aim to solve. Therefore, carefully selecting and developing numerical methods for particular applications has been the only way to build efficient PDE solvers in ongoing practice. 
+\par Many of theoretical pricing models for financial derivatives can be represented using partial differential equations (PDEs). In many cases, those equations are time-dependent, of high spatial dimension, and with challenging boundary conditions --- which most often makes them analytically unsolvable. In those cases, we need to utilize numerical approximation as a mean of estimating their solution. The field of \emph{numerical analysis} is concerned with obtaining approximate solutions while maintaining reasonable bounds on errors. Unfortunately, there is no universal numerical method which can be used to solve all problems of this type efficiently. In fact, there are tremendously many numerical methods for solving different types of differential equations, and all those methods are featured with their own limitations in performance, stability, and accuracy --- mostly dependent on details of the problems they aim to solve. Therefore, carefully selecting and developing numerical methods for particular applications has been the only way to build efficient PDE solvers in ongoing practice. 
 \par RBF-FD is a recent numerical method with potential to efficiently approximate solutions of PDEs in finance. Over the past years, besides the purely academic development and research of its numerical properties, the method has been mainly applied for simulations of atmospheric phenomena. As its name suggests, the RBF-FD method is of a finite difference type, from the radial basis function family. As a finite difference method, RBF-FD approximates differential equations by linear systems of algebraic equations, known as difference equations. Radial basis functions (RBFs) are used as interpolants that enable local approximations of differential operators that are necessary for constructing the difference equations. Constructed like that, the method is featured with a sparse matrix of the linear system of difference equations, and it is relatively simple to implement like the standard finite difference methods. Moreover, the method is mesh-free, meaning that it does not require a structured discretization of the computational domain which makes it equally easy to use in spaces of different dimensions, and it is of a customizable order of accuracy --- which are the features it inherits from the global radial basis function approximations. It is those properties that led us to recognize RBF-FD as a method with high potential for efficiently solving some analytically unfeasible and computationally challenging pricing problems in finance.
 \par Nevertheless, being a young method, RBF-FD is still under intense development and we face many challenges when moving from simple theoretical cases toward more complex real-world applications. The core of this thesis deals with finding solutions for overcoming obstacles when financial derivatives are priced using RBF-FD to solve PDEs with several spatial dimensions. Thus, it represents a contribution to making the RBF-FD methods more reliable and efficient for use in financial applications. 
 \par The rest of this manuscript is organized as follows. We introduce and define financial derivatives in Chapter \ref{ch:finder}. An overview of some popular financial models and techniques for the pricing of options are presented in Chapter \ref{ch:optionpricing}. We present the features and properties of RBF-FD methods for solving PDEs in finance in Chapter \ref{ch:rbffd}. Finally, we conclude with some unsolved challenges and suggestions for further development of the RBF-FD method for financial applications in Chapter \ref{ch:outlook}.
@@ -226,67 +253,79 @@ The estimated total notional value of these financial instruments has been above
 %%
 \section{Forwards and Futures}
 \label{sec:futures}
-\par A \emph{forward} contract is an agreement between two parties signed at $t=t_0$ to buy or sell an underlying $S(t)$ at a certain future time $T$ for a certain price $K(t_0)=K_0$. The price $K(t)$ is called the \emph{forward price} of the contract, and it is determined at time $t_0$ in such a way that the value of the forward contract at the time of signing is equal to zero, i.e., $u(t_0,S(t_0))=u_0=0$. One of the parties in the contract takes a \emph{long} position and agrees to payoff 
+\par A \emph{forward} contract is an agreement between two parties signed at $t=t_0$ to buy or sell an underlying $S(t)$ at a certain future time $T$ for a certain price $K(t_0)=K_0$. The price $K(t)$ is called the \emph{forward price} of the contract, and it is determined at time $t_0$ in such a way that the value of the forward contract at the time of signing is equal to zero, i.e., $u(t_0,S(t_0))=u_0=0$. One of the parties in the contract takes a \emph{long} position and agrees to the payoff 
 $$g_l(S(T))=S(T)-K_0.$$
-The other party assumes a \emph{short} position and agrees to sell $S(t)$ at the same time $T$ for the stipulated forward price $K_0$, effectively obliging to payoff 
+The other party assumes a \emph{short} position and agrees to sell $S(t)$ at the same time $T$ for the stipulated forward price $K_0$, effectively obliging to the payoff 
 $$g_s(S(T))=K_0-S(T).$$
 Forward contracts are traded in over-the-counter markets and may be further customized according to the preferences of the signing parties.
 \par A \emph{futures} contract is an exchange-traded, and thus standardized financial derivative, that is very similar to a forward contract. It is in agreement signed at no cost between two parties at $t=t_0$ to buy or sell an underlying $S(t)$ at a certain time $T$. The principal difference from the forward contract lies in the way in which the payments are realized. Namely, at every point in time $t_0 \leq t \leq T$, there exists a price $K(t)$, now called the \emph{futures price} of the contract, that is quoted on the exchange. At time $T$, the long position holder of the contract is entitled to the payoff 
 $$g_l(S(T))=S(T)-K(T),$$
 while the short position holder gets 
 $$g_s(S(T))=K(T)-S(T).$$
-Moreover, during an arbitrary time interval $(t_i,t_j]$, where $t_0 \leq t_i < t_j < T$, the long holder of the contract receives the amount $K(t_j)-K(t_i)$, and the short holder receives $K(t_i)-K(t_j)$. The futures price $K(t)$ evolves in such way that obtaining the futures contract at any time $t_0 \leq t \leq T$ should incur a zero cost, i.e., $u(t,S(t))=0$. 
-\par As far as the pricing of forwards and futures is concerned, we should stress that these contracts are designed in such a way that their values are equal to zero at the signing. Thus, computational problems of interest here would be aimed at fairly determining the defined forward and futures prices. There are many stochastic techniques that successfully deal with these problems, and hence we do not put our main focus on them in this thesis. For more details on forwards and futures, it is wise to turn to \cite{hull2017options,duffie1989futures}.  
+Moreover, during an arbitrary time interval $(t_i,t_j]$, where $t_0 \leq t_i < t_j < T$, the long holder of the contract receives the amount $K(t_j)-K(t_i)$, and the short holder receives $K(t_i)-K(t_j)$. The futures price $K(t)$ evolves in such way that obtaining the futures contract at any time $t_0 \leq t \leq T$ incurs a zero cost, i.e., $u(t,S(t))=0$. 
+\par As far as the pricing of forwards and futures is concerned, it is clear that these contracts are designed in such a way that their prices are equal to zero at the signing. Thus, computational problems of interest here are related to fairly determining the defined forward and futures prices. For more details on forwards and futures, it is wise to turn to \cite{hull2017options,duffie1989futures}.  
 %
 %%
 \section{Options}
 \label{sec:options}
 \par An \emph{option} is a contract that gives its holder the right, but not the obligation to buy or sell an underlying $S(t)$ by a certain time of maturity $T$ for a certain price $K$. The price $K$ in the contract is known as the strike price. If the contract gives the buying right to its owner, then it is called a \emph{call} option, and if it gives the selling right, it is called a \emph{put} option. Call options are characterized with 
-$$g_c(S(T))=\max(S(T)-K,\ 0),$$
+\begin{equation}
+\label{eq:callop}
+g_c(S(T))=\max(S(T)-K,\ 0),
+\end{equation}
 and put options with 
-$$g_p(S(T))=\max(K-S(T),\ 0),$$
-as their respective payoff functions. Options that can be exercised at any time $t_0 < t \leq T$ are called \emph{American} options, and options that can be exercised only at time $t=T$ are known as \emph{European} options. Since options are traded both on exchanges and in over-the-counter markets, there are many more types of them (e.g., binary options, barrier options, Asian options, Bermudan options, and other exotic options) --- as the ways of customizing them are limitless. For instance, \emph{basket} options are defined in such a way that their payoffs may depend on more than one underlying asset, consequently requiring a multi-dimensional pricing model in order to estimate their value. An example of such a multi-asset derivative would be an arithmetic European call basket option issued on $D$ underlying assets $S_1,\ldots,S_D$, whose payoff function is 
-$$g_{bc}(S_1,\ldots,S_D) = \max\left(\frac{1}{D}\sum_{d=1}^D S_d - K,\ 0\right).$$
-Moreover, for a given underlying $S$, there may be a large number of options with different dates of expiration $T$ and different strike prices $K$.
+\begin{equation}
+\label{eq:putop}
+g_p(S(T))=\max(K-S(T),\ 0),
+\end{equation}
+as their respective payoff functions. Options that can be exercised at any time $t_0 < t \leq T$ are called \emph{American} options, and options that can be exercised only at time $t=T$ are known as \emph{European} options. Since options are traded both on exchanges and in over-the-counter markets, there are many more types of them (e.g., binary options, barrier options, Asian options, Bermudan options, and other exotic options) --- as the ways of customizing them are limitless. For instance, \emph{rainbow} options are defined in such a way that their payoffs may depend on more than one underlying asset, consequently requiring a multi-dimensional pricing model in order to estimate their value. An example of such a multi-asset derivative is an arithmetic European call basket option issued on $D$ underlying assets $S_1,\ldots,S_D$, whose payoff function is 
+\begin{equation}
+\label{eq:basketop}
+g_{bc}(S_1(T),\ldots,S_D(T)) = \max\left(\frac{1}{D}\sum_{d=1}^D S_d(T) - K,\ 0\right).
+\end{equation}
+Moreover, for a given underlying $S$, there may be a large number of options with different dates of expiration $T$, and different strike prices $K$.
 \par Due to their versatility, options have been among the most popular financial derivatives on the financial markets, and many examples of their applications can be found in \cite{hull2017options}.
 %
 %
 %%%
 \chapter{Option Pricing}
 \label{ch:optionpricing}
-\par We should emphasize that an option gives the right to the holder to do something, and that the holder does not need to use that right. This is the main difference between options and other financial derivatives. Whereas it costs nothing to buy a forward or futures contract, there is always a non-negative price to acquiring an option. This very detail is the cornerstone of one of the most involving fundamental problems in financial markets, known as \emph{option pricing}. Depending on the option characteristics, the pricing problem can be as trivial as deriving an analytical pricing formula --- such is the case for the standard European call option with certain market assumptions. Nevertheless, in many other cases of option valuation, we are faced against an eternal struggle of balancing between reasonable market assumptions for deriving delicate mathematical models and developing efficient numerical solvers that are able to estimate the solutions of the equations posed by those models.
-\par As the option gives stipulated rights, but not the obligations to their holder, it is natural to assume that this contract must have some objective non-negative value at any time. The central task of option pricing is to objectively determine the fair value of an option at any given time $t \leq T$. The fundamental mathematical framework for approaching this problem is the \emph{arbitrage theory}. In order to model option prices, the theory heavily relies on carefully argued assumptions about the market and mathematical ingredients such as martingale measures, stochastic differential equations (SDEs), It\^o calculus, Feynmann--Kac representations, and PDEs. We refer to these topics throughout the manuscript in limited capacity, as the detailed definitions and proofs can be found elegantly presented in \cite{bjork2009arbitrage}.
+\par We emphasize that an option gives the right to the holder to do something, and that the holder does not need to use that right. This is the main difference between options and other financial derivatives. Whereas it costs nothing to buy a forward or futures contract, there is always a non-negative price to acquiring an option. This very detail is the cornerstone of one of the most involving fundamental problems in financial markets, known as \emph{option pricing}. Depending on the option characteristics, the pricing problem can be as trivial as deriving an analytical pricing formula --- such is the case for the standard European call option with certain market assumptions. Nevertheless, in many other cases of option valuation, we are faced against an eternal struggle of balancing between reasonable market assumptions for deriving delicate mathematical models and developing efficient numerical solvers that are able to estimate the solutions of the equations posed by those models.
+\par As the option gives stipulated rights, but not the obligations to their holder, it is natural to assume that this contract must have some objective non-negative value at any time. The central task of option pricing is to objectively determine the fair value of an option at any given time $t \leq T$. The fundamental mathematical framework for approaching this problem is the \emph{arbitrage theory}. In order to model option prices, the theory heavily relies on carefully argued assumptions about the market and mathematical ingredients such as martingale measures, stochastic differential equations (SDEs), It\^o calculus, Feynman--Kac representations, and PDEs. We refer to these topics throughout the manuscript in limited capacity, as the detailed definitions and proofs can be found elegantly presented in \cite{bjork2009arbitrage}.
 %
 %%
 \section{Market Models}
 \label{sec:models}
-\par In order to be able to price an option, we need a set of assumptions that we use to build a financial market model. The models range from the simple ones capturing a rough approximate picture of reality to extremely advanced ones aimed at capturing very fine details of the market. Once the model is defined, we should be able to set up an option pricing problem that needs to be solved in order to estimate the option value. Difficulty of such pricing problems strongly depends on complexity of the chosen market model as well as on complexity of the option that we want to price.  
+\par In order to be able to price an option, we need a set of assumptions that can be used to build a financial market model. The models range from the simple ones capturing a rough approximate picture of reality to extremely advanced ones aimed at capturing very fine details of the market. Once the model is defined, we should be able to set up an option pricing problem that needs to be solved in order to estimate the option value. Difficulty of such pricing problems strongly depends on the complexity of the chosen market model as well as on the complexity of the specifics in the option contract that we want to price.  
 %
 \subsection{Black--Scholes--Merton Model}
 \label{sub:bs}
-\par We start by considering a plain European option on a stock that does not pay dividends, under the Black--Scholes--Merton model \cite{black73,merton73}. Creation of this model is considered as one of the most successful quantitative breakthroughs in social sciences, initiating a pricing framework that still keeps occupied thousands of researchers across financial institutions and universities of the world. The main feature of this model is that it allows the prices of European call and put options to be calculated analytically using variables that are either directly observable on the market or can be easily estimated. It is still widely used as a benchmark, although more advanced models have been developed over the years to take into account more realistic features of asset price dynamics, such as jumps and stochastic volatility.
-\par The model consists of two assets, a riskless bond $B(t)$ and a risky stock $S(t)$, with dynamics given by the following SDEs.
+\par We start by considering a plain European option on a stock that does not pay dividends, under the famous Black--Scholes--Merton model \cite{black73,merton73}. Creation of this model in 1973 is considered as one of the most successful quantitative breakthroughs in social sciences, initiating a pricing framework that still keeps occupied thousands of researchers across financial institutions and universities of the world. This was recognized by the Royal Swedish Academy of Sciences, when the \emph{Bank of Sweden Prize in Economic Sciences in Memory of Alfred Nobel} was awarded to Robert C. Merton and Myron S. Scholes in 1997, while Fischer S. Black was credited with equal contribution since he had passed away two years before the prize was awarded. 
+\par The main feature of this model is that it allows the prices of European call and put options to be calculated analytically using variables that are either directly observable on the market or can be easily estimated. It is still widely used as a benchmark, although more advanced models have been developed over the years to take into account more realistic features of asset price dynamics, such as jumps and stochastic volatility.
+\par The model consists of two assets, a riskless bond $B(t)$ and a risky stock $S(t)$, with dynamics given by the following SDEs
 \begin{align}
 \dif B(t) &= r B(t) \dif t, \label{eq:bond} \\
 \dif S(t) &= \mu S(t) + \sigma S(t) \dif W(t), \label{eq:stock}
 \end{align}
 where $r$ is the risk-neutral interest rate, $\mu$ is the drift coefficient, and $\sigma$ is the volatility of the stock --- all three being constant in the model. Moreover, $W(t)$ is the Wiener process.
-\par The Black--Scholes--Merton model stands on several important assumptions. The main assumption is that the considered financial market is arbitrage free, meaning that it should not be possible to make positive earnings on the market without being exposed to risk. The next assumption states that the market should be complete and efficient, which means that every contract on the market can be hedged and that the market prices fully reflect all available information. Those assumptions allow us to determine a unique price of the option whose payoff function is $g(S(T))$, using the following valuation under the risk-neutral measure $\mathbb{Q}$.
+\par The Black--Scholes--Merton model stands on several important assumptions. The main assumption is that the considered financial market is arbitrage free, meaning that it is not possible to make positive earnings on the market without being exposed to risk. The next assumption states that the market is complete and efficient, which means that every contract on the market can be hedged and that the market prices fully reflect all available information. Those assumptions allow us to determine a unique price of the option whose payoff function is $g(S(T))$, using the following valuation under the risk-neutral measure $\mathbb{Q}$,
 \begin{equation}
 \label{eq:mc}
-u(S(t),t)=\exp\left(-r(T-t)\right)\mathbb{E}^{\mathbb{Q}}\left[g(S(T))\right],
+u(S(t),\ t)=\exp\left(-r(T-t)\right)\mathbb{E}^{\mathbb{Q}}\left[g(S(T))\right].
 \end{equation}
-That effectively means that the expected value is calculated on an adapted dynamics, using $r$ instead of $\mu$ as the drift constant of the stochastic process $S(t)$ defined in \eqref{eq:stock}. 
-\par Moreover, using the It\^o's lemma and the Feynmann--Kac theorem, we can equivalently express the option price as the solution of the following PDE, known as the Black--Scholes--Merton equation.
+That effectively means that the expected value is calculated on an adapted dynamics by using $r$ instead of $\mu$ as the drift constant of the stochastic process $S(t)$ defined in \eqref{eq:stock}. 
+\par Moreover, using the It\^o's lemma and the Feynman--Kac theorem, we can equivalently express the option price as the solution of the following PDE, known as the Black--Scholes--Merton equation
 \begin{align}
 %{\displaystyle{\frac{\partial}{\partial t} u(s,t) + r s \frac{\partial} {\partial s} u(s,t) + \frac{1}{2} s^2 \sigma^2 \frac{\partial^2}{\partial s^2} u(s,t) - r u(s,t)}} &=& 0,\\
 \frac{\partial u}{\partial t} + r s \frac{\partial u} {\partial s} + \frac{1}{2} s^2 \sigma^2 \frac{\partial^2 u}{\partial s^2} - r u &= 0, \nonumber \\
 u(s,T) &= g(s), \label{eq:bs}
 \end{align}
 where $s$ is the deterministic representation of the stochastic asset price $S$. The equation \eqref{eq:bs} is a parabolic PDE that has an analytical solution $u=u(s,t)$ in case of European call and put options. %Otherwise, the option price $u(s,t)$ can be numerically approximated by integration backward in time.
-\par In order to to make better trading decisions, investors often look at the hedging parameters, which are also known as the \emph{greeks}. The most commonly used ones are delta $\Delta = \frac{\partial u}{\partial s}$, gamma $\Gamma = \frac{\partial^2 u}{\partial s^2}$, and vega $\nu = \frac{\partial u}{\partial \sigma}$. As these hedging parameters represent risk sensitivities, being able to compute them is of great importance.
-\par We can use this basic framework to price financial derivatives with different payoffs or extend it in order to be able to valuate options with different underlying assets (e.g., stocks that pay discrete dividends). Also, we can further adapt the model to capture different market features more accurately (e.g., introduce local volatility instead of the constant one or model jumps by using the Merton model). A decent overview of such extensions of the Black--Scholes--Merton model can be seen in \cite{paper2}, while here we further consider how to apply this framework to pricing of basket options.
-\par To price multi-asset options issued on $D$ underlying assets $S_1,S_2,\ldots,S_D$, we consider a multi-dimensional analogue to \eqref{eq:bond} and \eqref{eq:stock}.
+\par In order to make better trading decisions, investors often look at the hedging parameters, which are also known as the \emph{greeks}. The most commonly used ones are \emph{delta} $\Delta = \frac{\partial u}{\partial s}$, \emph{gamma} $\Gamma = \frac{\partial^2 u}{\partial s^2}$, and \emph{vega} $\nu = \frac{\partial u}{\partial \sigma}$. As these hedging parameters represent risk sensitivities, being able to compute them is of great importance.
+\par We can use this basic framework to price financial derivatives with different payoffs or extend it in order to be able to valuate options with different underlying assets (e.g., stocks that pay discrete dividends). Also, we can further adapt the model to capture different market features more accurately. (e.g., introduce local volatility instead of the constant one). Moreover, it is sometimes beneficial to use the Merton model \cite{merton1976option} to model underlying assets with jumps. On the other hand, stochastic volatility models, such as the Heston model presented in Section \ref{sub:multifactor}, are useful when there are prominent volatility smiles in the underlying asset. To push things even further, it is not uncommon to have a stochastic volatility model with jumps --- the most known representative is the Bates model \cite{bates1996jumps}. An overview of such extensions of the Black--Scholes--Merton framework can be seen in Paper \ref{paper5}.
+%
+\subsection{Multi-Asset Options}
+\par To price multi-asset financial derivatives, such as rainbow options issued on $D$ underlying assets $S_1,S_2,\ldots,S_D$, we consider a multi-dimensional analogue to \eqref{eq:bond} and \eqref{eq:stock}
 \begin{align}
 \dif B(t)&=rB(t)\dif t, \nonumber \\
 \dif S_1(t)&=\mu_1 S_1(t)\dif t+\sigma_1 S_1(t)\dif W_1(t), \nonumber \\
@@ -294,12 +333,12 @@ where $s$ is the deterministic representation of the stochastic asset price $S$.
 \vdots \nonumber \\ 
 \dif S_D(t)&=\mu_D S_D(t)\dif t+\sigma_D S_D(t)\dif W_D(t), \label{eq:multi}
 \end{align}
-where the Wiener processes are correlated such that $\dif W_i(t)\dif W_j(t)=\rho_{ij}\dif t$. In this high-dimensional setting, an option with payoff function $g(S_1(T),\ldots,S_D(T))$, can be priced from 
-\begin{equation}
-\label{eq:mcD}
-u(S_1(t),\ldots,S_D(t),t)=\exp\left(-r(T-t)\right)\mathbb{E}^{{{\mathbb{Q}}}}_{t}[g(S_1(T),\ldots,S_D(T))],
-\end{equation}
-and the corresponding high-dimensional Black--Scholes--Merton equation reads as
+where the Wiener processes are correlated such that $\dif W_i(t)\dif W_j(t)=\rho_{ij}\dif t$. In this high-dimensional setting, an option with the payoff function $g(S_1(T),\ldots,S_D(T))$, can be priced by solving the corresponding high-dimensional Black--Scholes--Merton equation
+%\begin{equation}
+%\label{eq:mcD}
+%u(S_1(t),\ldots,S_D(t),t)=\exp\left(-r(T-t)\right)\mathbb{E}^{{{\mathbb{Q}}}}_{t}[g(S_1(T),\ldots,S_D(T))],
+%\end{equation}
+%and the corresponding high-dimensional Black--Scholes--Merton equation reads as
 %\begin{equation}\label{eq:bsD}
 %\begin{array}{rcl}
 %{\displaystyle{\frac{\partial u}{\partial t}+r\sum\limits_{i}^{D}s_i\frac{\partial u}{\partial{s_i}}+\frac{1}{2}\sum\limits_{i,j}^{D}\rho_{ij}\sigma_i\sigma_j s_is_j\frac{\partial^2u}{\partial s_i \partial s_j}-ru}}&=&0,\\
@@ -308,7 +347,7 @@ and the corresponding high-dimensional Black--Scholes--Merton equation reads as
 %\end{equation}
 \begin{align}
 \frac{\partial u}{\partial t}+\mathcal{L}_b u&=0, \nonumber \\
-u(s_1,\ldots,s_D,T)&=g(s_1,\ldots,s_D), \label{eq:bsD}
+u(s_1,\ldots,s_D,\ T)&=g(s_1,\ldots,s_D), \label{eq:bsD}
 \end{align}
 where
 \begin{equation}
@@ -316,43 +355,44 @@ where
 \mathcal{L}_b u \equiv r\sum\limits_{i}^{D}s_i\frac{\partial u}{\partial{s_i}}+\frac{1}{2}\sum\limits_{i,j}^{D}\rho_{i,j}\sigma_i\sigma_j s_is_j\frac{\partial^2u}{\partial s_i \partial s_j}-ru.
 \end{equation}
 We observe \eqref{eq:bsD} as a time-dependent PDE with $D$ spatial dimensions.
-\par When it comes to American options, since these financial derivatives can be exercised at any $t \leq T$, as opposed to the European options that can only be exercised at $t=T$, instead of using PDE as a model, we formulate the pricing task as a linear complementarity problem (LCP)
+\par When it comes to American options, since these financial derivatives can be exercised at any $t \leq T$, as opposed to the European options (that can only be exercised at $t=T$), instead of using a PDE as a model, we formulate the pricing task as a linear complementarity problem (LCP)
 \begin{align}
 \frac{\partial u}{\partial t}+\mathcal{L}_b u&\geq 0,\nonumber \\
-u(s_1,\ldots, s_D,T)&\geq g(s_1,\ldots, s_D), \nonumber \\
-\left( \frac{\partial u}{\partial t}+\mathcal{L}_b u\right)& \left(u(s_1,\ldots, s_D,T)-g(s_1,\ldots, s_D)\right)=0. \label{eqlcp}
+u(s_1,\ldots, s_D,\ t)&\geq g(s_1,\ldots, s_D), \nonumber \\
+\left( \frac{\partial u}{\partial t}+\mathcal{L}_b u\right) \big(u(s_1,\ldots, s_D,\ t) &-g(s_1,\ldots, s_D)\big)=0, \label{eqlcp}
 \end{align}
+where the initial data is given by the terminal condition $u(s_1,\ldots,s_D,\ T)=g(s_1,\ldots,s_D)$. This formulation also applies to pricing of a single-asset American option by choosing $D=1$. 
 %
 \subsection{Multi-Factor Models}
 \label{sub:multifactor}
-\par Another direction in development of pricing models would be to include more stochastic factors. Models with multiple stochastic factors allow for better reproduction of market features compared to the standard Black--Scholes--Merton formulation, which is known to fall short in capturing fat tails of return distributions and volatility skews. Therefore, various models with local volatilities, local stochastic volatilities, stochastic interest rates, and their combinations have become increasingly popular. In this section, we present two models with multiple stochastic factors that are used for pricing options.
-\par The attention to local volatility models started with \cite{dupire1994pricing}. The first multi-factor model that we introduce is the Heston model \cite{heston1993closed}, featured with a stochastic volatility. The adapted dynamics for this model is as follows.
+\par Another direction in development of pricing models is to include more stochastic factors. Models with multiple stochastic factors allow for better reproduction of market features compared to the standard Black--Scholes--Merton formulation, which is known to fall short in capturing heavy tails of return distributions and volatility skews. Therefore, various models with local volatilities, local stochastic volatilities, stochastic interest rates, and their combinations have become increasingly popular. In this section, we present two models with multiple stochastic factors that are used for pricing options.
+\par The attention to local volatility models started with \cite{dupire1994pricing}. The first multi-factor model that we introduce is the Heston model \cite{heston1993closed}, featured with a stochastic volatility. The adapted dynamics for this model is as follows
 \begin{align}
 \dif S(t) & =  rS(t)\dif t + \sqrt{V(t)} S(t) \dif W_s(t), \label{qlsvSDE1} \\
-\dif V(t) & =  \kappa(\eta-V(t))\dif t + \sigma \sqrt{V(t)}\dif W_v(t), \label{qlsvSDE2}
+\dif V(t) & =  \kappa\big(\eta-V(t)\big)\dif t + \sigma \sqrt{V(t)}\dif W_v(t), \label{qlsvSDE2}
 \end{align}
-where $V(t)$ is the stochastic volatility, $\sigma$ is the constant volatility of volatility, $\kappa$ is the speed of mean reversion of the volatility process, $\eta$ is the mean reversion level, $r$ is the risk-free interest rate, $W_s(t)$ and $W_v(t)$ are correlated Wiener processes with constant correlation $\rho$, i.e., $\dif W_s(t) \dif W_v(t) = \rho \dif t$. By applying the It\^{o}'s lemma and the Feynman--Kac theorem, the PDE for the Heston model reads as
+where $V(t)$ is the stochastic volatility, $\sigma$ is the constant volatility of volatility, $\kappa$ is the speed of mean reversion of the volatility process, $\eta$ is the mean reversion level, $r$ is the risk-free interest rate, $W_s(t)$ and $W_v(t)$ are correlated Wiener processes with constant correlation $\rho$, i.e., $\dif W_s(t) \dif W_v(t) = \rho \dif t$. After using the It\^{o}'s lemma and the Feynman--Kac theorem, the PDE for the Heston model reads as
 \begin{align}
 \frac{\partial u}{\partial t}+\mathcal{L}_h u&=0, \nonumber \\
-u(s,v,T) &= \max(s-K,\ 0), \label{hstPDE}
+u(s,v,\ T) &= g(s), \label{hstPDE}
 \end{align}
 where
 \begin{align}
-\mathcal{L}_{h} u &\equiv \frac{1}{2}vs^2\frac{\partial^2 u}{\partial s^2} + \rho\sigma v s \frac{\partial^2 u}{\partial s\partial v} + \frac{1}{2}\sigma^2v\frac{\partial^2 u}{\partial v^2} \nonumber \\ 
+\mathcal{L}_{h} u \equiv \frac{1}{2}vs^2\frac{\partial^2 u}{\partial s^2} &+ \rho\sigma v s \frac{\partial^2 u}{\partial s\partial v} + \frac{1}{2}\sigma^2v\frac{\partial^2 u}{\partial v^2} \nonumber \\ 
                &+ rs\frac{\partial u}{\partial s} + \kappa(\eta-v)\frac{\partial u}{\partial v} - ru, \label{eqHSTop}
 \end{align}
 $s$ and $v$ are deterministic representations of the stochastic asset price and volatility processes, respectively.
-\par The Heston--Hull--White model is an extension of the Heston stochastic volatility model. The improvement consists of adding a stochastic interest rate that follows the Hull--White process \cite{hull1990pricing}, as the interest rates on the market are not constant. Another notable property of the Hull--White model is that the interest rates can be negative, as nowadays happens in some economies. The adapted dynamics for this model is as follows.
+\par The Heston--Hull--White model is an enhancement of the Heston stochastic volatility model. The improvement consists of adding a stochastic interest rate that follows the Hull--White process \cite{hull1990pricing}, as the interest rates on the market are not constant. The model is useful when pricing long-term derivatives in which we observe an implied volatility smile in the underlying asset. Another notable property of the Hull--White model is that the interest rates can be negative, as nowadays happens in some economies. The adapted dynamics for this model is as follows
 \begin{align}
 \dif S(t) & =  R(t)S(t)\dif t + \sqrt{V(t)}S(t)\dif W_s(t), \label{hhwSDE1} \\
-\dif V(t) & =  \kappa(\eta-V(t))\dif t + \sigma_v \sqrt{V(t)}\dif W_v(t), \label{hhwSDE2} \\
-\dif R(t) & = a(b-R(t))\dif t + \sigma_r\dif W_r(t), {\color{white} \sqrt{V(t)}} \label{hhwSDE3}
+\dif V(t) & =  \kappa\big(\eta-V(t)\big)\dif t + \sigma_v \sqrt{V(t)}\dif W_v(t), \label{hhwSDE2} \\
+\dif R(t) & = a\big(b-R(t)\big)\dif t + \sigma_r\dif W_r(t), {\color{white} \sqrt{V(t)}} \label{hhwSDE3}
 \end{align}
 where $R_t$ is the stochastic interest rate, $a$ is the speed of mean reversion of the interest rate process, $b$ is its mean reversion level, $\sigma_r$ is its volatility,  $W_s(t)$, $W_v(t)$,  and $W_r(t)$ are correlated Wiener processes.
 \par We can apply the It\^{o}'s lemma and the Feynman--Kac theorem to derive the pricing PDE
 \begin{align}
 \frac{\partial u}{\partial t}+\mathcal{L}_w u&=0, \nonumber \\
-u(s,v,r,T) &= \max(s-K,\ 0), \label{hhwPDE}
+u(s,v,r,\ T) &= g(s), \label{hhwPDE}
 \end{align}
 where
 \begin{align}
@@ -360,48 +400,64 @@ where
                              & \rho_{sv}\sigma_v vs\frac{\partial^2 u}{\partial s\partial v} + \rho_{sr}\sigma_r \sqrt{v} s\frac{\partial^2 u}{\partial s\partial r} + \rho_{vr}\sigma_v\sigma_r \sqrt{v}\frac{\partial^2 u}{\partial v\partial r} + \nonumber \\
                              & rs\frac{\partial u}{\partial s} + \kappa(\eta-v)\frac{\partial u}{\partial v} + a(b-r)\frac{\partial u}{\partial r} - ru, \label{eqHHWop}
 \end{align}
-\par Here, it becomes clear how advanced models easily grow in complexity, which in turn makes it difficult both to calibrate and valuate them in practice. Several other multi-factor models are analyzed in more detail in \cite{paper3, paper5}. 
+\par Here, it becomes clear how advanced models easily grow in complexity, which in turn makes it difficult both to calibrate and valuate them in practice. Several other multi-factor models are discussed in more detail in Papers \ref{paper4} and \ref{paper6}. 
 %
 %%
 \section{Pricing Methods}
 \label{sec:methods}
-\par For a small number of cases, such as plain European call or put options under the Black--Scholes--Merton model, calculating the option price can be done using analytical methods and developing closed form solutions. In some other cases it is possible to approximate the solutions using semi-analytical schemes. Commonly used methods for pricing of financial derivatives in the absence of analytical or semi-analytical solutions can be split in three categories \cite{paper2}. 
-\par In the first category are the stochastic methods, such as Monte Carlo methods \cite{glasserman2013monte, longstaff2001valuing} and discrete time methods like binomial trees \cite{cox1979option, rendleman1979two}. These methods typically work by simulating stochastic trajectories of the underlying dynamics in order to estimate the expected values of the payoff function so that the option price can be computed. They are mostly used for multi-asset derivatives and multi-factor models which result in problems of high dimensionality, as they are simple to implement, but far less efficient compared to other methods when used for problems in smaller dimensions. 
-\par The second category are deterministic methods such as finite differences \cite{tavella2000pricing}, and less often finite elements and finite volumes. The deterministic methods work by discretizing differential operators in the PDE formulation of the pricing models. The finite differences are often used for solving pricing problems of the dimensionality not larger than two.
-\par The third category consists of methods based on Fourier transform, such as Carr--Madan fast Fourier transform method \cite{carr1999option}, and a more recent cosine series expansions method \cite{fang2008novel}. The methods from this category are extremely efficient, but typically require the existence of the density function or the characteristic function of the underlying process, in closed form --- which is not always available.
-\par A common rule of thumb for selecting the option pricing method would be to check if it is possible to analytically calculate the solution to the pricing problem. In case that is not possible, then the next best option is a Fourier transform based method. Deterministic methods come into play as robust numerical schemes when Fourier methods are not applicable. Nevertheless, they often suffer from the curse of dimensionality as the degrees of freedom in the resulting approximations grow exponentially with the dimensionality of the problem. Therefore, if the pricing problem is of a higher dimensionality, Monte Carlo methods are the best alternative.
-\par RBF methods are a more recent group of deterministic methods to be used for option pricing \cite{hon1999radial}. These methods have been becoming increasingly popular since they possess potential to cope with PDEs of moderately high dimensions. Typically, deterministic methods are used to solve problems of up to four dimensions, and often employ projection schemes to split the main problem into a set of problems of smaller dimensionality \cite{foulon2010adi}. However, in cases when the correlations between the stochastic processes are high, such procedures encounter severe difficulties. Thus, pricing problems of dimensionality greater than three are typically left to be solved by Monte Carlo methods. 
-\par In this the following chapter we present a localized RBF method that could be an alternative to Monte Carlo methods for moderately high-dimensional problems.
+\par For a small number of cases, such as plain European call or put options under the Black--Scholes--Merton model, calculating the option price can be done by closed form solutions, derived using analytical methods. In some other cases, it is possible to approximate the solutions using semi-analytical schemes. Commonly used methods for pricing of financial derivatives in the absence of analytical or semi-analytical solutions can be split in three main groups: stochastic methods, methods based on Fourier transform, and deterministic methods. Performance of these methods when pricing several option types across different market models is presented in Papers \ref{paper5} and \ref{paper6}.%
+%
+\subsection{Stochastic Methods}
+\par Stochastic methods, such as Monte Carlo (MC), aim at approximating option prices using the form showed in \eqref{eq:mc}. The idea of estimating expectations by repeated random sampling was used in different forms for centuries, but it was officially defined in \cite{metropolis1949monte}. The first application of an MC method in option pricing was reported in 1977 for European options \cite{boyle1977options}. A least square MC method for pricing American options was introduced in 2001 \cite{longstaff2001valuing}, and more recently, a new regression based MC method, named stochastic grid bundling method (SGBM), has been developed for efficient pricing of early-exercise options and their hedging parameters \cite{jain2015stochastic}. Furthermore, quasi-MC \cite{paskov1995faster} --- methods that use deterministic sequences of numbers to boost convergence --- became successful at efficiently tackling problems in hundreds of dimensions \cite{dick2013high}. More recently, many advanced versions of MC methods have been developed, of which some of the most notable are multilevel MC methods \cite{giles2008multilevel}, which are inspired by the multigrid ideas for the iterative solution of PDEs. % 
+%These methods  can greatly reduce the computational cost of classical MC by drawing many samples with a low accuracy at a low computational cost, and few samples at a high accuracy with a high cost. Those samples are then used to construct the final approximation of the solution.% 
+Moreover, in the time of publishing of this thesis, some pioneering approaches in development of quantum computing MC algorithms for pricing of financial derivatives have been made \cite{rebentrost2018quantum}.
+\par Discrete models like binomial trees that appeared in 1979 \cite{cox1979option, rendleman1979two}, also fall in the group of stochastic methods. These models work by simulating stochastic trajectories of the underlying dynamics on predefined discrete lattices, and are among the simplest nontrivial models of financial markets. 
+\par Stochastic methods are mostly suitable for multi-asset derivatives and/or multi-factor models, which result in problems of high dimensionality. The classical versions of these methods are arguably easy to implement and use. MC methods are significantly less efficient than other methods when used for problems in smaller dimensions, as their convergence rate is much slower in comparison. This can be observed on several pricing examples in Paper \ref{paper5}. 
+%
+\subsection{Fourier Methods}
+\par This group consists of methods based on Fourier transform such as Carr--Madan fast Fourier transform method \cite{carr1999option}. More recently, Fourier-cosine series expansions (COS) for European options \cite{fang2008novel} and early-exercise options \cite{fang2009pricing}, showed to be extremely efficient in pricing. In 2012, the COS method has been extended to higher dimensions \cite{ruijter2012two}. The methods from this category are very fast and accurate, but they typically require existence of the characteristic function for the price process of the underlying asset in closed form, or at least its approximation --- which is available for a fairly large class of the models, but not all. 
+%
+\subsection{Deterministic Methods}
+\par Deterministic methods are used to solve pricing problems in PDE form such as \eqref{eq:bs}, by discretizing its differential operators. 
+\par The main methods in this category are the finite differences (FD). The first time an FD method was used for pricing of a contract was in 1976 \cite{brennan1976pricing}, to solve a one-dimensional Black--Scholes--Merton equation. A few years later, FD schemes, together with MC methods, were established as a standard numerical approach for pricing financial derivatives when analytical solutions are not available \cite{brennan1978finite}. Moreover, a notable operator splitting scheme was introduced in \cite{ikonen2004operator}, enabling FD methods to efficiently price American options. Over the years, FD methods have been used to solve mostly one-dimensional and two-dimensional pricing problems. More recently, hierarchical approximation using sparse grids \cite{reisinger2007efficient} and asymptotic expansions \cite{reisinger2015numerical} of high-dimensional option pricing problems have been developed --- enabling state of the art FD \cite{foulon2010adi, haentjens2012adi} to be used for pricing high-dimensional options by solving a sequence of lower dimensional problems. Apparently, many high-dimensional pricing problems have such a configuration of volatilities and correlations that they are actually problems of low effective dimensionality, and as such can be represented by a couple of lower dimensional components \cite{wang2005high}.
+\par Although they are used less often, the finite element methods can excel in certain cases \cite{zvan1998general, forsyth1999finite, heinecke2012highly}, and the same applies for finite volumes \cite{zvan2001finite}, which finds its use in convection dominated or degenerate cases.
+%
+\subsection{Method Selection}
+\par Based on the presented details and the results reported in Papers \ref{paper5} and \ref{paper6}, a basic guide for selecting an appropriate option pricing method is to first check if it is possible to analytically calculate the solution to the pricing problem. In case that is not possible, the next best option is a Fourier transform based method. Deterministic methods come into play as robust numerical schemes when Fourier methods are not applicable. Nevertheless, they often suffer from the curse of dimensionality as the degrees of freedom in the resulting approximations grow exponentially with the dimensionality of the problem. Therefore, if the pricing problem is of a higher dimensionality that cannot be reduced, Monte Carlo methods are the most common alternative.
+\par Interestingly, RBF methods are a more recent group of deterministic methods to be used for option pricing, first time applied in 1999 for one-dimensional European options \cite{hon1999radial}. Ever since, these methods have been becoming increasingly popular since they possess potential to cope with PDEs of moderately high dimensions. Typically, deterministic methods are used to solve pricing problems of up to no more than three dimensions. In the following chapter we present a localized RBF method that might become an alternative to Monte Carlo methods for moderately high-dimensional problems, i.e., of dimensionality two to five. 
 %
 %
 %%%
 \chapter{Radial Basis Function generated Finite Difference Methods}
 \label{ch:rbffd}
-\par The RBF-FD methods belong to the family of RBF methods. Using the RBF methods for approximating solutions of PDEs dates back to the beginning of the nineties in the previous century \cite{kansa1990multiquadrics2, kansa1990multiquadrics1}. Ever since, these methods have been applied in different fields, including financial engineering \cite{pettersson2008improved, fasshauer2004using, hon1999radial}. 
+\par The RBF-FD methods can be seen as a kind of finite difference methods that belong to the family of RBF methods. Using the RBF methods for approximating solutions of PDEs dates back to the beginning of the nineties in the previous century \cite{kansa1990multiquadrics2, kansa1990multiquadrics1}. Ever since, these methods have been used in different fields, including financial engineering \cite{pettersson2008improved, fasshauer2004using, hon1999radial}. 
 \par In order to apply the method, we observe option pricing problems on the truncated computational domain $\Omega\subset \mathbb{R}^{d}$ in the following PDE form
 \begin{align}
-\frac{\partial}{\partial t}u(t,\underline{x}) + \mathcal{L}u(t,\underline{x}) &= 0, \quad \underline{x} \in \Omega, \label{eqPDE} \\
-\mathcal{B}u(t,\underline{x}) &= f(t,\underline{x}), \quad \underline{x} \in \partial \Omega, \label{eqBC}
+\frac{\partial}{\partial t}u(\underline{x},t) + \mathcal{L}u(\underline{x},t) &= 0, \label{eqPDE} \\
+%\mathcal{B}u(t,\underline{x}) &= f(t,\underline{x}), \quad \underline{x} \in \partial \Omega, \label{eqBC} \\
+u(\underline{x},T) &= g(\underline{x}),
 \end{align}
-where $u(t,\underline{x})$ is the option price; $\mathcal{L}$ is the differential operator of the model; $\mathcal{B}$ is the boundary differential operator and $f(t,\underline{x})$ is the forcing function, which together correspond to the boundary conditions for the pricing problem; $\underline{x}$ is the spatial variable representing underlying assets or stochastic factors and $t$ is the time variable.
+where $u(\underline{x},t)$ is the option price, $\underline{x} \in \Omega$ is the spatial variable representing underlying assets or stochastic factors, and $\mathcal{L}$ is the differential operator of the pricing model.
 \par To construct an RBF approximation, we scatter $N$ nodes $\underline{x}_j$, where $j=1,\ldots,N$, across the computational domain $\Omega$. Then, we consider an interpolant
 \begin{equation}
 \label{eq:RBFint}
-	v(\underline{x}) = \sum_{j=1}^N \lambda_j \phi(\|\underline{x}-\underline{x}_j\|),
+	\tilde{u}(\underline{x}) = \sum_{j=1}^N \lambda_j \phi(\|\underline{x}-\underline{x}_j\|),
 \end{equation}
-where $\phi$ is the RBF, and $\lambda_j$ are the interpolation coefficients. It should be noted that the value of the interpolant at any point $\underline{x}$ only depends on the distance to the nodes and that this expression is valid in any number of dimensions. 
+where $\phi$ is the RBF, and $\lambda_j$ are the interpolation coefficients. The value of the interpolant at any point $\underline{x}$ only depends on the distance to the nodes and that this expression is valid in any number of dimensions. 
 \begin{table}[!ht]
 \begin{center}
-\caption{{\rmfamily{Commonly used radial basis functions, where $\varepsilon\in \mathbb{R}^+$ is the shape parameter and $q\in\{2m-1, m \in \mathbb{N}\}$ is the polyharmonic spline degree.}}}
+\caption{{\rmfamily{Commonly used radial basis functions, where $\varepsilon\in \mathbb{R}^+$ is the shape parameter for the infinitely smooth RBFs, and $q\in\{2m-1,\ m \in \mathbb{N}\}$ is the degree of the polyharmonic spline as a piecewise smooth RBF.}}}
 \begin{tabular}{ l  c  c  c  r  }
-%\hline\hline
-RBF & & &  & $\phi(r)$   \\ \hlinewd{1pt}
- Gaussian (GA) &  & &  &  $\exp{(-\varepsilon^2r^2)}$ \\
- Multiquadric (MQ) &  & &  & $\sqrt{1+\varepsilon^2r^2}$ \\
- Inverse Multiquadric (IMQ) & & &  & $1/\sqrt{1+\varepsilon^2r^2}$ \\
- Inverse Quadratic (IQ) & & &  & $1/(1+\varepsilon^2r^2)$ \\
- Polyharmonic Spline (PHS) & & &  & $r^q$\\
-\hlinewd{1pt}
+%\hline\hline 
+RBF & & &  & $\phi(r)$   \\ 
+\hline
+Gaussian (GA) &  & &  &  $\exp{(-\varepsilon^2r^2)}$ \\
+Multiquadric (MQ) &  & &  & $\sqrt{1+\varepsilon^2r^2}$ \\
+Inverse Multiquadric (IMQ) & & &  & $1/\sqrt{1+\varepsilon^2r^2}$ \\
+Inverse Quadratic (IQ) & & &  & $1/(1+\varepsilon^2r^2)$ \\
+\hlinewd{0.5pt}
+Polyharmonic Spline (PHS) & & &  & $r^q$\\
+\hline
 %\hline\hline
 \end{tabular}
 \label{TabRBF}
@@ -459,7 +515,7 @@ Paper I
 %
 %%
 \section{Role of Polynomials}
-Many RBFs (e.g., Gaussian, multiquadric, inverse quadratic) were considered for approximating differential operators in the literature. Although such approximations are featured with great properties, the linear systems of equations that need to be solved in order to obtain the weights $w_j^i$ are often ill-conditioned. Several past works \cite{davydov2011adaptive, fornberg2011stabilization, flyer2012guide, larsson2013stable, fornberg2013stable, flyer2016enhancing} addressed this problem by adding low-order polynomials together with RBFs into the presented interpolation. Moreover, the shape parameter, which is present in most of the RBFs, needs to be chosen carefully in order to have a stable approximation. The problem of choosing the shape parameter for Gaussian-based RBF-FD schemes is thoroughly examined for option pricing problems in \cite{paper1}, but still remains unsolved for general applications.
+Many RBFs (e.g., Gaussian, multiquadric, inverse quadratic) were considered for approximating differential operators in the literature. Although such approximations are featured with great properties, the linear systems of equations that need to be solved in order to obtain the weights $w_j^i$ are often ill-conditioned. Several past works \cite{davydov2011adaptive, fornberg2011stabilization, flyer2012guide, larsson2013stable, fornberg2013stable, flyer2016enhancing} addressed this problem by adding low-order polynomials together with RBFs into the presented interpolation. Moreover, the shape parameter, which is present in most of the RBFs, needs to be chosen carefully in order to have a stable approximation. The problem of choosing the shape parameter for Gaussian-based RBF-FD schemes is thoroughly examined for option pricing problems in Paper \ref{paper1}, but still remains unsolved for general applications.
 \par
 Nevertheless, recent developments \cite{bayona2017role, flyer2016on}, show that the RBF-FD approximation can be greatly improved by using high order polynomials together with PHSs as RBFs in the interpolation. With that approach, it seems as if the polynomial degree takes the role of controlling the rate of convergence. This allows us to use piecewise smooth PHSs as RBFs without a shape parameter, since the approximation accuracy is no longer controlled by the smoothness of the RBFs. Still, the RBFs do contribute to reduction of approximation errors and they are necessary in order to have both stable and accurate approximation. We define the PHS function in \eqref{eqPHS} and show some examples in Figure \ref{figPHS}.%
 \begin{equation}
@@ -500,7 +556,7 @@ P & 0 \\
 \end{array}\right],
 }}
 \end{equation}
-where $A$ is the RBF matrix and $\mathbf{w}_j$ is the array of differentiation weights, both shown on the left-hand side of \eqref{eqRBFFDmat}; $P$ is the matrix of size $m_j \times n_j$ that contains all monomials up to order $p$ (corresponding to $m_j$ monomial terms) that are evaluated in each node $\underline{x}_j^i$ of the stencil $\mathbf{x}_j$ and $\mathbf{0}$ is a zero square matrix of size $m_j \times m_j$; $\mathbf{g}_j$ is the array of dummy weights that should be discarded and $\{p_1, p_2, \ldots, p_{m_j}\}$ is the array of monomial functions indexed by their position relative to the total number of monomial terms $m_j$, such that it contains all the combinations of monomial terms up to degree $p$.
+where $A$ is the RBF matrix and $\mathbf{w}_j$ is the array of differentiation weights, both shown on the left-hand side of \eqref{eqRBFFDmat}; $P$ is the matrix of size $m_j \times n_j$ that contains all monomials up to order $p$ (corresponding to $m_j$ monomial terms) that are evaluated in each node $\underline{x}_j^i$ of the stencil $\mathbf{x}_j$ and $\mathbf{0}$ is a zero square matrix of size $m_j \times m_j$; $\mathbf{g}_j$ is the array of dummy weights that are discarded, and $\{p_1, p_2, \ldots, p_{m_j}\}$ is the array of monomial functions indexed by their position relative to the total number of monomial terms $m_j$, such that it contains all the combinations of monomial terms up to degree $p$.
 \par
 Compared to standard FD discretizations, where differential operators are approximated only on one-dimensional Cartesian grids, meaning that high-dimensional operators need to be discretized separately in each direction, in the RBF-FD approximations dimensionality does not make the problem more difficult. When it comes to the boundary nodes and the nodes that are close to the boundary, the nearest neighbor based stencils automatically form according to the shape of the boundary and require no special treatment for computing the differentiation weights. The only data that is required for approximation of differential operators are Euclidian distances between the nodes. This means that (\ref{eqRBFFDmat}) represents a way to approximate a differential operator in any number of dimensions. Although the FD weights can be directly derived and the RBF-FD weights need to be obtained by solving a small linear system for each node, this task is perfectly parallelizable and that extra cost can be well justified by the desirable features of the method.
 \par
@@ -556,17 +612,16 @@ Write about the node placement in high-D!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
-{\myfont
-\chapter*{\emph{Acknowledgments}}
+\addtocontents{toc}{\vspace{\normalbaselineskip}}
+\chapter{{\sffamily{\emph{Acknowledgments}}}}
 {\noteunic
 Woohoo!
-}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 \begin{swedish}
-\chapter*{\emph{Sammanfattning}}
+\chapter{\emph{Sammanfattning}}
 {\noteunic
 \par De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen.
 \par De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen. De yngre tyckte inte att de hade levt den dagen, om det på kvällen när de somnade inte susade i deras öron och flimrade för deras ögon av allt som de hade hört och sett under dagen.
@@ -577,7 +632,7 @@ Woohoo!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
 \newpage
 \begin{serbian}
-\chapter*{\emph{Преглед}}
+\chapter{\emph{Преглед}}
 {\noteunic
 \par \noindent Већим делом свога тока река Дрина протиче кроз тесне гудуре између стрмих планина или кроз дубоке кањоне окомито одсечених обала. Само на неколико места речног тока њене се обале проширују у отворене долине и стварају, било на једној било на обе стране реке, жупне, делимично равне, делимично таласасте пределе, подесне за обрађивање и насеља. Такво једно проширење настаје и овде, код Вишеграда, на месту где Дрина избија у наглом завоју из дубоког и уског теснаца који стварају Буткове Стијене и Узавничке планине. Заокрет који ту прави Дрина необично је оштар а планине са обе стране тако су стрме и толико ублизу да изгледају као затворен масив из којег река извире право, као из мрког зида. Али ту се планине одједном размичу у неправилан амфитеатар чији промер на најширем месту није већи од петнаестак километара ваздушне линије.
 \par На том месту где Дрина избија целом тежином своје водене масе, зелене и запењене, из привидно затвореног склопа црних и стрмих планина, стоји велики и складно срезани мост од камена, са једанаест лукова широког распона. Од тог моста, као од основице, шири се лепезасто цела валовита долина, са вишеградском касабом и њеном околином, са засеоцима полеглим у превоје брежуљака, прекривена њивама, испашама и шљивицима, изукрштана међама и плотовима и пошкропљена шумарцима и ретким скуповима црногорице. Тако, посматрано са дна видика, изгледа као да из широких лукова белог моста тече и разлива се не само зелена Дрина него и цео тај жупни и питоми простор, са свим што је на њему и јужним небом над њим.
