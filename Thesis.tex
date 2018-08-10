@@ -25,6 +25,7 @@
 %%%
 
 \documentclass{UUThesisTemplate}
+\raggedbottom
 
 % Package to determine wether XeTeX is used
 \usepackage{ifxetex}
@@ -410,7 +411,7 @@ where
 \subsection{Stochastic Methods}
 \par Stochastic methods, such as Monte Carlo (MC), aim at approximating option prices using the form showed in \eqref{eq:mc}. The idea of estimating expectations by repeated random sampling was used in different forms for centuries, but it was officially defined in \cite{metropolis1949monte}. The first application of an MC method in option pricing was reported in 1977 for European options \cite{boyle1977options}. A least square MC method for pricing American options was introduced in 2001 \cite{longstaff2001valuing}, and more recently, a new regression based MC method, named stochastic grid bundling method (SGBM), has been developed for efficient pricing of early-exercise options and their hedging parameters \cite{jain2015stochastic}. Furthermore, quasi-MC \cite{paskov1995faster} --- methods that use deterministic sequences of numbers to boost convergence --- became successful at efficiently tackling problems in hundreds of dimensions \cite{dick2013high}. More recently, many advanced versions of MC methods have been developed, of which some of the most notable are multilevel MC methods \cite{giles2008multilevel}, which are inspired by the multigrid ideas for the iterative solution of PDEs. % 
 %These methods  can greatly reduce the computational cost of classical MC by drawing many samples with a low accuracy at a low computational cost, and few samples at a high accuracy with a high cost. Those samples are then used to construct the final approximation of the solution.% 
-Moreover, in the time of publishing of this thesis, some pioneering approaches in development of quantum computing MC algorithms for pricing of financial derivatives have been made \cite{rebentrost2018quantum}.
+Interestingly, in the time of publishing of this thesis, some pioneering approaches in development of quantum computing MC algorithms for pricing of financial derivatives have been made \cite{rebentrost2018quantum}.
 \par Discrete models like binomial trees that appeared in 1979 \cite{cox1979option, rendleman1979two}, also fall in the group of stochastic methods. These models work by simulating stochastic trajectories of the underlying dynamics on predefined discrete lattices, and are among the simplest nontrivial models of financial markets. 
 \par Stochastic methods are mostly suitable for multi-asset derivatives and/or multi-factor models, which result in problems of high dimensionality. The classical versions of these methods are arguably easy to implement and use. MC methods are significantly less efficient than other methods when used for problems in smaller dimensions, as their convergence rate is much slower in comparison. This can be observed on several pricing examples in Paper \ref{paper5}. 
 %
@@ -419,77 +420,73 @@ Moreover, in the time of publishing of this thesis, some pioneering approaches i
 %
 \subsection{Deterministic Methods}
 \par Deterministic methods are used to solve pricing problems in PDE form such as \eqref{eq:bs}, by discretizing its differential operators. 
-\par The main methods in this category are the finite differences (FD). The first time an FD method was used for pricing of a contract was in 1976 \cite{brennan1976pricing}, to solve a one-dimensional Black--Scholes--Merton equation. A few years later, FD schemes, together with MC methods, were established as a standard numerical approach for pricing financial derivatives when analytical solutions are not available \cite{brennan1978finite}. Moreover, a notable operator splitting scheme was introduced in \cite{ikonen2004operator}, enabling FD methods to efficiently price American options. Over the years, FD methods have been used to solve mostly one-dimensional and two-dimensional pricing problems. More recently, hierarchical approximation using sparse grids \cite{reisinger2007efficient} and asymptotic expansions \cite{reisinger2015numerical} of high-dimensional option pricing problems have been developed --- enabling state of the art FD \cite{foulon2010adi, haentjens2012adi} to be used for pricing high-dimensional options by solving a sequence of lower dimensional problems. Apparently, many high-dimensional pricing problems have such a configuration of volatilities and correlations that they are actually problems of low effective dimensionality, and as such can be represented by a couple of lower dimensional components \cite{wang2005high}.
+\par The main methods in this category are the finite differences (FD). The first time an FD method was used for pricing of a contract was in 1976 \cite{brennan1976pricing}, to solve a one-dimensional Black--Scholes--Merton equation. A few years later, FD schemes, together with MC methods, were established as a standard numerical approach for pricing financial derivatives when analytical solutions are not available \cite{brennan1978finite}. Moreover, a notable operator splitting scheme was introduced in \cite{ikonen2004operator}, enabling FD methods to efficiently price American options. Over the years, FD methods have been used to solve mostly one-dimensional and two-dimensional pricing problems. More recently, hierarchical approximation using sparse grids \cite{reisinger2007efficient} and asymptotic expansions \cite{reisinger2015numerical} of high-dimensional option pricing problems have been developed --- enabling state of the art FD \cite{foulon2010adi, haentjens2012adi} to be used for pricing high-dimensional options by solving a sequence of lower dimensional problems. Apparently, many high-dimensional pricing problems have such a configuration of volatilities and correlations that their effective dimensionality is low, and as such can be represented by a small number of lower dimensional components \cite{wang2005high}.
 \par Although they are used less often, the finite element methods can excel in certain cases \cite{zvan1998general, forsyth1999finite, heinecke2012highly}, and the same applies for finite volumes \cite{zvan2001finite}, which finds its use in convection dominated or degenerate cases.
 %
 \subsection{Method Selection}
 \par Based on the presented details and the results reported in Papers \ref{paper5} and \ref{paper6}, a basic guide for selecting an appropriate option pricing method is to first check if it is possible to analytically calculate the solution to the pricing problem. In case that is not possible, the next best option is a Fourier transform based method. Deterministic methods come into play as robust numerical schemes when Fourier methods are not applicable. Nevertheless, they often suffer from the curse of dimensionality as the degrees of freedom in the resulting approximations grow exponentially with the dimensionality of the problem. Therefore, if the pricing problem is of a higher dimensionality that cannot be reduced, Monte Carlo methods are the most common alternative.
-\par Interestingly, RBF methods are a more recent group of deterministic methods to be used for option pricing, first time applied in 1999 for one-dimensional European options \cite{hon1999radial}. Ever since, these methods have been becoming increasingly popular since they possess potential to cope with PDEs of moderately high dimensions. Typically, deterministic methods are used to solve pricing problems of up to no more than three dimensions. In the following chapter we present a localized RBF method that might become an alternative to Monte Carlo methods for moderately high-dimensional problems, i.e., of dimensionality two to five. 
+\par Finally, RBF methods are a more recent group of deterministic methods to be used for option pricing, first time applied in 1999 for one-dimensional European options \cite{hon1999radial}. Ever since, these methods have been becoming increasingly popular since they possess potential to cope with PDEs of moderately high dimensions. Typically, deterministic methods are used to solve pricing problems of up to no more than three dimensions. In the following chapter we present a localized RBF method that might become an alternative to Monte Carlo methods for moderately high-dimensional problems, i.e., of dimensionality two to five. 
 %
 %
 %%%
-\chapter{Radial Basis Function generated Finite Difference Methods}
+\chapter{Radial Basis Function generated Finite Differences}
 \label{ch:rbffd}
-\par The RBF-FD methods can be seen as a kind of finite difference methods that belong to the family of RBF methods. Using the RBF methods for approximating solutions of PDEs dates back to the beginning of the nineties in the previous century \cite{kansa1990multiquadrics2, kansa1990multiquadrics1}. Ever since, these methods have been used in different fields, including financial engineering \cite{pettersson2008improved, fasshauer2004using, hon1999radial}. 
-\par In order to apply the method, we observe option pricing problems on the truncated computational domain $\Omega\subset \mathbb{R}^{d}$ in the following PDE form
+\par Using the RBF methods for approximating solutions of PDEs dates back to the beginning of the nineties in the previous century \cite{kansa1990multiquadrics2, kansa1990multiquadrics1}. Ever since, these methods have been used in different fields, including financial engineering \cite{pettersson2008improved, fasshauer2004using, hon1999radial}. 
+\par In order to apply an RBF method, we observe option pricing problems on the truncated computational domain $\Omega\subset \mathbb{R}^{d}$ in the following PDE form
 \begin{align}
-\frac{\partial}{\partial t}u(\underline{x},t) + \mathcal{L}u(\underline{x},t) &= 0, \label{eqPDE} \\
-%\mathcal{B}u(t,\underline{x}) &= f(t,\underline{x}), \quad \underline{x} \in \partial \Omega, \label{eqBC} \\
-u(\underline{x},T) &= g(\underline{x}),
+\frac{\partial}{\partial t}u(\underline{x},t) + \mathcal{L}u(\underline{x},t) &= 0, \quad \underline{x} \in \Omega \label{eqPDE} \\
+{\color{white} \frac{\partial}{\partial t}} \mathcal{B}u(\underline{x},t) &= f(\underline{x},t), \quad \underline{x} \in \partial \Omega, \label{eqBC} \\
+{\color{white} \frac{\partial}{\partial t}} u(\underline{x},T) &= g(\underline{x}), \quad \underline{x} \in \Omega, \label{eqTC}
 \end{align}
-where $u(\underline{x},t)$ is the option price, $\underline{x} \in \Omega$ is the spatial variable representing underlying assets or stochastic factors, and $\mathcal{L}$ is the differential operator of the pricing model.
-\par To construct an RBF approximation, we scatter $N$ nodes $\underline{x}_j$, where $j=1,\ldots,N$, across the computational domain $\Omega$. Then, we consider an interpolant
+where $u(\underline{x},t)$ is the option price, $\underline{x}$ is the spatial variable representing underlying assets and/or stochastic factors, with $\mathcal{L}$ as the differential operator of the pricing model; $\mathcal{B}$ is the boundary operator which together with the function $f(\underline{x},t)$ models the boundary conditions; initial data are defined by the terminal condition $g(\underline{x})$.
+\par To construct a global RBF approximation in space, we scatter $N$ nodes $\underline{x}_j$, where $j=1,\ldots,N$, across the computational domain $\Omega$. Then, we consider an interpolant
 \begin{equation}
 \label{eq:RBFint}
-	\tilde{u}(\underline{x}) = \sum_{j=1}^N \lambda_j \phi(\|\underline{x}-\underline{x}_j\|),
+	\tilde{u}(\underline{x},t) = \sum_{j=1}^N \lambda_j(t) \phi(\|\underline{x}-\underline{x}_j\|),
 \end{equation}
-where $\phi$ is the RBF, and $\lambda_j$ are the interpolation coefficients. The value of the interpolant at any point $\underline{x}$ only depends on the distance to the nodes and that this expression is valid in any number of dimensions. 
-\begin{table}[!ht]
+where $\phi$ is the RBF, and $\lambda_j(t)$ are the time-dependent interpolation coefficients. At any time $t$, the value of the interpolant in every point $\underline{x}$ only depends on the distance to the nodes and this expression is valid for any number of dimensions. 
+\par Some examples of commonly used RBFs are listed in Table \ref{tabrbf}, split into two groups. The first group in the table consists of infinitely smooth RBFs that can provide spectral accuracy for interpolation and are featured with a shape parameter $\varepsilon$. The second group contains a piecewise smooth RBF that can give algebraic convergence for interpolation.%
+\begin{table}[H]
+%\label{tabrbf}
 \begin{center}
-\caption{{\rmfamily{Commonly used radial basis functions, where $\varepsilon\in \mathbb{R}^+$ is the shape parameter for the infinitely smooth RBFs, and $q\in\{2m-1,\ m \in \mathbb{N}\}$ is the degree of the polyharmonic spline as a piecewise smooth RBF.}}}
+\caption{{\rmfamily{Commonly used RBFs, where $\varepsilon\in \mathbb{R}^+$ is the shape parameter for the infinitely smooth RBFs, and $q\in\{2m-1,\ m \in \mathbb{N}\}$ is the degree of the polyharmonic spline as a piecewise smooth RBF.}}}
 \begin{tabular}{ l  c  c  c  r  }
+\label{tabrbf}
 %\hline\hline 
 RBF & & &  & $\phi(r)$   \\ 
 \hline
-Gaussian (GA) &  & &  &  $\exp{(-\varepsilon^2r^2)}$ \\
+Gaussian (GS) &  & &  &  $\exp{(-\varepsilon^2r^2)}$ \\
 Multiquadric (MQ) &  & &  & $\sqrt{1+\varepsilon^2r^2}$ \\
 Inverse Multiquadric (IMQ) & & &  & $1/\sqrt{1+\varepsilon^2r^2}$ \\
 Inverse Quadratic (IQ) & & &  & $1/(1+\varepsilon^2r^2)$ \\
 \hlinewd{0.5pt}
 Polyharmonic Spline (PHS) & & &  & $r^q$\\
 \hline
-%\hline\hline
 \end{tabular}
-\label{TabRBF}
 \end{center}
 \end{table}
-We can use this interpolant to approximate the solution of \eqref{eqPDE}, resulting in a dense linear system of equations which dominates the computational cost.
+\noindent In this thesis, we consider GS and PHS functions for approximating solutions of the pricing equations. Those two RBFs are shown plotted on a unit domain in Figure \ref{figRBF}.
 \begin{figure}[H]
 \centering
 \input{figures/GSplot.tikz}\hspace{1em}
 \input{figures/PHSplot.tikz}
-\caption{Polyharmonic splines of different odd degrees.}
+\caption{Examples of Gaussian RBFs with different shape parameter values (left) and polyharmonic splines of different degrees (right).}
 \label{figRBF}
 \end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%
-{\color{red}
-\par {\huge\textbf{STOP}}
-\par \noindent \rule{\textwidth}{2pt}}
-\color{gray}
-%%%%%%%%%%%%%%%%%%%%%%%
-
-\par Even though the classic RBF methods (also known as global RBF methods) possess desirable properties such as high order convergence and mesh-free domain discretization, they are featured with dense system matrices which in many cases have very large condition numbers. To overcome these weaknesses, several localized RBF approaches were introduced, among which RBF-FD \cite{tolstykh2000using, wright2006scattered} and RBF-PU \cite{wendland2002fast} are the most popular and still actively developed.
-%Given a set of $N$ nodes scattered across the computational domain $\Omega$ and a differential operator $\mathcal{L}$. 
-
-
-
-\par To construct an RBF-FD approximation, we scatter $N$ nodes across the computational domain $\Omega$. For each node $\underline{x}_j$, we define an array of nodes $\mathbf{x}_j$ consisting of $n_j-1$ neighboring nodes and $\underline{x}_j$ itself, and consider it as a stencil of size $n_j$ centered at $\underline{x}_j$. The differential operator $\mathcal{L}$ defined in (\ref{eqPDE})  is approximated in every node  $\underline{x}_j$ as
+%
+\par We can apply the global RBF method by collocating at the same $\underline{x}_j$ points through substituting \eqref{eq:RBFint} into \eqref{eqPDE}. Thus, we obtain a dense linear system of ordinary differential equations (ODEs) of size $N$, where $\lambda_j(t)$ are the unknowns. 
+%\begin{align}
+%\frac{\partial}{\partial t} \mathbf{l}(t) + P\mathbf{l}(t)=0
+%\end{align}
+Starting from the terminal condition \eqref{eqTC}, we can use a backward time integration method of our choice to compute the coefficients $\lambda_j(t)$, and therefore evaluate the interpolant $\tilde u$ which approximates the option price.
+\par Even though the global RBF methods possess desirable properties such as spectral convergence and mesh-free domain discretization, they are featured with dense system matrices which makes the method very computationally demanding. To overcome this weakness, several localized RBF approaches were introduced, among which radial basis function partition of unity (RBF-PU) methods \cite{wendland2002fast} and RBF-FD \cite{tolstykh2000using, wright2006scattered}, are the most popular, and still actively developed. These localized RBF methods are featured with sparser system matrices while still maintaining great properties from the global RBF methods, such as being mesh-free and of high-order.
+\par The RBF-PU method has been used in finance for pricing multi-asset derivatives \cite{shcherbakov2016radialvanilla, shcherbakov2016radial}, and its performance when pricing one-dimensional options and their hedging parameters is also documented in Paper \ref{paper5}. Moreover, RBF-PU is extensively compared against the RBF-FD method at solving multiple stochastic factors problems, which is reported in Paper \ref{paper4}. While in that paper both methods performed similarly, on a more objective study with stochastic and local volatility problems, presented in Paper \ref{paper6} --- RBF-FD showed up as a robust method that performs more efficiently in most of the considered cases. As both both RBF-FD and RBF-PU are still in rapid development, it is hard to say which method has better potential for the future. Therefore, it is very important for the field of computational finance that both of these methods continue developing.
+\par In this thesis, we mainly focus on the development of the RBF-FD methods. RBF-FD can be seen as a kind of an FD method that belongs to the family of RBF methods. To construct an RBF-FD approximation, we can reuse the same $N$ scattered nodes across the computational domain $\Omega$. For each node $\underline{x}_j$, we define an array of nodes $\mathbf{x}_j$ consisting of $n_j-1$ neighboring nodes and $\underline{x}_j$ itself, and consider it as a stencil of size $n_j$ centered at $\underline{x}_j$. The differential operator $\mathcal{L}$ defined in (\ref{eqPDE})  is approximated in every node  $\underline{x}_j$ as
 \begin{equation}
-\mathcal{L}u(\underline{x}_j)\approx\sum_{i=1}^{n_j}{w}_{j}^{i}u_j^{i}\equiv \mathbf{w}_ju(\mathbf{x}_j),\quad j=1,\ldots,N,
+\mathcal{L}u(\underline{x}_j, t)\approx\sum_{i=1}^{n_j}{w}_{j}^{i}u_j^{i}\equiv \mathbf{w}_ju(\mathbf{x}_j, t),\quad j=1,\ldots,N,
 \label{eqRBFFD}
 \end{equation}
-where $u_j^{i}=u(\underline{x}_j^i)$ and $\underline{x}_j^i$ is a locally indexed node in $\mathbf{x}_j$, while $\mathbf{w}_j$ is the array of differentiation weights for the stencil centered at $\underline{x}_j$. In the standard RBF-FD methods, the weights ${w}_j^i$ are calculated by enforcing (\ref{eqRBFFD}) to be exact for RBFs centered at each of the nodes in $\mathbf{x}_j$ yielding
+where $u_j^{i}=u(\underline{x}_j^i,t)$ and $\underline{x}_j^i$ is a locally indexed node in $\mathbf{x}_j$, while $\mathbf{w}_j$ is the array of differentiation weights for the stencil centered at $\underline{x}_j$. In the standard RBF-FD methods, the weights ${w}_j^i$ are calculated by enforcing (\ref{eqRBFFD}) to be exact for RBFs centered at each of the nodes in $\mathbf{x}_j$, yielding
 \begin{equation}
 \label{eqRBFFDmat}
 {\footnotesize{
@@ -510,6 +507,12 @@ where $u_j^{i}=u(\underline{x}_j^i)$ and $\underline{x}_j^i$ is a locally indexe
 \end{array}\right].}}
 \end{equation}
 In theory on RBF interpolation, it is known that (\ref{eqRBFFDmat}) forms a nonsingular system of equations. Therefore, a unique set of weights can be computed for each node. We arrange those weights in a differentiation matrix $L$ in order to build a discrete spatial operator that approximates $\mathcal{L}$. Since $n_j \ll N$, the resulting differentiation matrix is sparse.
+%%%%%%%%%%%%%%%
+\vspace{1cm}
+{\color{red}\hrule}
+%%%%%%%%%%%%%%
+%
+%%
 \section{Choosing Shape Parameters}
 Paper I
 %

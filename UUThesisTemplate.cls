@@ -146,7 +146,7 @@
 \DeclareOption{openright}{ \@UU@openrighttrue }
 
 \PassOptionsToPackage{figuresright}{rotating}
-\PassOptionsToPackage{font=small,labelfont=bf,nooneline,textfont=it}{caption}
+\PassOptionsToPackage{font=normalsize,labelfont=bf,nooneline,textfont=it}{caption}
 \PassOptionsToPackage{linktocpage, breaklinks=true, colorlinks=true, urlcolor=black, linkcolor=black, citecolor=black, filecolor=black, menucolor=black, pdfpagelabels,bookmarksnumbered=true,bookmarks=true}{hyperref}
 
 \ProcessOptions
@@ -195,6 +195,8 @@
 %	\setsansfont[Mapping=tex-text]{Arial}
 %	\setmonofont[Mapping=tex-text]{Courier New}
 %\fi
+
+
 
 % ============================================
 %               Font settings
@@ -313,7 +315,7 @@
 % Indented, smaller text with space before and after
 \renewenvironment{quotation}{%
 	\par\addtolength{\leftskip}{26pt}%
-	\addvspace{13pt plus 6pt minus 6pt}\small\noindent\ignorespaces%
+	\addvspace{13pt plus 6pt minus 6pt}\normalsize\noindent\ignorespaces%
 }{%
 	\par\addvspace{13pt plus 6pt minus 6pt}%
 	\global\@afterindentfalse\ignorespacesafterend%
@@ -392,7 +394,7 @@
 % Remove page numbers and numbering of headings
 \let\oldfrontmatter\frontmatter
 \renewcommand{\frontmatter}{%
-	\renewcommand{\thepage}{\roman{page}}%
+	\renewcommand{\thepage}{\rmfamily{\roman{page}}}%
 	\setcounter{secnumdepth}{-2} %
 	\@mainmatterfalse%
 	\pagestyle{empty}%
@@ -402,7 +404,8 @@
 \let\oldmainmatter\mainmatter
 	\renewcommand{\mainmatter}{%
 	\cleardoublepage%
-	\renewcommand{\thepage}{{\rmfamily{\arabic{page}}}}%
+  \renewcommand{\thepage}{{\rmfamily{\arabic{page}}}}
+	% \renewcommand{\thepage}{\arabic{page}}%
 	\setcounter{secnumdepth}{\c@secnumdepthmainmatter} %
 	\@mainmattertrue%
 	\if@culumntitles%
@@ -663,11 +666,10 @@
 
 \AtBeginDocument{
 \def\@caption#1[#2]#3{%
-	\rmfamily
+\rmfamily
 	\par %
 	\addcontentsline {\csname ext@#1\endcsname }{#1}{\protect \numberline {\csname the#1\endcsname }{\ignorespaces #2}}%
 	\begingroup %
-		\rmfamily
 		\@parboxrestore %
 		\if@minipage %
 			\@setminipage %
@@ -681,16 +683,15 @@
 \def\@makecaption@table#1#2{%
 	\addvspace{\belowcaptionskip}%
 	%\sbox\@tempboxa{{\bf #1.} #2}%
-	% \small{\bf #1.} {\it #2}\par%
-	{\rmfamily{#1.}} {\rmfamily{#2}}\par%
+	{\textrm{#1.} {\textrm{#2}}}\par%
 	\addvspace{\abovecaptionskip}%
 }
 
 \def\@makecaption@default#1#2{%
 	\addvspace{\abovecaptionskip}%
-	\sbox\@tempboxa{{\rmfamily{#1.}} \rmfamily{#2}}%
+	\sbox\@tempboxa{{#1.} #2}%
 	\ifdim \wd\@tempboxa>\hsize%
-		\rmfamily{#1.} \rmfamily{#2}\par%
+		{\textrm{#1.} \textrm{#2}}\par%
 	\else %
 		\global \@minipagefalse \hb@xt@ \hsize {\hfil \box \@tempboxa \hfil }%
 	\fi %
@@ -712,17 +713,16 @@
 % ============================================
 
 \AtBeginDocument{%
-%
 % Smaller font size in tables
 	\let\otable\table%
-	\def\table{\let\textnormalsize\normalsize\let\normalsize\small\par\otable}%
+	\def\table{\let\textnormalsize\normalsize\let\normalsize\normalsize\par\otable}%
 	\g@addto@macro\endtable\normalsize%
 %
 % Fixes for package caption
 	\@ifpackageloaded{caption}{%
-		\let\captionfont\small%
+		\let\captionfont\normalsize%
 		\def\table{\begingroup\captionsetup{labelfont=bf}%
-		\small\par\otable}%
+		\normalsize\par\otable}%
 		\g@addto@macro\endtable\endgroup%
 		\let\ofigure\figure%
 		\def \figure{\begingroup\captionsetup{labelfont=it,textfont=rm}\ofigure}%
@@ -732,7 +732,7 @@
 % Fixes for package natbib
 	\@ifpackageloaded{natbib}{%
 		\def\bibsection{\chapter{\bibname}\sectionmark{References}}%
-		\def\bibfont{\small}%
+		\def\bibfont{\normalsize}%
 		\def\bibpreamble{\UU@RaggedRight\raggedbottom}%
 	}{}%
 %
@@ -769,7 +769,7 @@
 			}%
 		}%
 		\let\olongtable\longtable%
-		\def\longtable{\small\par\olongtable}%
+		\def\longtable{\normalsize\par\olongtable}%
 		\g@addto@macro\endlongtable{\addvspace{0pt plus 13pt}\normalsize}%
 		\let\oLT@array\LT@array%
 	\def\LT@array[#1]#2{%
@@ -1067,7 +1067,7 @@
 \renewenvironment{thebibliography}[1]{%
 	\chapter{\bibname}%
 	\@mkboth {\bibname}{\bibname}%
-	\small%
+	\normalsize%
 	\UU@RaggedRight%
 	\raggedbottom%
 	\list{\@biblabel{\@arabic\c@enumiv }}{%
@@ -1329,7 +1329,7 @@
     \newenvironment{definitionlist-indent}[1][]
         {\leftskip 1cm\begin{definitionlist}[#1]}
         {\end{definitionlist}}
-    \newcommand{\code}[1]{{\small\texttt{#1}}}
+    \newcommand{\code}[1]{{\normalsize\texttt{#1}}}
 	\newcommand\listheading[1]{%
 		\if@noskipsec\leavevmode\fi %
 		\par\@tempskipa 13pt \@plus 2pt \@minus 3pt\relax\@afterindentfalse%

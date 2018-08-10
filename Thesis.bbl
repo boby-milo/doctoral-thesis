@@ -251,6 +251,13 @@
 \newblock \emph{Using meshfree approximation for multi-asset american options}.
 \newblock Journal of the Chinese Institute of Engineers, 27(4): 563--571, 2004.
 
+\bibitem{wendland2002fast}
+\bibnamefont{H.~Wendland}.
+\newblock \emph{Fast evaluation of radial basis functions: Methods based on
+  partition of unity}.
+\newblock In \emph{Approximation Theory X: Wavelets, Splines, and
+  Applications}. Citeseer, 2002.
+
 \bibitem{tolstykh2000using}
 \bibnamefont{A.~I. Tolstykh}.
 \newblock \emph{On using {R}{B}{F}-based differencing formulas for unstructured
@@ -265,12 +272,17 @@
   generated from radial basis functions}.
 \newblock Journal of Computational Physics, 212(1): 99--123, 2006.
 
-\bibitem{wendland2002fast}
-\bibnamefont{H.~Wendland}.
-\newblock \emph{Fast evaluation of radial basis functions: Methods based on
-  partition of unity}.
-\newblock In \emph{Approximation Theory X: Wavelets, Splines, and
-  Applications}. Citeseer, 2002.
+\bibitem{shcherbakov2016radialvanilla}
+\bibnamefont{V.~Shcherbakov and E.~Larsson}.
+\newblock \emph{Radial basis function partition of unity methods for pricing
+  vanilla basket options}.
+\newblock Computers \& Mathematics with Applications, 71(1): 185--200, 2016.
+
+\bibitem{shcherbakov2016radial}
+\bibnamefont{V.~Shcherbakov}.
+\newblock \emph{Radial basis function partition of unity operator splitting
+  method for pricing multi-asset american options}.
+\newblock BIT Numerical Mathematics, 56(4): 1401--1423, 2016.
 
 \bibitem{davydov2011adaptive}
 \bibnamefont{O.~Davydov and D.~T. Oanh}.
