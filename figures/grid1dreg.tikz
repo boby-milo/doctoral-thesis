@@ -1,0 +1,83 @@
+\rmfamily
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+%
+\begin{tikzpicture}[trim axis left, trim axis right,baseline]
+
+\begin{axis}[%
+hide y axis,
+width=0.55\textwidth,
+y=0.001cm,
+xmin=0,
+xmax=4,
+xtick={0,1,4},
+xticklabels={$0$,$K$,$4K$},
+axis x line*=bottom,
+xlabel={$s_1$},
+title={1D}
+]
+\addplot [color=black,mark size=0.5pt,only marks,mark=*,mark options={solid},forget plot]
+  table[row sep=crcr]{%
+  0	0\\
+  0.08	0\\
+  0.16	0\\
+  0.24	0\\
+  0.32	0\\
+  0.4	0\\
+  0.48	0\\
+  0.56	0\\
+  0.64	0\\
+  0.72	0\\
+  0.8	0\\
+  0.88	0\\
+  0.96	0\\
+  1.04	0\\
+  1.12	0\\
+  1.2	0\\
+  1.28	0\\
+  1.36	0\\
+  1.44	0\\
+  1.52	0\\
+  1.6	0\\
+  1.68	0\\
+  1.76	0\\
+  1.84	0\\
+  1.92	0\\
+  2	0\\
+  2.08	0\\
+  2.16	0\\
+  2.24	0\\
+  2.32	0\\
+  2.4	0\\
+  2.48	0\\
+  2.56	0\\
+  2.64	0\\
+  2.72	0\\
+  2.8	0\\
+  2.88	0\\
+  2.96	0\\
+  3.04	0\\
+  3.12	0\\
+  3.2	0\\
+  3.28	0\\
+  3.36	0\\
+  3.44	0\\
+  3.52	0\\
+  3.6	0\\
+  3.68	0\\
+  3.76	0\\
+  3.84	0\\
+  3.92	0\\
+  4	0\\
+};
+\addplot [color=mycolor2,mark size=1pt,only marks,mark=square*,mark options={solid},forget plot]
+  table[row sep=crcr]{%
+4	0\\
+};
+\addplot [color=mycolor1,mark size=1pt,only marks,mark=triangle*,mark options={solid,scale=1.5},forget plot]
+  table[row sep=crcr]{%
+0	0\\
+};
+\end{axis}
+\end{tikzpicture}%

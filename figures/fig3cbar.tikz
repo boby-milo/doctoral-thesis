@@ -1,0 +1,29 @@
+\rmfamily
+\begin{tikzpicture}[baseline, trim axis left, trim axis right]
+\pgfplotsset{xtick style={draw=none}, every axis y label/.append style={yshift=7.75cm}}
+    \begin{axis}[
+        axis on top,
+        %grid=major,
+        % tick label style = {font=\sansmath\sffamily},
+        width=3*0.0115\textwidth,
+        height=0.9*0.4519\textwidth,
+        scale only axis,
+        enlargelimits=false,
+        xmin=0,
+        xmax=1,
+        ymode=log,
+        ymin=1e-09,
+        ymax=1e-02,
+        % ytick distance=10^1,
+        ytick={1e-09,1e-08,1e-07,1e-06,1e-05,1e-04,1e-03},
+        extra y ticks={1e-02},
+        extra y tick labels={$\geq10^{-2}$},
+        %yminorticks=true,
+        title={$\Delta u_{\text{max}}$},
+        ylabel near ticks, yticklabel pos=right,
+        xticklabels={,,},
+        ]
+
+      \addplot graphics[xmin=0,ymin=1e-09,xmax=1,ymax=1e-02]{figures/cbarnew.png};
+    \end{axis}
+  \end{tikzpicture}

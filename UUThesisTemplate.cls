@@ -689,7 +689,7 @@
 
 \def\@makecaption@default#1#2{%
 	\addvspace{\abovecaptionskip}%
-	\sbox\@tempboxa{{#1.} #2}%
+	\sbox\@tempboxa{{{\textbf{#1.}}} #2}%
 	\ifdim \wd\@tempboxa>\hsize%
 		{\textbf{#1.}} {\textrm{#2}}\par%
 	\else %

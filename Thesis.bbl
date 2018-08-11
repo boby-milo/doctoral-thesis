@@ -272,6 +272,12 @@
   generated from radial basis functions}.
 \newblock Journal of Computational Physics, 212(1): 99--123, 2006.
 
+\bibitem{safdari2015radial}
+\bibnamefont{A.~Safdari-Vaighani, A.~Heryudono, and E.~Larsson}.
+\newblock \emph{A radial basis function partition of unity collocation method
+  for convection--diffusion equations arising in financial applications}.
+\newblock Journal of Scientific Computing,  1--27, 2015.
+
 \bibitem{shcherbakov2016radialvanilla}
 \bibnamefont{V.~Shcherbakov and E.~Larsson}.
 \newblock \emph{Radial basis function partition of unity methods for pricing
@@ -283,6 +289,13 @@
 \newblock \emph{Radial basis function partition of unity operator splitting
   method for pricing multi-asset american options}.
 \newblock BIT Numerical Mathematics, 56(4): 1401--1423, 2016.
+
+\bibitem{larsson2008multi}
+\bibnamefont{E.~Larsson, K.~{\AA}hlander, and A.~Hall}.
+\newblock \emph{Multi-dimensional option pricing using radial basis functions
+  and the generalized {F}ourier transform}.
+\newblock Journal of Computational and Applied Mathematics, 222(1): 175--192,
+  2008.
 
 \bibitem{chandhini2007local}
 \bibnamefont{G.~Chandhini and Y.~S. Sanyasiraju}.
@@ -328,8 +341,43 @@
 \bibnamefont{X.~Wang}.
 \newblock \emph{Finite differences based on radial basis functions to price
   options}.
-\newblock Master's thesis, Uppsala University, 6 2014.
-\newblock Master thesis.
+\newblock Master's thesis, Uppsala University, 2014.
+
+\bibitem{kadalbajoo2013application}
+\bibnamefont{M.~K. Kadalbajoo, A.~Kumar, and L.~P. Tripathi}.
+\newblock \emph{Application of radial basis function with {L}-stable {P}ad{\'e}
+  time marching scheme for pricing exotic option}.
+\newblock Computers \& Mathematics with Applications, 66(4): 500--511, 2013.
+
+\bibitem{kadalbajoo2015application}
+\bibnamefont{M.~K. Kadalbajoo, A.~Kumar, and L.~P. Tripathi}.
+\newblock \emph{Application of the local radial basis function-based finite
+  difference method for pricing {A}merican options}.
+\newblock International Journal of Computer Mathematics, 92(8): 1608--1624,
+  2015.
+
+\bibitem{kumar2015numerical}
+\bibnamefont{A.~Kumar, L.~P. Tripathi, and M.~K. Kadalbajoo}.
+\newblock \emph{A numerical study of {A}sian option with radial basis functions
+  based finite differences method}.
+\newblock Engineering Analysis with Boundary Elements, 50: 1--7, 2015.
+
+\bibitem{kadalbajoo2017radial}
+\bibnamefont{M.~K. Kadalbajoo, A.~Kumar, and L.~P. Tripathi}.
+\newblock \emph{Radial-basis-function-based finite difference operator
+  splitting method for pricing american options}.
+\newblock International Journal of Computer Mathematics,  1--17, 2017.
+
+\bibitem{fornberg2015fast}
+\bibnamefont{B.~Fornberg and N.~Flyer}.
+\newblock \emph{Fast generation of 2-{D} node distributions for mesh-free {PDE}
+  discretizations}.
+\newblock Computers \& Mathematics with Applications, 69(7): 531--544, 2015.
+
+\bibitem{fornberg2013stable}
+\bibnamefont{B.~Fornberg, E.~Lehto, and C.~Powell}.
+\newblock \emph{Stable calculation of {G}aussian-based {RBF}--{FD} stencils}.
+\newblock Comput. Math. Appl., 65(4): 627--637, 2013.
 
 \bibitem{davydov2011adaptive}
 \bibnamefont{O.~Davydov and D.~T. Oanh}.
@@ -355,16 +403,17 @@
   node stencils based on {G}aussian radial basis functions}.
 \newblock SIAM Journal on Scientific Computing, 35(4): A2096--A2119, 2013.
 
-\bibitem{fornberg2013stable}
-\bibnamefont{B.~Fornberg, E.~Lehto, and C.~Powell}.
-\newblock \emph{Stable calculation of {G}aussian-based {RBF}--{FD} stencils}.
-\newblock Comput. Math. Appl., 65(4): 627--637, 2013.
-
 \bibitem{flyer2016enhancing}
 \bibnamefont{N.~Flyer, G.~A. Barnett, and L.~J. Wicker}.
 \newblock \emph{Enhancing finite differences with radial basis functions:
   experiments on the {N}avier--{S}tokes equations}.
 \newblock Journal of Computational Physics, 316: 39--62, 2016.
+
+\bibitem{flyer2016on}
+\bibnamefont{N.~Flyer, B.~Fornberg, V.~Bayona, and G.~A. Barnett}.
+\newblock \emph{On the role of polynomials in {RBF}--{FD} approximations: {I}.
+  {I}nterpolation and accuracy}.
+\newblock Journal of Computational Physics, 321: 21--38, 2016.
 
 \bibitem{bayona2017role}
 \bibnamefont{V.~Bayona, N.~Flyer, B.~Fornberg, and G.~A. Barnett}.
@@ -372,10 +421,9 @@
   {N}umerical solution of elliptic {P}{D}{E}s}.
 \newblock Journal of Computational Physics, 332: 257--273, 2017.
 
-\bibitem{flyer2016on}
-\bibnamefont{N.~Flyer, B.~Fornberg, V.~Bayona, and G.~A. Barnett}.
-\newblock \emph{On the role of polynomials in {RBF}--{FD} approximations: {I}.
-  {I}nterpolation and accuracy}.
-\newblock Journal of Computational Physics, 321: 21--38, 2016.
+\bibitem{vlasiuk2017fast}
+\bibnamefont{O.~Vlasiuk, T.~Michaels, N.~Flyer, and B.~Fornberg}.
+\newblock \emph{Fast high-dimensional node generation with variable density}.
+\newblock arXiv preprint arXiv:1710.05011, 2017.
 
 \end{thebibliography}
