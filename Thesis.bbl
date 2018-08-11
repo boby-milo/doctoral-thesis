@@ -225,13 +225,6 @@
   model}.
 \newblock Financial Engineering, 8(1): 31--49, 1999.
 
-\bibitem{kansa1990multiquadrics2}
-\bibnamefont{E.~J. Kansa}.
-\newblock \emph{Multiquadrics --- {A} scattered data approximation scheme with
-  applications to computational fluid-dynamics --- {II} solutions to parabolic,
-  hyperbolic and elliptic partial differential equations}.
-\newblock Computers \& mathematics with applications, 19(8-9): 147--161, 1990.
-
 \bibitem{kansa1990multiquadrics1}
 \bibnamefont{E.~J. Kansa}.
 \newblock \emph{Multiquadrics --- {A} scattered data approximation scheme with
@@ -239,17 +232,24 @@
   and partial derivative estimates}.
 \newblock Computers \& Mathematics with applications, 19(8-9): 127--145, 1990.
 
+\bibitem{kansa1990multiquadrics2}
+\bibnamefont{E.~J. Kansa}.
+\newblock \emph{Multiquadrics --- {A} scattered data approximation scheme with
+  applications to computational fluid-dynamics --- {II} solutions to parabolic,
+  hyperbolic and elliptic partial differential equations}.
+\newblock Computers \& mathematics with applications, 19(8-9): 147--161, 1990.
+
+\bibitem{fasshauer2004using}
+\bibnamefont{G.~E. Fasshauer, A.~Q.~M. Khaliq, and D.~A. Voss}.
+\newblock \emph{Using meshfree approximation for multi-asset american options}.
+\newblock Journal of the Chinese Institute of Engineers, 27(4): 563--571, 2004.
+
 \bibitem{pettersson2008improved}
 \bibnamefont{U.~Pettersson, E.~Larsson, G.~Marcusson, and J.~Persson}.
 \newblock \emph{Improved radial basis function methods for multi-dimensional
   option pricing}.
 \newblock Journal of Computational and Applied Mathematics, 222(1): 82--93,
   2008.
-
-\bibitem{fasshauer2004using}
-\bibnamefont{G.~E. Fasshauer, A.~Q.~M. Khaliq, and D.~A. Voss}.
-\newblock \emph{Using meshfree approximation for multi-asset american options}.
-\newblock Journal of the Chinese Institute of Engineers, 27(4): 563--571, 2004.
 
 \bibitem{wendland2002fast}
 \bibnamefont{H.~Wendland}.
@@ -283,6 +283,53 @@
 \newblock \emph{Radial basis function partition of unity operator splitting
   method for pricing multi-asset american options}.
 \newblock BIT Numerical Mathematics, 56(4): 1401--1423, 2016.
+
+\bibitem{chandhini2007local}
+\bibnamefont{G.~Chandhini and Y.~S. Sanyasiraju}.
+\newblock \emph{Local {RBF-FD} solutions for steady convection-diffusion
+  problems}.
+\newblock International Journal for Numerical Methods in Engineering, 72(3):
+  352--378, 2007.
+
+\bibitem{stevens2009use}
+\bibnamefont{D.~Stevens, H.~Power, M.~Lees, and H.~Morvan}.
+\newblock \emph{The use of {PDE} centres in the local {RBF} {H}ermitian method
+  for {3D} convective-diffusion problems}.
+\newblock Journal of Computational Physics, 228(12): 4606--4624, 2009.
+
+\bibitem{shu2003local}
+\bibnamefont{C.~Shu, H.~Ding, and K.~S. Yeo}.
+\newblock \emph{Local radial basis function-based differential quadrature
+  method and its application to solve two-dimensional incompressible
+  {Navier--Stokes} equations}.
+\newblock Computer Methods in Applied Mechanics and Engineering, 192(7-8):
+  941--954, 2003.
+
+\bibitem{shan2008application}
+\bibnamefont{Y.~Y. Shan, C.~Shu, and Z.~L. Lu}.
+\newblock \emph{Application of local {MQ-DQ} method to solve {3D}
+  incompressible viscous flows with curved boundary}.
+\newblock Computer modeling in engineering and sciences, 25(2):~99, 2008.
+
+\bibitem{chinchapatnam2009compact}
+\bibnamefont{P.~P. Chinchapatnam, K.~Djidjeli, P.~B. Nair, and M.~Tan}.
+\newblock \emph{A compact {RBF-FD} based meshless method for the incompressible
+  {Navier--Stokes} equations}.
+\newblock Proceedings of the Institution of Mechanical Engineers, Part M:
+  Journal of Engineering for the Maritime Environment, 223(3): 275--290, 2009.
+
+\bibitem{tolstykh2003using}
+\bibnamefont{A.~I. Tolstykh and D.~A. Shirobokov}.
+\newblock \emph{On using radial basis functions in a ``finite difference mode''
+  with applications to elasticity problems}.
+\newblock Computational Mechanics, 33(1): 68--79, 2003.
+
+\bibitem{wang2013radial}
+\bibnamefont{X.~Wang}.
+\newblock \emph{Finite differences based on radial basis functions to price
+  options}.
+\newblock Master's thesis, Uppsala University, 6 2014.
+\newblock Master thesis.
 
 \bibitem{davydov2011adaptive}
 \bibnamefont{O.~Davydov and D.~T. Oanh}.

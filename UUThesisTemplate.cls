@@ -683,7 +683,7 @@
 \def\@makecaption@table#1#2{%
 	\addvspace{\belowcaptionskip}%
 	%\sbox\@tempboxa{{\bf #1.} #2}%
-	{\textrm{#1.} {\textrm{#2}}}\par%
+	{\textbf{#1.}} {\textrm{#2}}\par%
 	\addvspace{\abovecaptionskip}%
 }
 
@@ -691,7 +691,7 @@
 	\addvspace{\abovecaptionskip}%
 	\sbox\@tempboxa{{#1.} #2}%
 	\ifdim \wd\@tempboxa>\hsize%
-		{\textrm{#1.} \textrm{#2}}\par%
+		{\textbf{#1.}} {\textrm{#2}}\par%
 	\else %
 		\global \@minipagefalse \hb@xt@ \hsize {\hfil \box \@tempboxa \hfil }%
 	\fi %
