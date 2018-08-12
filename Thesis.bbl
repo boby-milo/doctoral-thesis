@@ -64,6 +64,17 @@
   with applications to bond and currency options}.
 \newblock The review of financial studies, 6(2): 327--343, 1993.
 
+\bibitem{grzelak2011heston}
+\bibnamefont{L.~A. Grzelak and C.~W. Oosterlee}.
+\newblock \emph{On the {H}eston model with stochastic interest rates}.
+\newblock SIAM Journal on Financial Mathematics, 2(1): 255--286, 2011.
+
+\bibitem{grzelak2012extension}
+\bibnamefont{L.~A. Grzelak, C.~W. Oosterlee, and S.~Van~Weeren}.
+\newblock \emph{Extension of stochastic volatility equity models with the
+  {H}ull--{W}hite interest rate process}.
+\newblock Quantitative Finance, 12(1): 89--105, 2012.
+
 \bibitem{hull1990pricing}
 \bibnamefont{J.~Hull and A.~White}.
 \newblock \emph{Pricing interest-rate derivative securities}.
@@ -374,6 +385,11 @@
   discretizations}.
 \newblock Computers \& Mathematics with Applications, 69(7): 531--544, 2015.
 
+\bibitem{vlasiuk2017fast}
+\bibnamefont{O.~Vlasiuk, T.~Michaels, N.~Flyer, and B.~Fornberg}.
+\newblock \emph{Fast high-dimensional node generation with variable density}.
+\newblock arXiv preprint arXiv:1710.05011, 2017.
+
 \bibitem{fornberg2013stable}
 \bibnamefont{B.~Fornberg, E.~Lehto, and C.~Powell}.
 \newblock \emph{Stable calculation of {G}aussian-based {RBF}--{FD} stencils}.
@@ -421,9 +437,22 @@
   {N}umerical solution of elliptic {P}{D}{E}s}.
 \newblock Journal of Computational Physics, 332: 257--273, 2017.
 
-\bibitem{vlasiuk2017fast}
-\bibnamefont{O.~Vlasiuk, T.~Michaels, N.~Flyer, and B.~Fornberg}.
-\newblock \emph{Fast high-dimensional node generation with variable density}.
-\newblock arXiv preprint arXiv:1710.05011, 2017.
+\bibitem{kreiss1970smoothing}
+\bibnamefont{H.-O. Kreiss, V.~Thomée, and O.~Widlund}.
+\newblock \emph{Smoothing of initial data and rates of convergence for
+  parabolic difference equations}.
+\newblock Communications on Pure and Applied Mathematics, 23(2): 241--259,
+  1970.
+
+\bibitem{pooley2003convergence}
+\bibnamefont{D.~M. Pooley, K.~R. Vetzal, and P.~A. Forsyth}.
+\newblock \emph{Convergence remedies for non-smooth payoffs in option pricing}.
+\newblock Journal of Computational Finance, 6(4): 25--40, 2003.
+
+\bibitem{during2015high}
+\bibnamefont{B.~D{\"u}ring and C.~Heuer}.
+\newblock \emph{High-order compact schemes for parabolic problems with mixed
+  derivatives in multiple space dimensions}.
+\newblock SIAM Journal on Numerical Analysis, 53(5): 2113--2134, 2015.
 
 \end{thebibliography}
