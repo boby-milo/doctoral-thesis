@@ -7,7 +7,7 @@
 %% merlin.mbs  (with options: `seq-no,vonx,nm-init,ed-au,nmft,nmft-def,tit-it,jttl-rm,thtit-a,jwdpg,num-xser,isbn,issn,xedn,nfss,')
 %% ----------------------------------------
 %% *** Uppsala University ***
-%% 
+%%
 %% Copyright 1994-2011 Patrick W Daly
  % ===============================================================
  % IMPORTANT NOTICE:
@@ -733,7 +733,6 @@ FUNCTION {format.chapter.pages}
 FUNCTION {format.booktitle}
 {
   booktitle "booktitle" bibinfo.check
-  emphasize
 }
 FUNCTION {format.in.ed.booktitle}
 { format.booktitle duplicate$ empty$ 'skip$

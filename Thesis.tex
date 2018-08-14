@@ -159,13 +159,16 @@
 The purpose of this thesis is to present state of the art in radial basis function generated finite difference (RBF-FD) methods for pricing of financial derivatives. This work provides a detailed overview of RBF-FD properties and challenges that arise when the RBF-FD methods are used in financial applications. 
 
 \par
-Across the financial markets of the world, financial derivatives such as futures, options, and others, are traded in substantial volumes. Knowing the prices of those financial instruments is of utmost importance at any given time. Many of theoretical pricing models for financial derivatives can be represented using multi-dimensional PDEs, which are in most cases analytically unsolvable.
+Across the financial markets of the world, financial derivatives such as futures, options, and others, are traded in substantial volumes. Knowing the prices of those financial instruments at any given time is of utmost importance. Many of the theoretical pricing models for financial derivatives can be represented using multi-dimensional PDEs, which are in most cases analytically unsolvable.
 
 \par
-Therefore, we present RBF-FD as a recent numerical method with potential to efficiently approximate solutions of PDEs in finance. As its name suggests, the RBF-FD method is of a finite difference (FD) type, from the radial basis function (RBF) group of methods. When used to approximate differential operators, the method is featured with a sparse differentiation matrix, and it is relatively simple to implement --- like the standard FD methods. Moreover, the method is mesh-free, meaning that it does not require a structured discretization of the computational domain (which makes it equally easy to apply in spaces of different dimensions), and it is of a customizable order of accuracy --- which are the features it inherits from the global RBF approximations.
+We present RBF-FD as a recent numerical method with potential to efficiently approximate solutions of PDEs in finance. As its name suggests, the RBF-FD method is of a finite difference (FD) type, from the radial basis function (RBF) group of methods. When used to approximate differential operators, the method is featured with a sparse differentiation matrix, and it is relatively simple to implement --- like the standard FD methods. Moreover, the method is mesh-free, meaning that it does not require a structured discretization of the computational domain, and it is of a customizable order of accuracy --- which are the features it inherits from the global RBF approximations.
 
 \par
-The results in this thesis demonstrate how to successfully apply RBF-FD to different pricing problems by studying the effects of RBF shape parameters for Gaussian RBF-FD approximations, improving the approximation of differential operators in multiple dimensions by using polyharmonic splines augmented with polynomials, constructing suitable node layouts, and smoothing of the initial data to enable high order convergence of the method. Finally, we compare RBF-FD against other available methods on a plethora of pricing problems to form an objective image of the method's performance.
+The results in this thesis demonstrate how to successfully apply RBF-FD to different pricing problems by studying the effects of RBF shape parameters for Gaussian RBF-FD approximations, improving the approximation of differential operators in multiple dimensions by using polyharmonic splines augmented with polynomials, constructing suitable node layouts, and smoothing of the initial data to enable high order convergence of the method. Finally, we compare RBF-FD with other available methods on a plethora of pricing problems to form an objective image of the method's performance. 
+
+\par
+Future development of RBF-FD is expected to result in a solid mesh-free high order method for multi-dimensional PDEs, that can be used together with dimension reduction techniques to efficiently solve problems of high dimensionality that we often encounter in finance.
     \end{abstract}
 }
 
@@ -218,11 +221,39 @@ The results in this thesis demonstrate how to successfully apply RBF-FD to diffe
 
 %
 \chapter*{Related Work}
-    \noindent The following ongoing project, although not included, is related to the contents of the present thesis.\\\\
-    \bibnamefont{L. von Sydow, E. Larsson, S. Milovanović, V. Shcherbakov, et al.} 
-    \emph{BENCHOP: The BENCHmarking Project in Option Pricing --- Basket Options,}  	  
-    manuscript in preparation, 2018. \label{paper7}	
+    \noindent The following ongoing project, although not included, is related to the contents of this thesis.\\
+    
+	\noindent \bibnamefont{E. Larsson, S. Milovanović, V. Shcherbakov, L. von Sydow, et al.\footnote{{\textrm{The authors listed here, ordered alphabetically, represent the management group.}}}} 
+    	\emph{BENCHOP: The BENCHmarking Project in Option Pricing --- Basket Options.}  	  
+    	manuscript in preparation, 2018. \label{paper7}	
 
+\section*{Supervised Theses}
+The following bachelor and master theses in relation to this doctoral dissertation were supervised by the author.\\
+	
+	\noindent \bibnamefont{T. Sundvall and D. Trång.} 
+    	\emph{Examination of Impact from Different Boundary Conditions on the 2D Black--Scholes Model.}  	  
+    	Bachelor's thesis, Department of Engineering Sciences, Uppsala University, 2014,
+	supervised by: \bibnamefont{L. von Sydow and S. Milovanović.}\\
+	
+	\noindent \bibnamefont{A. Abrahamsson and R. Pettersson.} 
+    	\emph{Smoothing of Initial Conditions for High Order Approximations in Option Pricing.}  	  
+    	Bachelor's thesis, Department of Engineering Sciences, Uppsala University, 2016,
+	supervised by: \bibnamefont{L. von Sydow and S. Milovanović.}\\
+	
+	\noindent \bibnamefont{Robin Eriksson.} 
+    	\emph{Stencil Study for RBF-FD in Option Pricing.}  	  
+    	Bachelor's thesis, Department of Engineering Sciences, Uppsala University, 2016,
+	supervised by: \bibnamefont{S. Milovanović and L. von Sydow.}\\
+
+	\noindent \bibnamefont{Stephane Dumanois.} 
+    	\emph{Least Squares Radial Basis Function generated Finite Differences for Option Pricing.}  	  
+    	Master's thesis, Department of Mathematics, Uppsala University, 2016,
+	supervised by: \bibnamefont{S. Milovanović and L. von Sydow.}\\	
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begingroup
         % To adjust the indentation in your table of contents, uncomment and enter the widest numbers for each level
         %  E.g.  \settocnumwidth{widest chapter number}{widest section number}{widest subsection number}...{...}
@@ -266,10 +297,10 @@ The purpose of this thesis is to present state of the art in radial basis functi
 Across the financial markets of the world, financial derivatives such as futures, options, and others, are traded in substantial volumes. The value of all assets that underly outstanding derivatives transactions is several times larger than the gross world product (GWP). Financial derivatives are the most commonly used instruments when it comes to hedging risks, speculation based investing, and performing arbitrage. Therefore, knowing the prices of those financial instruments is of utmost importance at any given time. In order to make that possible in practice, it is often required to employ a set of skills incorporating knowledge in financial theory, engineering methods, mathematical tools, and programming practice --- which altogether constitute the field known as \emph{financial engineering}. 
 
 \par
-Many of theoretical pricing models for financial derivatives can be represented using PDEs. In many cases, those equations are time-dependent, of high spatial dimension, and with challenging boundary conditions --- which most often makes them analytically unsolvable. In those cases, we need to utilize numerical approximation as a mean of estimating their solution. The fields of \emph{numerical analysis} and \emph{scientific computing} are concerned with obtaining approximate solutions while maintaining reasonable bounds on errors. Unfortunately, there is no universal numerical method which can be used to solve all problems of this type efficiently. In fact, there are tremendously many numerical methods for solving different types of differential equations, and all those methods are featured with their own limitations in performance, stability, and accuracy --- mostly dependent on details of the problems they aim to solve. Therefore, carefully selecting and developing numerical methods for particular applications has been the only way to build efficient PDE solvers in ongoing practice. 
+Many of the theoretical pricing models for financial derivatives can be represented using PDEs. In many cases, those equations are time-dependent, of high spatial dimension, and with challenging boundary conditions --- which most often makes them analytically unsolvable. In those cases, we need to utilize numerical approximation as a mean of estimating their solution. The fields of \emph{numerical analysis} and \emph{scientific computing} are concerned with obtaining approximate solutions while maintaining reasonable bounds on errors. Unfortunately, there is no universal numerical method which can be used to solve all problems of this type efficiently. In fact, there are tremendously many numerical methods for solving different types of differential equations, and all those methods are featured with their own limitations in performance, stability, and accuracy --- mostly dependent on details of the problems they aim to solve. Therefore, carefully selecting and developing numerical methods for particular applications has been the only way to build efficient PDE solvers in ongoing practice. 
 
 \par
-RBF-FD is a recent numerical method with potential to efficiently approximate solutions of PDEs in finance. Over the past years, besides the purely academic development and research of its numerical properties, the method has been mainly applied for simulations of atmospheric phenomena. As its name suggests, the RBF-FD method is of a finite difference type, from the radial basis function family. As a finite difference method, RBF-FD approximates differential equations by linear systems of algebraic equations, known as difference equations. Radial basis functions (RBFs) are used as interpolants that enable local approximations of differential operators that are necessary for constructing the difference equations. Constructed like that, the method is featured with a sparse matrix of the linear system of difference equations, and it is relatively simple to implement like the standard finite difference methods. Moreover, the method is mesh-free, meaning that it does not require a structured discretization of the computational domain which makes it equally easy to use in spaces of different dimensions, and it is of a customizable order of accuracy --- which are the features it inherits from the global radial basis function approximations. It is those properties that led us to recognize RBF-FD as a method with high potential for efficiently approximating the solutions of some analytically unsolvable and computationally challenging pricing problems in finance.
+RBF-FD is a recent numerical method with potential to efficiently approximate solutions of PDEs in finance. Over the past years, besides the purely academic development and research of its numerical properties, the method has been mainly applied for simulations of atmospheric phenomena. As its name suggests, the RBF-FD method is of a finite difference type, from the radial basis function family. As a finite difference method, RBF-FD approximates differential equations by linear systems of algebraic equations, known as difference equations. Radial basis functions (RBFs) are used as interpolants that enable local approximations of differential operators that are necessary for constructing the difference equations. Constructed like that, the method is featured with a sparse matrix of the linear system of difference equations, and it is relatively simple to implement --- like the standard finite difference methods. Moreover, the method is mesh-free, meaning that it does not require a structured discretization of the computational domain which makes it equally easy to use in spaces of different dimensions, and it is of a customizable order of accuracy --- which are the features it inherits from the global radial basis function approximations. It is those properties that led us to recognize RBF-FD as a method with high potential for efficiently approximating the solutions of some analytically unsolvable and computationally challenging pricing problems in finance.
 
 \par
 Nevertheless, being a young method, RBF-FD is still under intense development, and we face many challenges when moving from simple theoretical cases toward more complex real-world applications. The core of this thesis deals with finding solutions for overcoming obstacles when financial derivatives are priced using RBF-FD to solve PDEs of multiple spatial dimensions. Thus, it represents a contribution to making the RBF-FD methods more reliable and efficient for use in financial applications. 
@@ -428,6 +459,13 @@ Moreover, using the It\^o's lemma and the Feynman--Kac theorem, we can equivalen
 u(s,T) &= g(s), \label{eq:bs}
 \end{align}
 where $s$ is the deterministic representation of the stochastic asset price $S$. Equation \eqref{eq:bs} is a parabolic PDE that has an analytical solution $u=u(s,t)$ in case of European call and put options. %In order to have a fully defined PDE problem, formulation in \eqref{eq:bs} requires appropriate boundary conditions. We omit stating the boundary conditions on purpose in this chapter for readability, and discuss them with particular problems examples in the subsequent chapters as they may vary from case to case. %Otherwise, the option price $u(s,t)$ can be numerically approximated by integration backward in time.
+
+\begin{figure}[H]
+\centering
+\input{figures/eucall.tikz}
+\caption{\emph{An example of a European call option price $u(s,t)$ calculated using the Black--Scholes--Merton model, and its payoff function $g_c(s)$.}}
+\label{fig:eucallpayoff}
+\end{figure}
 
 \par
 In order to make better trading decisions, investors often look at the hedging parameters, which are also known as the \emph{greeks}. The most commonly used ones are \emph{delta} $\Delta = \frac{\partial u}{\partial s}$, \emph{gamma} $\Gamma = \frac{\partial^2 u}{\partial s^2}$, and \emph{vega} $\nu = \frac{\partial u}{\partial \sigma}$. As these hedging parameters represent risk sensitivities, being able to compute them is of great importance.
@@ -641,7 +679,7 @@ Some examples of commonly used RBFs are listed in \textbf{Table \ref{tabrbf}}, s
 \begin{table}[H]
 %\label{tabrbf}
 \begin{center}
-\caption{{\rmfamily{Commonly used RBFs, where $\varepsilon\in \mathbb{R}^+$ is the shape parameter for the infinitely smooth RBFs, and $q\in\{2m-1,\ m \in \mathbb{N}\}$ is the degree of the polyharmonic spline as a piecewise smooth RBF.}}}
+\caption{\emph{Commonly used RBFs, where $\varepsilon\in \mathbb{R}^+$ is the shape parameter for the infinitely smooth RBFs, and $q\in\{2m-1,\ m \in \mathbb{N}\}$ is the degree of the polyharmonic spline as a piecewise smooth RBF.}}
 \label{tabrbf}
 \begin{tabular}{ l  c  c  c  r  }
 %\hline\hline 
@@ -662,7 +700,7 @@ Polyharmonic Spline (PHS) & & &  & $r^q$\\
 \centering
 \input{figures/GSplot.tikz}\hspace{1em}
 \input{figures/PHSplot.tikz}
-\caption{Examples of GSs with different shape parameter values (left) and PHSs of different degrees (right).}
+\caption{\emph{Examples of GSs with different shape parameter values (left) and PHSs of different degrees (right).}}
 \label{fig:RBF}
 \end{figure}
 %
@@ -719,7 +757,7 @@ In theory on RBF interpolation, it is known that (\ref{eqRBFFDmat}) forms a nons
 \begin{figure}[H]
 \centering
 \input{figures/gridsten.tikz}
-\caption{An example of nearest neighbor based stencils, used for approximating the differential operator $\mathcal{L}$ on a nonuniform node layout adapted for pricing of two-dimensional basket options with the underlying assets $s_1$ and $s_2$, and strike price $K$. The central node of each displayed stencil is denoted by a white cross mark. All stencils are of the size $n_j=n=75$.}
+\caption{\emph{An example of nearest neighbor based stencils, used for approximating the differential operator $\mathcal{L}$ on a nonuniform node layout adapted for pricing of two-dimensional basket options with the underlying assets $s_1$ and $s_2$, and strike price $K$. The central node of each displayed stencil is denoted by a white cross mark. All stencils are of the size $n_j=n=75$.}}
 \label{fig:gridsten}
 \end{figure}
 
@@ -773,7 +811,7 @@ RBF-FD may be seen as a generalization of classical FD methods --- where a polyn
 %%
 \section{Scattering Nodes}
 In general, pricing PDEs are defined on infinite real domains. In many cases, the domain may be limited from one side, e.g., because a stock as an underlying cannot be negative, but in most cases the domain remains open towards $+\infty$. Since we want to use a numerical discretization scheme, it is first required to truncate the domain and assign appropriate boundary conditions at the boundaries. When it comes to pricing multi-asset options under single-factor models, we truncate the far positive side of each dimension at $s_{\max}=aKD$, $a\in\mathbb{N}$. In practice, most of the time, using $a=4$ keeps the approximation in the area around the strike price $K$ safe from the artificial boundary effects. In that case, the close-field boundary is usually set at $s_{\min}=0$. The details about the domain truncation for the multi-factor models, as well as the specifics about the boundary conditions, can be found in the appended papers next to each problem used in the numerical experiments.
-\par Once the computational domain boundaries are defined, we discretize the domain by scattering nodes across it. In order to study RBF-FD approximation and to be able to compare it with the standard FD methods, we started by using equidistant Cartesian grid based node layouts. \textbf{Figure \ref{fig:gridreg}} shows equidistant Cartesian based node layouts for arithmetic basket option pricing problems of up to three dimensions in space.  
+\par Once the computational domain boundaries are defined, we discretize the domain by scattering nodes across it. In order to study RBF-FD approximation and to be able to compare it with the standard FD methods, we started by using equidistant-Cartesian-grid-based node layouts. \textbf{Figure \ref{fig:gridreg}} shows equidistant Cartesian based node layouts for arithmetic basket option pricing problems of up to three dimensions in space.  
 \begin{figure}[H]
 \centering
 \input{figures/grid1dreg.tikz}\\
@@ -781,7 +819,7 @@ In general, pricing PDEs are defined on infinite real domains. In many cases, th
 \input{figures/grid2dreg.tikz}\\
 \vspace{11pt}
 \input{figures/grid3dreg.tikz}\\
-\caption{Equidistant Cartesian grid based node layouts for pricing options with a different number of underlying assets. The close-field boundary conditions are enforced in the blue triangle node, and in the far-field boundary conditions are enforced in the red square nodes.}
+\caption{\emph{Equidistant-Cartesian-grid-based node layouts for pricing options with a different number of underlying assets. The close-field boundary conditions are enforced in the blue triangle node, and in the far-field boundary conditions are enforced in the red square nodes.}}
 \label{fig:gridreg}
 \end{figure}
 Although not fully exploiting the mesh-free feature of the RBF-FD methods, the presented node layouts for $D\geq2$ are truncated diagonally via a hyperplane that is parallel to the hyperplane of discontinuity in the first derivative of the payoff function for call and put basket options --- as it is not necessary to have computations in the parts of the domain that are far away from the strike value.  
@@ -794,7 +832,7 @@ For many contracts, it is common to have discontinuities in the first derivative
 \input{figures/grid1dsmooth.tikz}\\
 \vspace{11pt}
 \input{figures/BSgrid_adap.tikz}\\
-\caption{Payoff function adapted node layouts for pricing options with a different number of underlying assets. The close-field boundary conditions are enforced in the blue triangle node, and in the far-field boundary conditions are enforced in the red square nodes.}
+\caption{\emph{Payoff-function-adapted node layouts for pricing options with a different number of underlying assets. The close-field boundary conditions are enforced in the blue triangle node, and in the far-field boundary conditions are enforced in the red square nodes.}}
 \label{fig:gridadap}
 \end{figure}
 
@@ -805,7 +843,7 @@ By using nonuniform node layouts in our numerical experiments, we have discovere
 \input{figures/BSgrid_smooth.tikz}\\
 \vspace{11pt}
 \input{figures/HSTgrid_smooth.tikz}\\
-\caption{Smoothly-varying-density node layouts for pricing two-dimensional arithmetic basket options under the Black--Scholes--Merton model and one-dimensional options under the Heston model. The close-field boundary conditions are enforced in the blue triangle node, and in the far-field boundary conditions are enforced in the red square nodes. The yellow pentagons show the locations of interest, where the error was measured in the experiments.}
+\caption{\emph{Smoothly-varying-density node layouts for pricing two-dimensional arithmetic basket options under the Black--Scholes--Merton model and one-dimensional options under the Heston model. The close-field boundary conditions are enforced in the blue triangle node, and in the far-field boundary conditions are enforced in the red square nodes. The yellow pentagons show the locations of interest, where the error was measured in the experiments.}}
 \label{fig:gridsmooth}
 \end{figure}
 
@@ -835,7 +873,7 @@ where $\alpha$ is a real positive constant, and $h$ is the characteristic distan
 \centering
 %\input{figures/fig3a.tikz}
 \input{figures/fig3cbar.tikz}
-\caption{The maximum absolute error $\Delta u_{\max}$ measured in the subdomain $\hat\Omega=[\frac{1}{3}K,\frac{5}{3}K]$ around the strike price $K$, as a function of $h$ and $\varepsilon$, for a one-dimensional European call option priced on an equidistant Cartesian grid with RBF-FD stencil size $n=3$. The black line shows the appropriate choice for the shape parameter. The RBF-FD approximation is performed using GS basis functions.}
+\caption{\emph{The maximum absolute error $\Delta u_{\max}$ measured in the subdomain $\hat\Omega=[\frac{1}{3}K,\frac{5}{3}K]$ around the strike price $K$, as a function of $h$ and $\varepsilon$, for a one-dimensional European call option priced on an equidistant Cartesian grid with RBF-FD stencil size $n=3$. The black line shows the appropriate choice for the shape parameter. The RBF-FD approximation is performed using GS basis functions.}}
 \label{fig:contour1}
 \end{figure}
 If we take a closer look at \textbf{Figure \ref{fig:contour1}}, we can see that as $h$ decreases, the high error areas are joining together from top and bottom --- leaving no space for high accuracy if $h$ is sufficiently small. The truncation error analysis results presented in \textbf{Paper \ref{paper1}} explain the presented behavior, and we consider the solutions for this issue in the following section. 
@@ -884,7 +922,7 @@ We used monomials of degree $l=0$ augmented to GS basis functions in \textbf{Pap
 \centering
 %\input{figures/fig3b.tikz}
 \input{figures/fig3cbar.tikz}
-\caption{The maximum absolute error $\Delta u_{\max}$ measured in the subdomain $\hat\Omega=[\frac{1}{3}K,\frac{5}{3}K]$ around the strike price $K$, as a function of $h$ and $\varepsilon$, for a one-dimensional European call option priced on an equidistant Cartesian grid with RBF-FD stencil size $n=3$. The black line shows the appropriate choice for the shape parameter. The RBF-FD approximation is performed using GS augmented with monomials of degree $l=0$.}
+\caption{\emph{The maximum absolute error $\Delta u_{\max}$ measured in the subdomain $\hat\Omega=[\frac{1}{3}K,\frac{5}{3}K]$ around the strike price $K$, as a function of $h$ and $\varepsilon$, for a one-dimensional European call option priced on an equidistant Cartesian grid with RBF-FD stencil size $n=3$. The black line shows the appropriate choice for the shape parameter. The RBF-FD approximation is performed using GS augmented with monomials of degree $l=0$.}}
 \label{fig:contour2}
 \end{figure}
 \noindent The figure no longer shows joining high error fields, which ensures well-conditioned convergence of the method as $h$ is decreased.
@@ -908,15 +946,15 @@ In \textbf{Paper \ref{paper2}}, we successfully apply the PHS based RBF-FD metho
 For many option pricing problems, the payoff has a discontinuity in the function itself or its derivatives. Such discontinuities limit the order of convergence obtained in numerical simulations. For that reason, before applying the numerical method, we suggest smoothing the payoff function according to~\cite{kreiss1970smoothing}. This approach has been successfully used for option pricing problems in, e.g., ~\cite{pooley2003convergence, during2015high}. The smoothing of the payoff function enables the numerical method to converge with the expected order of the discretization used. 
 
 \par
-In \textbf{Paper \ref{paper3}}, we apply the smoothing on the equidistant Cartesian grid based node layouts as the theory in~\cite{kreiss1970smoothing} suggests, to price two-dimensional European basket options. Moreover, we find a way to use the smoothing on the payoff function adapted nonuniform node layouts to enable RBF-FD spatial order of convergence of four. The results of the numerical experiments show that replacing the payoff function with the smoothed one gives convergence of the appropriate order, at an acceptable increase in the computational cost. \textbf{Figure \ref{fig:smoothing}} shows the performance of the PHS based RBF-FD methods with smoothing against other RBF-FD and FD methods on uniform and nonuniform node layouts. 
+In \textbf{Paper \ref{paper3}}, we apply the smoothing on the equidistant-Cartesian-grid-based node layouts as the theory in~\cite{kreiss1970smoothing} suggests, to price two-dimensional European basket options. Moreover, we find a way to use the smoothing on the payoff-function-adapted nonuniform node layouts to enable RBF-FD spatial order of convergence of four. The results of the numerical experiments show that replacing the payoff function with the smoothed one gives convergence of the appropriate order, at an acceptable increase in the computational cost. \textbf{Figure \ref{fig:smoothing}} shows the performance of the PHS based RBF-FD methods with smoothing against other RBF-FD and FD methods on uniform and nonuniform node layouts. 
 
 \par
-Nevertheless, the smoothing on the presented payoff function adapted nonuniform node layouts relies on the parallel placement of the nodes with the hyperplane of discontinuity. Smoothing of the initial data on the node layouts with smoothly varying density still remains an open question. 
+Nevertheless, the smoothing on the presented payoff-function-adapted nonuniform node layouts relies on the parallel placement of the nodes with the hyperplane of discontinuity. Smoothing of the initial data on the node layouts with smoothly varying density still remains an open question. 
 \begin{figure}[H]
 \centering
 \input{figures/BSeuCallconv.tikz}\hspace{11pt}
 \input{figures/BSeuCalltime.tikz}
-\caption{Absolute error $\Delta u_{\max}$ as a function of $h$ and CPU-time in seconds for a two-dimensional European call basket option.}
+\caption{\emph{Absolute error $\Delta u_{\max}$ as a function of $h$ and CPU-time in seconds for a two-dimensional European call basket option.}}
 \label{fig:smoothing}
 \end{figure}
 
@@ -927,10 +965,10 @@ Nevertheless, the smoothing on the presented payoff function adapted nonuniform 
 \label{ch:outlook}
 
 \par 
-In this thesis, we present recent developments of RBF-FD methods and their potential to efficiently approximate solutions of PDEs for pricing of financial derivatives. We show how to apply RBF-FD to a number of option pricing problems in a way that utilizes the best features of the method such as mesh-free node placement, high order approximation, and sparsity of the differentiation matrices. By performing numerical experiments, we confirm the robustness of the method and compare its performance against other currently used and newly developed methods in financial practice. Moreover, we identify some challenges and limitations for which we suggest appropriate treatments, such as dealing with RBF shape parameters and smoothing of initial data, but there are still some problems left open.  
+In this thesis, we present recent developments of RBF-FD methods and their potential to efficiently approximate solutions of PDEs for pricing of financial derivatives. We show how to apply RBF-FD to a number of option pricing problems in a way that utilizes the best features of the method such as mesh-free node placement, high order approximation, and sparsity of the differentiation matrices. By performing numerical experiments, we confirm the robustness of the method and compare its performance with other currently used and newly developed methods in financial practice. Moreover, we identify some challenges and limitations for which we suggest appropriate treatments, such as dealing with RBF shape parameters and smoothing of initial data, but there are still some problems left open.  
 
 \par
-As far as future research is concerned, we note that the smoothly-varying-density node placing algorithm can be efficiently employed only in two-dimensional domains. On the other hand, the payoff function adapted node layout is not as easily customizable for different cases as the smoothly-varying-density one. Some recent work has been done to come up with more robust and efficient ways of constructing customizable node layouts with smoothly varying density in higher dimensions \cite{vlasiuk2017fast}, but the results are yet to be seen in practice. Research on efficient generation of high-dimensional node layouts is expected to give a significant improvement in performance of the higher-dimensional RBF-FD methods and improve the competitiveness of these methods in different financial applications. Moreover, the problem of smoothing of payoff functions on smoothly-varying-density node layouts still remains open, as the available theory covers only equidistant Cartesian grids.
+As far as future research is concerned, we note that the smoothly-varying-density node placing algorithm can be efficiently employed only in two-dimensional domains. On the other hand, the payoff-function-adapted node layout is not as easily customizable for different cases as the smoothly-varying-density one. Some recent work has been done to come up with more robust and efficient ways of constructing customizable node layouts with smoothly varying density in higher dimensions \cite{vlasiuk2017fast}, but the results are yet to be seen in practice. Research on efficient generation of high-dimensional node layouts is expected to give a significant improvement in performance of the higher-dimensional RBF-FD methods and improve the competitiveness of these methods in different financial applications. Moreover, the problem of smoothing of payoff functions on smoothly-varying-density node layouts still remains open, as the available theory covers only equidistant Cartesian grids.
 
 \par
 Therefore, future development of RBF-FD is expected to result in a solid mesh-free high order method for multi-dimensional PDEs, that can be used together with dimension reduction techniques to efficiently solve problems of high dimensionality that we often encounter in finance.
@@ -961,34 +999,34 @@ Therefore, future development of RBF-FD is expected to result in a solid mesh-fr
 
 %
 \section*{Paper I}
-
+The author of the thesis contributed to this paper by developing all the codes and performing all the numerical experiments reported in the paper. The manuscript was written in close collaboration with the coauthor. 
 
 
 
 
 %
 \section*{Paper II}
-
-
+The author of the thesis is the sole author of the paper.
 
 
 
 %
 \section*{Paper III}
-
+The author of the thesis contributed to this paper by developing all the codes and performing all the numerical experiments reported in the paper. The manuscript was written in close collaboration with the coauthor. 
 
 
 
 
 %
 \section*{Paper IV}
-
-
+The author of the thesis contributed to this paper by developing the RBF-FD codes. The manuscript was written and the numerical experiments were performed in close collaboration with the coauthor. 
 
 
 
 %
+\newpage
 \section*{Paper V}
+The author of the thesis contributed to this paper by developing the RBF-FD codes and writing the code necessary for performing numerical experiments on a supercomputer for all methods presented in the paper. Moreover, the author performed all the numerical experiments and produced all the figures for the manuscript. The manuscript was written in collaboration with the coauthors. 
 
 
 
@@ -996,6 +1034,7 @@ Therefore, future development of RBF-FD is expected to result in a solid mesh-fr
 
 %
 \section*{Paper VI}
+The author of the thesis contributed to this paper by developing the RBF-FD codes and writing the code necessary for performing numerical experiments on a supercomputer for all methods presented in the paper. Moreover, the author performed all the numerical experiments and produced all the figures for the manuscript. The manuscript was written in collaboration with the coauthors. The author was a member of the project management group.
 
 
 
@@ -1015,7 +1054,37 @@ Therefore, future development of RBF-FD is expected to result in a solid mesh-fr
 
 \chapter{{\sffamily{\emph{Acknowledgments}}}}
 {\noteunic
-Woohoo!
+\par
+As this doctoral thesis is based on academic research that was conducted over the period of five years, its ingredients stretch far beyond the simple working hours I spent performing my duties. In fact, like for many other international students, completing this doctoral work involved moving to a lovely town in a foreign country and befriending many wonderful people, while doing my best not to lose the friends that I already had. Therefore, I would like to express immense gratitude to everyone who made my time in Sweden so wonderful, and supported me during this feat at Uppsala University, regardless of where they are now.
+
+\par
+I start by thanking my supervisor Lina von Sydow for the tireless leadership and unlimited availability. From the first day, we had clear and direct communication which made our cooperation very comfortable, efficient, and joyful. Lina has been there for me in good times as mush as in hard times, both professionally and privately. I have learned so much about life from her. I am also thankful to my second supervisor Elisabeth Larsson for always having the right answers to my RBF questions. Two of them have been the nicest bosses one could wish for. I will never forget our numerous trips, especially the one to Gotland.
+
+\par
+Moreover, a share of gratitude also belongs to my closest coauthors Victor Shcherbakov and Josef Höök. I hope that Victor now understands why it is better to be the second one to graduate, as the latest reports highlight how RBF-FD outperforms RBF-PU. I am thankful to Josef for many things he taught me about Monte Carlo methods, and for sparking my interest in machine learning. As it turned out, those conversations in the hallways happened to lead me to my future career. 
+
+\par
+A workplace without colleagues does not count as a workplace. All of this started with Simon Sticko in a tiny office ITC 2419. Working with Simon felt like working with a co-founder of a startup company. We were both passionate about our job, so we worked our way to the biggest, brightest office at the corner of the top floor of our building --- a.k.a. the Offie. It is worth noting that in Swedish, which I have obviously not learned yet, brightest means the best. Of course, since we were not working at our unicorn company, the big office came at a price of new officemates. Although that led to a lot more complicated attention sharing, I am very grateful to Per Wahlund, Emil Kieri, Hanna Holmgren, Kristiina Ausmees, and Robin Eriksson, for all the flavors of friendship we have developed in our Offie. Although we might never find out who broke the coffee mug, I will forever be in debt of gratitude to Simon for teaching me how to snowboard. I would also like to express special appreciation to Hanna and her partner Kristoffer Wahlberg for their hospitality that made me feel welcome in Sweden more than anything else. Besides the officemates, I am specially thankful to Timofey Mukha --- who raced with me in this Ph.D. race until the very end, but I let him win since he started earlier --- for being such a great friend during this whole time. Moreover, I would not have found peace without acknowledging the mountaineering crew: Daniel Elfverson, Fredrik Hellman, Lina Meinecke, Karl Ljungkvist, and Adrien Coulier, who climbed Kebnekaise and Triglav with me. The outdoors credits would not be fair without remembering the great climbing days I had with Andreas \& Ida Löcher. Finally, I am sincerely grateful to all of my colleagues for the great discussions and laughs we had during \emph{fika}. 
+
+\par
+Moving to Uppsala from the outside usually means moving around Uppsala many times more, due to its infamous accommodation situation. Bright side of that phenomenon are the flatmates that one learns to love, because that is easier than sleeping outside in the cold winter. It was not so hard to love my flatmates, as all of them happened to be epic in their own ways. They were all nice and helpful, but I would like to particularly thank Anton Axelsson for making me environmentally aware on a completely new level, Daniel Elfversson for making me an outdoor freak, and Luka Šupraha whose seemingly infinite pool of knowledge in history helped us recreate the good old Yugoslavian atmosphere that everyone born in Yugoslavia is still nostalgic about.
+
+\par
+I would also like to salute to my dear friends, scattered around the world, who have not let the distance tear us apart. Ivan Milić, whose brotherly love I always feel no matter where we are, and whose eclectic taste in music filled up so many of my breaks from work. Nikola Božić, who has been my career advisor from the early days, and a friend with unconditional support. Milica Kolarević, who has always sincerely cared about me, has been there for me whenever I needed her advice, and has never let me fall. Đorde Pevčević, who has always been looking out for my best interests, and has selflessly shared his professional experience with me. Lara Vujović, who has regularly been checking whether I am doing my best.
+\par
+Academic life far away from home has its dark sides, too. We get to see some dear people so rarely, and some of them we will never get to see again. Unfortunately, during this doctoral journey, I lost one of my closest friends --- Filip Tanasković. We studied together at Valjevska Gimnazija in our hometown, and graduated from the University of Belgrade as the best students at the Faculty of Mechanical Engineering. Then, he continued his education in Switzerland, while I chose Sweden. Filip was a true peer to me in every sense. It was exceptionally joyful to synchronize our life views over each vacation time when we would meet. Hereby, I would like to express a memorable gratitude for all the great times we had together. I miss him so much.
+
+\par
+I cannot thank my family enough --- my parents Đorde \& Snežana Milovanović, and particularly my adorable sister Andelka Milovanović who visited me the most and helped me survive some of the toughest weeks of this work.
+
+\par
+All of this would be much harder if I did not have unconditional support from my partner Katarina Veselinović. We went through heaven and hell during these years, and I am so happy that we are together at the end of this chapter of life.
+
+\par
+I would also like to extend my acknowledgements to Bogdan Đukić, Antonija Burčul, and Cecilia \& Johan Tilli for helping me explore the ideas of entrepreneurial life, which greatly influenced my career decisions. 
+
+\par
+Lastly, I am thankful to Petnica Science Center for always standing behind me and lending its resources to support my ideas. I would also like to acknowledge the support from Anna Mara Lundin Foundation, C. F. Liljewalchs Scholarship Foundation, SIAM Student Travel Fund, and Dositeja Fund for Young Talents of the Republic of Serbia --- for helping me fund numerous conferences and workshops.
 }
 
 
@@ -1045,16 +1114,16 @@ The purpose of this thesis is to present state of the art in radial basis functi
 Across the financial markets of the world, financial derivatives such as futures, options, and others, are traded in substantial volumes. The value of all assets that underly outstanding derivatives transactions is several times larger than the gross world product (GWP). Financial derivatives are the most commonly used instruments when it comes to hedging risks, speculation based investing, and performing arbitrage. Therefore, knowing the prices of those financial instruments is of utmost importance at any given time. In order to make that possible in practice, it is often required to employ a set of skills incorporating knowledge in financial theory, engineering methods, mathematical tools, and programming practice --- which altogether constitute the field known as \emph{financial engineering}. 
 
 \par
-Many of theoretical pricing models for financial derivatives can be represented using PDEs. In many cases, those equations are time-dependent, of high spatial dimension, and with challenging boundary conditions --- which most often makes them analytically unsolvable. In those cases, we need to utilize numerical approximation as a mean of estimating their solution. The fields of \emph{numerical analysis} and \emph{scientific computing} are concerned with obtaining approximate solutions while maintaining reasonable bounds on errors. Unfortunately, there is no universal numerical method which can be used to solve all problems of this type efficiently. In fact, there are tremendously many numerical methods for solving different types of differential equations, and all those methods are featured with their own limitations in performance, stability, and accuracy --- mostly dependent on details of the problems they aim to solve. Therefore, carefully selecting and developing numerical methods for particular applications has been the only way to build efficient PDE solvers in ongoing practice. 
+Many of the theoretical pricing models for financial derivatives can be represented using PDEs. In many cases, those equations are time-dependent, of high spatial dimension, and with challenging boundary conditions --- which most often makes them analytically unsolvable. In those cases, we need to utilize numerical approximation as a mean of estimating their solution. The fields of \emph{numerical analysis} and \emph{scientific computing} are concerned with obtaining approximate solutions while maintaining reasonable bounds on errors. Unfortunately, there is no universal numerical method which can be used to solve all problems of this type efficiently. In fact, there are tremendously many numerical methods for solving different types of differential equations, and all those methods are featured with their own limitations in performance, stability, and accuracy --- mostly dependent on details of the problems they aim to solve. Therefore, carefully selecting and developing numerical methods for particular applications has been the only way to build efficient PDE solvers in ongoing practice. 
 
 \par
-In this thesis, we present RBF-FD as a recent numerical method with potential to efficiently approximate solutions of PDEs in finance. Over the past years, besides the purely academic development and research of its numerical properties, the method has been mainly applied for simulations of atmospheric phenomena. As its name suggests, the RBF-FD method is of a finite difference type, from the radial basis function family. As a finite difference method, RBF-FD approximates differential equations by linear systems of algebraic equations, known as difference equations. Radial basis functions (RBFs) are used as interpolants that enable local approximations of differential operators that are necessary for constructing the difference equations. Constructed like that, the method is featured with a sparse matrix of the linear system of difference equations, and it is relatively simple to implement like the standard finite difference methods. Moreover, the method is mesh-free, meaning that it does not require a structured discretization of the computational domain which makes it equally easy to use in spaces of different dimensions, and it is of a customizable order of accuracy --- which are the features it inherits from the global radial basis function approximations. It is those properties that led us to recognize RBF-FD as a method with high potential for efficiently solving some analytically unfeasible and computationally challenging pricing problems in finance.
+In this thesis, we present RBF-FD as a recent numerical method with potential to efficiently approximate solutions of PDEs in finance. Over the past years, besides the purely academic development and research of its numerical properties, the method has been mainly applied for simulations of atmospheric phenomena. As its name suggests, the RBF-FD method is of a finite difference type, from the radial basis function family. As a finite difference method, RBF-FD approximates differential equations by linear systems of algebraic equations, known as difference equations. Radial basis functions (RBFs) are used as interpolants that enable local approximations of differential operators that are necessary for constructing the difference equations. Constructed like that, the method is featured with a sparse matrix of the linear system of difference equations, and it is relatively simple to implement --- like the standard finite difference methods. Moreover, the method is mesh-free, meaning that it does not require a structured discretization of the computational domain which makes it equally easy to use in spaces of different dimensions, and it is of a customizable order of accuracy --- which are the features it inherits from the global radial basis function approximations. It is those properties that led us to recognize RBF-FD as a method with high potential for efficiently solving some analytically unfeasible and computationally challenging pricing problems in finance.
 
 \par
-Nevertheless, being a young method, RBF-FD is still under intense development, and we face many challenges when moving from simple theoretical cases toward more complex real-world applications. The core of this thesis deals with finding solutions for overcoming obstacles when financial derivatives are priced using RBF-FD to solve PDEs with several spatial dimensions. Thus, it represents a contribution to making the RBF-FD methods more reliable and efficient for use in financial applications. 
+Nevertheless, being a young method, RBF-FD is still under intense development, and we face many challenges when moving from simple theoretical cases toward more complex real-world applications. The core of this thesis deals with finding solutions for overcoming obstacles when financial derivatives are priced using RBF-FD to solve PDEs with multiple spatial dimensions. Thus, it represents a contribution to making the RBF-FD methods more reliable and efficient for use in financial applications. 
 
 \par
-The results in this thesis demonstrate how to successfully apply RBF-FD to different problems in finance by studying the effects of RBF shape parameters for Gaussian RBF-FD approximations, improving the approximation of differential operators in multiple dimensions by using polyharmonic splines augmented with polynomials, constructing suitable node layouts, and smoothing of the initial data in order to enable high order convergence of the method. Finally, we compare the RBF-FD method against other available methods on a plethora of pricing problems to give an objective image of the method's performance.
+The results in this thesis demonstrate how to successfully apply RBF-FD to different problems in finance by studying the effects of RBF shape parameters for Gaussian RBF-FD approximations, improving the approximation of differential operators in multiple dimensions by using polyharmonic splines augmented with polynomials, constructing suitable node layouts, and smoothing of the initial data in order to enable high order convergence of the method. Finally, we compare the RBF-FD method with other available methods on a plethora of pricing problems to give an objective image of the method's performance.
 }
 
  
@@ -1130,30 +1199,24 @@ Resultaten i denna avhandling visar hur man framgångsrikt tillämpar RBF-FD på
 \begin{serbian}
 \chapter{\emph{Преглед}}
 {\noteunic
+\par
+\noindent Циљ ове докторске дисертације јесте да извести о тренутном стању развоја метода коначних разлика изведених из радијалних базних функција (КР-РБФ) за одређивање цене финансијских деривата. Овај докторски рад представља детаљан преглед својстава КР-РБФ и изазова који настају када се КР-РБФ методе примене у финансијској пракси. Такође, резултатима ове докторске тезе желимо да мотивишемо даљи развој КР-РБФ као поуздане методе за решавање високодимензионих парцијалних диференцијалних једначина (ПДЈ) које проистичу из финансијских модела.
 
 \par
-\noindent Већим делом свога тока река Дрина протиче кроз тесне гудуре између стрмих планина или кроз дубоке кањоне окомито одсечених обала. Само на неколико места речног тока њене се обале проширују у отворене долине и стварају, било на једној било на обе стране реке, жупне, делимично равне, делимично таласасте пределе, подесне за обрађивање и насеља. Такво једно проширење настаје и овде, код Вишеграда, на месту где Дрина избија у наглом завоју из дубоког и уског теснаца који стварају Буткове Стијене и Узавничке планине. Заокрет који ту прави Дрина необично је оштар а планине са обе стране тако су стрме и толико ублизу да изгледају као затворен масив из којег река извире право, као из мрког зида. Али ту се планине одједном размичу у неправилан амфитеатар чији промер на најширем месту није већи од петнаестак километара ваздушне линије.
+Финансијским дериватима као што су форвард уговори, опције и други, широм светских финансијских тржишта тргује се у огромним количинама. Укупна вредност имовине која у овом тренутку покрива активне финансијске деривате је неколико пута већа од вредности бруто светског производа. Финансијски деривати су најкоришћенији инструменти за управљање ризиком, инвестирање засновано на шпекулисању, као и коришћење арбитражних прилика. Стога, изузетно је важно знати њихове вредности у сваком тренутку. Како би то било могуће у пракси, неретко је потребно применити скуп вештина заснованих на познавању финансијске теорије, математичких алата, метода природних наука и техника програмирања --- које заједно чине арсенал знања струке познате као \emph{финансијско инжењерство}.  
 
 \par
-На том месту где Дрина избија целом тежином своје водене масе, зелене и запењене, из привидно затвореног склопа црних и стрмих планина, стоји велики и складно срезани мост од камена, са једанаест лукова широког распона. Од тог моста, као од основице, шири се лепезасто цела валовита долина, са вишеградском касабом и њеном околином, са засеоцима полеглим у превоје брежуљака, прекривена њивама, испашама и шљивицима, изукрштана међама и плотовима и пошкропљена шумарцима и ретким скуповима црногорице. Тако, посматрано са дна видика, изгледа као да из широких лукова белог моста тече и разлива се не само зелена Дрина него и цео тај жупни и питоми простор, са свим што је на њему и јужним небом над њим.
+Многи теоријски модели за одређивање цена финансијских деривата могу се представити помоћу ПДЈ. У великом броју случаја, те једначине су временски зависне, високодимензионе, са проблематичним граничним условима --- што их најчешће чини аналитички нерешивима. У тим ситуацијама, принуђени смо да користимо нумеричко апроксимирање као средство за одређивање њихових приближних решења. Научно-техничке дисциплине као што су \emph{нумеричка анализа} и \emph{рачунарство}, баве се развојем метода за приближно решавање аналитички нерешивих проблема и изучавањем својстава тих метода. Нажалост, не постоји једна универзална нумеричка метода коју бисмо могли да користимо за ефикасно решавање свих проблема овог типа. Штавише, постоји огроман број нумеричких метода за приближно решавање различитих врста диференцијалних једначина, а свака од њих долази са себи својственим скупом ограничења у прецизности, ефикасности и стабилности --- која најчешће зависе од особина самог проблема који покушавамо да решимо. Стога, једини начин за ефикасно апроксимирање решења ПДЈ јесте пажљиво бирање, развијање и прилагођавање нумеричких метода за сваки проблем, понаособ.
 
 \par
-На десној обали реке, почињући од самог моста, налази се главнина касабе, са чаршијом, делом у равници, а делом на обронцима брегова. На другој страни моста, дуж леве обале, протеже се Малухино поље, раштркано предграђе око друма који води пут Сарајева. Тако мост, састављајући два краја сарајевског друма, веже касабу са њеним предграђем.
-
+У овој дисертацији представљамо КР-РБФ као младу нумеричку методу која има изванредан потенцијал за ефикасно апроксимирање решења ПДЈ у финансијама. Претходних година, поред чистог академског развоја и истраживања везаних за њена нумеричка својства, ова метода је успешно коришћена у пракси за симулирање атмосферских феномена. Као што њено само име наговештава, КР-РБФ је врста методе коначних разлика (КР) која потиче из породице метода радијалних базних функција (РБФ). %Као КР метода, КР-РБФ апроксимира диференцијалне једначине линеарним системима алгебарских једначина. РБФ овде имају улогу интерполаната који омогућују локално апроксимирање диференцијалних оператора, потребно за постављање претходно поменутог система алгебарских једначина.% 
+Тако конструисану, ову методу карактерише ретка матрица система и једноставно имплементирање --- слично као код класичних КР метода. Такође, ова метода не захтева мрежу за дискретизовање домена, већ дискретизовање можемо да обављамо слободним распростирањем тачака. То чини дискретизовање вишедимензионих домена врло једноставним, а поред тога метода је прилагодљивог реда прецизности --- што су особине које наслеђује од глобалних РБФ метода. Представљена својства служе као основ за препознавање КР-РБФ као прикладне методе за решавање одређених аналитички нерешивих и рачунарски изазовних проблема у финансијама.
 \par
-Већим делом свога тока река Дрина протиче кроз тесне гудуре између стрмих планина или кроз дубоке кањоне окомито одсечених обала. Само на неколико места речног тока њене се обале проширују у отворене долине и стварају, било на једној било на обе стране реке, жупне, делимично равне, делимично таласасте пределе, подесне за обрађивање и насеља. Такво једно проширење настаје и овде, код Вишеграда, на месту где Дрина избија у наглом завоју из дубоког и уског теснаца који стварају Буткове Стијене и Узавничке планине. Заокрет који ту прави Дрина необично је оштар а планине са обе стране тако су стрме и толико ублизу да изгледају као затворен масив из којег река извире право, као из мрког зида. Али ту се планине одједном размичу у неправилан амфитеатар чији промер на најширем месту није већи од петнаестак километара ваздушне линије.
+Ипак, то што је КР-РБФ млада метода у развоју носи са собом хрпу изазова са којима се суочавамо када се са идеалних академских примера пређе на проблеме стварног света. Језгро ове дисертације се бави управо проналажењем решења за препреке на које наилазимо када се цене финансијских деривата одређују решавањем вишедимензионих ПДЈ помоћу КР-РБФ. 
 
-\par
-На том месту где Дрина избија целом тежином своје водене масе, зелене и запењене, из привидно затвореног склопа црних и стрмих планина, стоји велики и складно срезани мост од камена, са једанаест лукова широког распона. Од тог моста, као од основице, шири се лепезасто цела валовита долина, са вишеградском касабом и њеном околином, са засеоцима полеглим у превоје брежуљака, прекривена њивама, испашама и шљивицима, изукрштана међама и плотовима и пошкропљена шумарцима и ретким скуповима црногорице. Тако, посматрано са дна видика, изгледа као да из широких лукова белог моста тече и разлива се не само зелена Дрина него и цео тај жупни и питоми простор, са свим што је на њему и јужним небом над њим.
+\par 
+Проучавајући утицај параметара облика Гаусових РБФ на КР-РБФ апроксимирање, користећи полихармоничне сплајнове са полиномима за апроксимирање вишедимензионих диференцијалних оператора, конструишући прикладне распореде тачака током дискретизовања домена и глачањем почетних услова како би метод могао да конвергира високим редом, резултати ове дисертације показују како успешно можемо применити КР-РБФ методу на разне проблеме у финансијама. Такође, ова теза садржи резултате поређења КР-РБФ са другим методама на плетори финансијских проблема, како бисмо имали што објективнију слику о перформансама представљене методе.
 
-\par
-На десној обали реке, почињући од самог моста, налази се главнина касабе, са чаршијом, делом у равници, а делом на обронцима брегова. На другој страни моста, дуж леве обале, протеже се Малухино поље, раштркано предграђе око друма који води пут Сарајева. Тако мост, састављајући два краја сарајевског друма, веже касабу са њеним предграђем.
-
-\par
-На десној обали реке, почињући од самог моста, налази се главнина касабе, са чаршијом, делом у равници, а делом на обронцима брегова. На другој страни моста, дуж леве обале, протеже се Малухино поље, раштркано предграђе око друма који води пут Сарајева. Тако мост, састављајући два краја сарајевског друма, веже касабу са њеним предграђем.
-
-\par
-На том месту где Дрина избија целом тежином своје водене масе, зелене и запењене, из привидно затвореног склопа црних и стрмих планина, стоји велики и складно срезани мост од камена, са једанаест лукова широког распона. Од тог моста, као од основице, шири се лепезасто цела валовита долина, са вишеградском касабом и њеном околином, са засеоцима полеглим у превоје брежуљака.
 }
 \end{serbian}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
