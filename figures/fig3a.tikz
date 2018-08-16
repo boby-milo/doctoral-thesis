@@ -26,11 +26,11 @@
       \addplot graphics[xmin=1e-04,ymin=1e-03,xmax=1e-01,ymax=1e03] {figures/n3_p0new.png};
 
       \addplot[
-        black,
+        black, semithick,
         domain=1e-04:1e-01,
         samples=100,
         ]
-        {0.0015/x} [every node/.style={yshift=7pt},sloped]
+        {0.0015/x} [every node/.style={yshift=8pt},sloped]
               node[pos=0.75] {$\varepsilon^*(h)$}
               ;
     \end{axis}

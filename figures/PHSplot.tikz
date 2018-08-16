@@ -35,7 +35,7 @@
   legend pos=north west,
   legend style={legend cell align=left,align=left,draw=white!15!black}
   ]
-\addplot [color=mycolor1, style=dashed,thick]
+\addplot [color=mycolor1, style=dashed,semithick]
   table[row sep=crcr]{%
 0 0\\
 0.0050251256281407  0.0050251256281407\\
@@ -240,7 +240,7 @@
 };
 \addlegendentry{$q=1$}
 
-\addplot [color=mycolor2, style=thick]
+\addplot [color=mycolor2, style=semithick]
   table[row sep=crcr]{%
 0 0\\
 0.0050251256281407  1.26893907430133e-07\\
@@ -445,7 +445,7 @@
 };
 \addlegendentry{$q=3$}
 
-\addplot [color=mycolor3, style=thick]
+\addplot [color=mycolor3, style=semithick]
   table[row sep=crcr]{%
 0 0\\
 0.0050251256281407  3.20431068483455e-12\\
@@ -650,7 +650,7 @@
 };
 \addlegendentry{$q=5$}
 
-\addplot [color=mycolor4, style=thick]
+\addplot [color=mycolor4, style=semithick]
   table[row sep=crcr]{%
 0 0\\
 0.0050251256281407  8.09148931803377e-17\\
@@ -855,7 +855,7 @@
 };
 \addlegendentry{$q=7$}
 
-\addplot [color=mycolor5, style=dotted,thick]
+\addplot [color=mycolor5, style=dotted,semithick]
   table[row sep=crcr]{%
 0 0\\
 0.0050251256281407  2.04325378602403e-21\\

@@ -144,7 +144,7 @@
   };
   \addlegendentry{$L_{\delta_+}$};
 
-  \addplot [color=mycolor2,dashed,thick]
+  \addplot [color=mycolor2,dashed,semithick]
     table[row sep=crcr, y expr=\thisrowno{1}*0.01]{%
     0.000100002500062502	0.000223006263042613\\
     0.000107229981502828	0.000952905425137374\\
@@ -358,7 +358,7 @@
   };
   \addlegendentry{$L_{\delta_-}$};
 
-  \addplot [color=mycolor2,dashdotted,thick]
+  \addplot [color=mycolor2,dashdotted,semithick]
     table[row sep=crcr, y expr=\thisrowno{1}*0.01]{%
     0.000100002500062502	5.01084284897952e+42\\
     0.000107229981502828	1.36619444095525e+185\\
@@ -572,7 +572,7 @@
   };
   \addlegendentry{$L_{\gamma}$};
 
-  \addplot [color=mycolor2,solid,thick]
+  \addplot [color=mycolor2,solid,semithick]
     table[row sep=crcr, y expr=\thisrowno{1}*0.01]{%
     0.000100002500062502	2.01111111266528e-05\\
     0.000107229981502828	2.01072245431533e-05\\

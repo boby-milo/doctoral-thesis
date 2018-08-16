@@ -44,7 +44,7 @@
   legend pos=north east,
   legend style={legend cell align=left,align=left,draw=white!15!black}
   ]
-  \addplot [color=black, mark=diamond*, mark options={scale = 1.3, solid, black}]
+  \addplot [color=black, semithick, mark=diamond*, mark options={scale = 1.3, solid, black}]
     table[row sep=crcr]{%
     0.06582786	0.000821697635051559\\
     % 0.098248712	0.000390740290111056\\
@@ -68,7 +68,7 @@
   };
   \addlegendentry{fd2}
 
-  \addplot [color=mycolor1, dashdotted, mark=square*, mark options={scale = 0.9,solid, mycolor1}]
+  \addplot [color=mycolor1, semithick, dashdotted, mark=square*, mark options={scale = 0.9,solid, mycolor1}]
     table[row sep=crcr]{%
     0.294333181	0.000954288395106928\\
     % 0.670892027	0.000392330278500077\\
@@ -92,7 +92,7 @@
   };
   \addlegendentry{gs reg}
 
-  \addplot [color=mycolor2, mark=square*, mark options={scale = 0.9, solid, mycolor2}]
+  \addplot [color=mycolor2, semithick, mark=square*, mark options={scale = 0.9, solid, mycolor2}]
     table[row sep=crcr]{%
     0.331154439	0.000730421951017157\\
     % 0.784126736	0.000329175837351009\\
@@ -116,7 +116,7 @@
   };
   \addlegendentry{gs adap}
 
-  \addplot [color=mycolor3, dashdotted, mark=triangle*, mark options={scale = 1.3,solid, mycolor3}]
+  \addplot [color=mycolor3, semithick, dashdotted, mark=triangle*, mark options={scale = 1.3,solid, mycolor3}]
     table[row sep=crcr]{%
     0.837605647	0.000743167977149496\\
   % 2.025372492	0.000310529558508282\\
@@ -140,7 +140,7 @@
   };
   \addlegendentry{phs reg}
 
-  \addplot [color=mycolor4, mark=triangle*, mark options={scale = 1.3,solid, mycolor4}]
+  \addplot [color=mycolor4, semithick, mark=triangle*, mark options={scale = 1.3,solid, mycolor4}]
     table[row sep=crcr]{%
     1.053425471	0.000687264699283568\\
     % 2.34448544	0.00024414135768297\\
@@ -164,7 +164,7 @@
   };
   \addlegendentry{phs adap}
 
-  \addplot [color=mycolor5, dashdotted, mark=*, mark options={solid, mycolor5}]
+  \addplot [color=mycolor5, semithick, dashdotted, mark=*, mark options={solid, mycolor5}]
     table[row sep=crcr]{%
     % 204.797699017	1.56216283858429e-06\\
     % 137.21974258	1.60011950256348e-06\\
@@ -188,7 +188,7 @@
   };
   \addlegendentry{phs reg smoothed}
 
-  \addplot [color=mycolor6, mark=*, mark options={solid, mycolor6}]
+  \addplot [color=mycolor6, semithick, mark=*, mark options={solid, mycolor6}]
     table[row sep=crcr]{%
     1.444674318	0.000117373463206207\\
     2.478047665	1.64849648476599e-05\\

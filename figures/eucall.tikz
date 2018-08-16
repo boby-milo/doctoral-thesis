@@ -31,7 +31,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black},
 title={$r=0.03$, $\sigma=0.15$, $T=3$},
 legend pos = north west,
 ]
-\addplot [color=mycolor1,thick]
+\addplot [color=mycolor1,semithick]
   table[row sep=crcr]{%
 0	0\\
 4.04040404040404	0\\
@@ -137,7 +137,7 @@ legend pos = north west,
 };
 \addlegendentry{$u(s,T)=g_c(s)$}
 
-\addplot [color=mycolor2,thick]
+\addplot [color=mycolor2,semithick]
   table[row sep=crcr]{%
 0	0\\
 4.04040404040404	0\\

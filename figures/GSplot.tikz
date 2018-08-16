@@ -30,11 +30,11 @@
   ylabel={$\phi(r)$},
   axis background/.style={fill=white},
   %title style={font=\bfseries},
-  title={GS},
+  title={GA},
   legend pos=north east,
   legend style={legend cell align=left,align=left,draw=white!15!black}
   ]
-\addplot [color=mycolor1, style=dashed,thick]
+\addplot [color=mycolor1, style=dashed,semithick]
   table[row sep=crcr]{%
   0	1\\
   0.002002002002002	0.999995991996016\\
@@ -540,7 +540,7 @@
 };
 \addlegendentry{$\varepsilon=1$}
 
-\addplot [color=mycolor2, style=thick]
+\addplot [color=mycolor2, style=semithick]
   table[row sep=crcr]{%
   0	1\\
   0.002002002002002	0.999983968080449\\
@@ -1046,7 +1046,7 @@
 };
 \addlegendentry{$\varepsilon=2$}
 
-\addplot [color=mycolor3, style=thick]
+\addplot [color=mycolor3, style=semithick]
   table[row sep=crcr]{%
   0	1\\
   0.002002002002002	0.999935873863912\\
@@ -1552,7 +1552,7 @@
 };
 \addlegendentry{$\varepsilon=4$}
 
-\addplot [color=mycolor4, style=thick]
+\addplot [color=mycolor4, style=semithick]
   table[row sep=crcr]{%
   0	1\\
   0.002002002002002	0.999743520127562\\
@@ -2058,7 +2058,7 @@
 };
 \addlegendentry{$\varepsilon=8$}
 
-\addplot [color=mycolor5, style=dotted,thick]
+\addplot [color=mycolor5, style=dotted,semithick]
   table[row sep=crcr]{%
   0	1\\
   0.002002002002002	0.998974475134316\\
