@@ -181,18 +181,6 @@
 \newblock \emph{Operator splitting methods for {A}merican option pricing}.
 \newblock Applied Mathematics Letters, 17(7): 809--814, 2004.
 
-\bibitem{reisinger2007efficient}
-\bibnamefont{C.~Reisinger and G.~Wittum}.
-\newblock \emph{Efficient hierarchical approximation of high-dimensional option
-  pricing problems}.
-\newblock SIAM Journal on Scientific Computing, 29(1): 440--458, 2007.
-
-\bibitem{reisinger2015numerical}
-\bibnamefont{C.~Reisinger and R.~Wissmann}.
-\newblock \emph{Numerical valuation of derivatives in high-dimensional settings
-  via partial differential equation expansions}.
-\newblock Journal of Computational Finance, 18(4): 95--127, 2015.
-
 \bibitem{lotstedt2007space}
 \bibnamefont{P.~L{\"o}tstedt, J.~Persson, L.~von Sydow, and J.~Tysk}.
 \newblock \emph{Space-time adaptive finite difference method for {E}uropean
@@ -204,6 +192,18 @@
 \newblock \emph{Pricing {A}merican options using a space-time adaptive finite
   difference method}.
 \newblock Mathematics and Computers in Simulation, 80(9): 1922--1935, 2010.
+
+\bibitem{reisinger2007efficient}
+\bibnamefont{C.~Reisinger and G.~Wittum}.
+\newblock \emph{Efficient hierarchical approximation of high-dimensional option
+  pricing problems}.
+\newblock SIAM Journal on Scientific Computing, 29(1): 440--458, 2007.
+
+\bibitem{reisinger2015numerical}
+\bibnamefont{C.~Reisinger and R.~Wissmann}.
+\newblock \emph{Numerical valuation of derivatives in high-dimensional settings
+  via partial differential equation expansions}.
+\newblock Journal of Computational Finance, 18(4): 95--127, 2015.
 
 \bibitem{foulon2010adi}
 \bibnamefont{K.~J. in~'T~Hout and S.~Foulon}.
@@ -218,6 +218,12 @@
   the {H}eston--{H}ull--{W}hite partial differential equation}.
 \newblock The Journal of Computational Finance, 16(1): 83--110, 2012.
 
+\bibitem{during2015high}
+\bibnamefont{B.~D{\"u}ring and C.~Heuer}.
+\newblock \emph{High-order compact schemes for parabolic problems with mixed
+  derivatives in multiple space dimensions}.
+\newblock SIAM Journal on Numerical Analysis, 53(5): 2113--2134, 2015.
+
 \bibitem{vonsydow2016pricing}
 \bibnamefont{L.~von Sydow, P.~Ghafari, E.~Lehto, and M.~W{\aa}ngersj{\"o}}.
 \newblock \emph{Pricing of basket options using dimension reduction and
@@ -230,6 +236,38 @@
 \newblock \emph{Why are high-dimensional finance problems often of low
   effective dimension?}
 \newblock SIAM Journal on Scientific Computing, 27(1): 159--183, 2005.
+
+\bibitem{during2012high}
+\bibnamefont{B.~D{\"u}ring and M.~Fourni{\'e}}.
+\newblock \emph{High-order compact finite difference scheme for option pricing
+  in stochastic volatility models}.
+\newblock Journal of Computational and Applied Mathematics, 236(17):
+  4462--4473, 2012.
+
+\bibitem{salmi2014imex}
+\bibnamefont{S.~Salmi, J.~Toivanen, and L.~von Sydow}.
+\newblock \emph{An {IMEX}-scheme for pricing options under stochastic
+  volatility models with jumps}.
+\newblock SIAM Journal on Scientific Computing, 36(5): B817--B834, 2014.
+
+\bibitem{von2015adaptive}
+\bibnamefont{L.~von Sydow, J.~Toivanen, and C.~Zhang}.
+\newblock \emph{Adaptive finite differences and {IMEX} time-stepping to price
+  options under {B}ates model}.
+\newblock International Journal of Computer Mathematics, 92(12): 2515--2529,
+  2015.
+
+\bibitem{during2017high}
+\bibnamefont{B.~D{\"u}ring and A.~Pitkin}.
+\newblock \emph{High-order compact finite difference scheme for option pricing
+  in stochastic volatility jump models}.
+\newblock arXiv preprint, arXiv:1704.05308[q-fin], 2017.
+
+\bibitem{during2017efficient}
+\bibnamefont{B.~D{\"u}ring and A.~Pitkin}.
+\newblock \emph{Efficient hedging in {B}ates model using high-order compact
+  finite differences}.
+\newblock arXiv preprint, arXiv:1710.05542[q-fin], 2017.
 
 \bibitem{zvan1998general}
 \bibnamefont{R.~Zvan, P.~Forsyth, and K.~Vetzal}.
@@ -474,11 +512,5 @@
 \bibnamefont{D.~M. Pooley, K.~R. Vetzal, and P.~A. Forsyth}.
 \newblock \emph{Convergence remedies for non-smooth payoffs in option pricing}.
 \newblock Journal of Computational Finance, 6(4): 25--40, 2003.
-
-\bibitem{during2015high}
-\bibnamefont{B.~D{\"u}ring and C.~Heuer}.
-\newblock \emph{High-order compact schemes for parabolic problems with mixed
-  derivatives in multiple space dimensions}.
-\newblock SIAM Journal on Numerical Analysis, 53(5): 2113--2134, 2015.
 
 \end{thebibliography}
