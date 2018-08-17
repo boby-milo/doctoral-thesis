@@ -1202,17 +1202,16 @@ The results in this thesis demonstrate how to successfully apply RBF-FD to diffe
 \begin{swedish}
 \chapter{\emph{Sammanfattning}}
 {\noteunic
-
 \par
-Syftet med denna avhandling är att presentera forskningsfronten för finita differenser genererade via radiella basfunktioner (RBF-FD) för prissättning av finansiella derivat.
-Baserat på de sex bifogade artiklarna presenterar denna avhandling en detaljerad överblick av egenskaper hos RBF-FD metoder samt de svårigheter som uppstår då dessa används inom finansiella tillämpningar.
+Syftet med denna avhandling är att presentera forskningsfronten för finita differensmetoder genererade från radiella basfunktioner (RBF-FD) för prissättning av finansiella derivat.
+Baserat på de sex bifogade artiklarna ger denna avhandling en detaljerad överblick av egenskaper hos RBF-FD metoder samt de utmaningar som uppstår då dessa används inom finansiella tillämpningar.
 Vidare ämnar denna avhandling motivera fortsatt utveckling av RBF-FD metoder för lösning av partiella differentialekvationer (PDEer) för finansiella tillämpningar.
 
 \par
 Inom världens finansiella markader handlas finansiella derivat, såsom terminer, optioner med mera, i stora volymer.
 Värdet av alla underliggande tillgångar hos utställda finansiella derivat är flera gånger större än bruttovärldsprodukten.
-Finansiella derivat är det instrument som används mest inom risk hedging, spekulationsbaserad investering, samt utnyttjande av möjligheter till arbitrage.
-Det är därför synnerligen viktigt att veta priset på dessa finansiella derivat vid varje given tid.
+Finansiella derivat är det instrument som används mest inom risk hedging, spekulationsbaserad investering, samt utnyttjande av arbitragemöjligheter.
+Det är därför synnerligen viktigt att vid varje given tid veta priset på dessa finansiella derivat.
 För att möjliggöra detta behövs en uppsättning färdigheter såsom kunskaper inom finansiell teori, ingenjörsmässiga metoder, matematiska verktyg, och programmeringserfarenhet. Dessa bildar tillsammans området \emph{finansiell ingenjörskonst}.
 
 \par
@@ -1226,8 +1225,8 @@ Att noggrant välja och utveckla numeriska metoder för specifika problem har d�
 
 \par
 I denna avhandling presenteras RBF-FD som en nyutvecklad metod med potential att effektivt beräkna approximativa lösningar till PDEer inom finans.
-Under de senaste åren, förutom rent akademisk utveckling och forskning kring metodens numeriska egenskaper, har den huvudsakligen används för simuleringar av atmosfäriska fenomen.
-Som dess namn antyder, är RBF-FD en finit differensmetod, baserad på klassen av från radiella basfunktioner.
+Under de senaste åren, förutom rent akademisk utveckling och forskning kring metodens numeriska egenskaper, har metoden huvudsakligen använts för simulering av atmosfäriska fenomen.
+Som dess namn antyder, är RBF-FD en finit differensmetod, baserad på klassen av radiella basfunktioner.
 Som vanliga finita differenser, approximerar RBF-FD differential ekvationer som linjära system av algebraiska ekvationer, också känt som differensekvationer.
 Radiella basfunktioner (RBFer) används som interpolanter för att möjliggöra lokala approximationer av differentialoperatorer som behövs för att konstruera differensekvationerna.
 Genom att konstruera metoden på detta vis får metoden ett glest linjärt ekvationssystemet 
@@ -1235,7 +1234,7 @@ och är liksom vanliga finita differensmetoder relativt enkel att implementera.
 Vidare är metoden nät-fri, vilket innebär att den inte kräver en strukturerad diskretisering av beräkningsområdet. Detta gör den lika enkel att använda oberoende av antal rumsliga dimensioner och den kan erhålla den noggrannhetsordning man önskar. De senare egenskaperna ärver metoden från globala approximationer med RBFer. Sammantaget gör detta att vi kan identifiera RBF-FD som en metod med hög potential att effektivt lösa analytiskt olösbara och beräkningsmässigt utmanande prissättningsproblem inom finans.
 
 \par
-Icke desto mindre är RBF-FD en ung metod som fortfarande befinner sig under intensiv utveckling
+RBF-FD är en ung metod som fortfarande befinner sig under intensiv utveckling
 och vi möter många utmaningar när vi går från enkla teoretiska fall mot mer komplexa problem från riktiga tillämpningar.
 Kärnan i denna avhandling är att hitta sätt att överbrygga de hinder som uppstår då finansiella derivat prissätts genom lösning av PDEer med hjälp av RBF-FD i flera rumsliga dimensioner.
 På så sätt representerar denna avhandling ett bidrag till att göra RBF-FD metoder mer tillförlitliga och effektiva för användning inom finansiella tillämpningar.
