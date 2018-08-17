@@ -193,6 +193,18 @@
   via partial differential equation expansions}.
 \newblock Journal of Computational Finance, 18(4): 95--127, 2015.
 
+\bibitem{lotstedt2007space}
+\bibnamefont{P.~L{\"o}tstedt, J.~Persson, L.~von Sydow, and J.~Tysk}.
+\newblock \emph{Space-time adaptive finite difference method for {E}uropean
+  multi-asset options}.
+\newblock Computers \& Mathematics with Applications, 53(8): 1159--1180, 2007.
+
+\bibitem{persson2010pricing}
+\bibnamefont{J.~Persson and L.~von Sydow}.
+\newblock \emph{Pricing {A}merican options using a space-time adaptive finite
+  difference method}.
+\newblock Mathematics and Computers in Simulation, 80(9): 1922--1935, 2010.
+
 \bibitem{foulon2010adi}
 \bibnamefont{K.~J. in~'T~Hout and S.~Foulon}.
 \newblock \emph{{ADI} finite difference schemes for option pricing in the
@@ -205,6 +217,13 @@
 \newblock \emph{Alternating direction implicit finite difference schemes for
   the {H}eston--{H}ull--{W}hite partial differential equation}.
 \newblock The Journal of Computational Finance, 16(1): 83--110, 2012.
+
+\bibitem{vonsydow2016pricing}
+\bibnamefont{L.~von Sydow, P.~Ghafari, E.~Lehto, and M.~W{\aa}ngersj{\"o}}.
+\newblock \emph{Pricing of basket options using dimension reduction and
+  adaptive finite differences in space, and discontinuous {G}alerkin in time}.
+\newblock In Numerical Mathematics and Advanced Applications ENUMATH 2015,
+  607--615. Springer, 2016.
 
 \bibitem{wang2005high}
 \bibnamefont{X.~Wang and I.~H. Sloan}.
