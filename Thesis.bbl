@@ -416,6 +416,12 @@
 \newblock \emph{Fast high-dimensional node generation with variable density}.
 \newblock arXiv preprint arXiv:1710.05011, 2017.
 
+\bibitem{larsson2013stable}
+\bibnamefont{E.~Larsson, E.~Lehto, A.~Heryudono, and B.~Fornberg}.
+\newblock \emph{Stable computation of differentiation matrices and scattered
+  node stencils based on {G}aussian radial basis functions}.
+\newblock SIAM Journal on Scientific Computing, 35(4): A2096--A2119, 2013.
+
 \bibitem{fornberg2013stable}
 \bibnamefont{B.~Fornberg, E.~Lehto, and C.~Powell}.
 \newblock \emph{Stable calculation of {G}aussian-based {RBF}--{FD} stencils}.
@@ -438,12 +444,6 @@
 \newblock \emph{A guide to {R}{B}{F}-generated finite differences for nonlinear
   transport: Shallow water simulations on a sphere}.
 \newblock Journal of Computational Physics, 231(11): 4078--4095, 2012.
-
-\bibitem{larsson2013stable}
-\bibnamefont{E.~Larsson, E.~Lehto, A.~Heryudono, and B.~Fornberg}.
-\newblock \emph{Stable computation of differentiation matrices and scattered
-  node stencils based on {G}aussian radial basis functions}.
-\newblock SIAM Journal on Scientific Computing, 35(4): A2096--A2119, 2013.
 
 \bibitem{flyer2016enhancing}
 \bibnamefont{N.~Flyer, G.~A. Barnett, and L.~J. Wicker}.

@@ -5,15 +5,15 @@ The style file: teza.bst
 Database file #1: References.bib
 You've used 80 entries,
             2298 wiz_defined-function locations,
-            969 strings with 18046 characters,
-and the built_in function-call counts, 35439 in all, are:
-= -- 2707
+            969 strings with 18047 characters,
+and the built_in function-call counts, 35449 in all, are:
+= -- 2710
 > -- 700
 < -- 71
 + -- 266
 - -- 186
-* -- 1922
-:= -- 3508
+* -- 1923
+:= -- 3509
 add.period$ -- 246
 call.type$ -- 80
 change.case$ -- 81
@@ -34,13 +34,13 @@ purify$ -- 0
 quote$ -- 0
 skip$ -- 1300
 stack$ -- 0
-substring$ -- 2118
+substring$ -- 2122
 swap$ -- 2708
 text.length$ -- 71
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 286
+while$ -- 287
 width$ -- 82
 write$ -- 883

@@ -136,7 +136,7 @@
 \usepackage{arydshln}
 \setlength{\arrayrulewidth}{1pt}
 
-\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand{\thefootnote}{\textrm{\fnsymbol{footnote}}}
 \makeatother
 
 \usepackage{float}
@@ -171,11 +171,11 @@
     ultra thick/.style={line width=2.4pt}
 }
 
-\newcommand{\mybasiclinewidth}{thin}
-%source is page 126 in the manual
+%\newcommand{\mybasiclinewidth}{thin}
+%%source is page 126 in the manual
 \tikzset{
 every picture/.style={
-\mybasiclinewidth} %or use: "`line width=1 pt,"<-- note:if you write line width, you must use a value with unit
+thin} %or use: "`line width=1 pt,"<-- note:if you write line width, you must use a value with unit
 }
 \pgfplotsset{
 every axis/.append style={
@@ -913,7 +913,7 @@ Unfortunately, quick node placing schemes of this sort for higher dimensions are
 
 %
 \section{Choosing Shape Parameters}
-The properties of the RBF-FD methods presented so far are quite attractive, but when it comes to implementing the methods in practice, with infinitely smooth RBFs we need to deal with the selection of the shape parameter $\varepsilon$. As it can be seen in the plot to the left of Figure \ref{fig:RBF}, the shape parameter tunes the support of the RBF. The larger the shape parameter is, the smaller the support --- and vice versa. Moreover, the greater the support of an RBF, the approximation becomes more accurate. Nevertheless, if an RBF becomes too flat, the system of equations \eqref{eqRBFFDmat} becomes nearly singular, and the computations of the differentiation weights become ill-conditioned. There have been several approaches to stabilize the RBF-FD stencils and make them independent of the choice of the shape parameter~\cite{fornberg2013stable}, but all those treatments came with significant increases in computational costs.  
+The properties of the RBF-FD methods presented so far are quite attractive, but when it comes to implementing the methods in practice, with infinitely smooth RBFs we need to deal with the selection of the shape parameter $\varepsilon$. As it can be seen in the plot to the left of Figure \ref{fig:RBF}, the shape parameter tunes the support of the RBF. The larger the shape parameter is, the smaller the support --- and vice versa. Moreover, the greater the support of an RBF, the approximation becomes more accurate. Nevertheless, if an RBF becomes too flat, the system of equations \eqref{eqRBFFDmat} becomes nearly singular, and the computations of the differentiation weights become ill-conditioned. There have been several approaches to stabilize the RBF-FD stencils and make them independent of the choice of the shape parameter~\cite{larsson2013stable, fornberg2013stable}, but all those treatments came with significant increases in computational costs.  
 
 \par
 Therefore, in \textbf{Paper \ref{paper1}}, we suggested choosing the shape parameter such that it has the smallest value before the problem becomes ill-conditioned, in order to maintain high accuracy of the RBF-FD approximation. In that article, we showed by spatial error analysis and verified by numerical experiments, that an efficient RBF-FD method can be constructed if the shape parameter for approximating the Black--Scholes--Merton differential operator is chosen as 
