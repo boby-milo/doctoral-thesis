@@ -267,13 +267,13 @@
 \bibnamefont{B.~D{\"u}ring and A.~Pitkin}.
 \newblock \emph{High-order compact finite difference scheme for option pricing
   in stochastic volatility jump models}.
-\newblock arXiv preprint, arXiv:1704.05308[q-fin], 2017.
+\newblock arXiv preprint, arXiv:1704.05308[q-fin.CP], 2017.
 
 \bibitem{during2017efficient}
 \bibnamefont{B.~D{\"u}ring and A.~Pitkin}.
 \newblock \emph{Efficient hedging in {B}ates model using high-order compact
   finite differences}.
-\newblock arXiv preprint, arXiv:1710.05542[q-fin], 2017.
+\newblock arXiv preprint, arXiv:1710.05542[q-fin.CP], 2017.
 
 \bibitem{zvan1998general}
 \bibnamefont{R.~Zvan, P.~Forsyth, and K.~Vetzal}.
@@ -458,7 +458,7 @@
 \bibitem{vlasiuk2017fast}
 \bibnamefont{O.~Vlasiuk, T.~Michaels, N.~Flyer, and B.~Fornberg}.
 \newblock \emph{Fast high-dimensional node generation with variable density}.
-\newblock arXiv preprint arXiv:1710.05011, 2017.
+\newblock arXiv preprint, arXiv:1710.05011[math.NA], 2017.
 
 \bibitem{larsson2013stable}
 \bibnamefont{E.~Larsson, E.~Lehto, A.~Heryudono, and B.~Fornberg}.
