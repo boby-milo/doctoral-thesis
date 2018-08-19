@@ -205,6 +205,12 @@
   via partial differential equation expansions}.
 \newblock Journal of Computational Finance, 18(4): 95--127, 2015.
 
+\bibitem{persson2007pricing}
+\bibnamefont{J.~Persson and L.~von Sydow}.
+\newblock \emph{Pricing {E}uropean multi-asset options using a space-time
+  adaptive {FD}-method}.
+\newblock Computing and Visualization in Science, 10(4): 173--183, 2007.
+
 \bibitem{foulon2010adi}
 \bibnamefont{K.~J. in~'T~Hout and S.~Foulon}.
 \newblock \emph{{ADI} finite difference schemes for option pricing in the
